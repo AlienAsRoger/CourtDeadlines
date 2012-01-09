@@ -109,7 +109,7 @@ public class SelectTrialActivity extends ActionBarActivity implements AdapterVie
         }
 
         private void parseText(String data){
-
+                      // Log me here
         }
 
         @Override

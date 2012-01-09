@@ -1,0 +1,6 @@
+<resources>
+    <color name="list_selected_1">#FF5286ef</color>
+    <color name="list_selected_2">#FF185a99</color>
+
+    <color name="actionbar_title_color">#224894</color>
+</resources>

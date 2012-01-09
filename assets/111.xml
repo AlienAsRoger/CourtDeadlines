@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>?????????? ??????????? - LawNet: ?? ???????? ?????? ??????</title>
+
+        <meta name="description" content="?????????? ???????????. ?????????? ??????? ??? ???? ??? ????? ??? ??? ??????????,??? ?????????? ??? ??????????? ??? ??? ???????? ???????." />
+
+        <meta name="keywords" content="?????????? ???????????, ?????????? ???????????, ????????? ???????????, ????????? ???????????, ???????? ????, ???????? ????, ??????? ????, ??????? ????, ?????????? ????, ?????????? ????
+
+
+
+" />
+
+        <meta http-equiv="refresh" content="300">
+
+
+
+        <link rel="shortcut icon" type="image/ico" href="http://www.lawnet.gr/assets/img/LawNet.png" />
+
+        <link rel="icon" type="image/png" href="http://www.lawnet.gr/assets/img/LawNet.png" />
+
+        <link rel="apple-touch-icon" type="image/png" href="http://www.lawnet.gr/assets/img/LawNet.png" />
+
+        <link rel="stylesheet" href="http://www.lawnet.gr/assets/css/template.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="http://www.lawnet.gr/assets/css/jquery.autocomplete.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="http://www.lawnet.gr/assets/css/colorbox.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="http://www.lawnet.gr/assets/css/menu.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="http://www.lawnet.gr/assets/css/jquery.jscrollpane.css" type="text/css" media="screen" />
+
+
+
+        <script src="http://www.lawnet.gr/assets/js/f.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/menu.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="http://www.lawnet.gr/assets/js/main.js"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.validate.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.colorbox.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.bgiframe.min.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.autocomplete.js" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.jscrollpane.min.js?ck=5624" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/jquery.mousewheel.js?ck=8839" type="text/javascript"></script>
+
+        <script src="http://www.lawnet.gr/assets/js/mwheelIntent.js?ck=9003" type="text/javascript"></script>
+
+
+
+        <base href="http://www.lawnet.gr/" />
+
+    </head>
+
+    <body>
+
+        <div id="container" >
+
+            <div class="fastcallcontainer">
+
+                <div class="fastcall">
+
+                    <a href="feedback.html" class="fastclink" title="????????????? ???? ???">
+
+                        <img src="assets/img/fastcall.png" border="0"/>
+
+                    </a>
+
+                </div>
+
+                <script type="text/javascript">
+
+                    $().ready(function() {
+
+                    $(".fastclink").colorbox({width:"550", height:"450", scrolling:false, iframe:true});
+
+                    });
+
+                </script>
+
+            </div>
+
+            <div id="top">
+
+                <div class="topleft">
+
+                    <span>Websites</span>
+
+                    <img src="assets/img/arrowtop.gif"/><a href="http://www.lawfirms.gr" target="_blank">LawFirms.gr</a> | <a href="http://www.lawsearch.gr" target="_blank">LawSearch.gr</a></div>
+
+                <div class="topright"><img src="assets/img/arrowtop.gif"/><a href="customer-care.html">??????????? ???????</a> | <a href="diafhmish.html">?????????</a> | <a href="contact.html">???????????</a></div>
+
+            </div>
+
+            <div id="header">
+
+                <div class="logo"><a href="home.html"/><img src="assets/img/logo.png" alt="Lawnet logo" title="Lawnet logo" border="0"/></a></div>
+
+            <div class="banner"><div class="ban_cnt"><!--/* OpenX Javascript Tag v2.8.7 */-->
+
+
+
+                <!--/*
+
+                * The backup image section of this tag has been generated for use on a
+
+                * non-SSL page. If this tag is to be placed on an SSL page, change the
+
+                *   'http://ads.lawnet.gr/www/delivery/...'
+
+                * to
+
+                *   'https://ads.lawnet.gr/www/delivery/...'
+
+                *
+
+                * This noscript section of this tag only shows image banners. There
+
+                * is no width or height in these banners, so if you want these tags to
+
+                * allocate space for the ad before it shows, you will need to add this
+
+                * information to the <img> tag.
+
+                *
+
+                * If you do not want to deal with the intricities of the noscript
+
+                * section, delete the tag (from <noscript>... to </noscript>). On
+
+                * average, the noscript tag is called from less than 1% of internet
+
+                * users.
+
+                */-->
+
+
+
+                <script type='text/javascript'><!--//<![CDATA[
+
+   var m3_u = (location.protocol=='https:'?'https://ads.lawnet.gr/www/delivery/ajs.php':'http://ads.lawnet.gr/www/delivery/ajs.php');
+
+   var m3_r = Math.floor(Math.random()*99999999999);
+
+   if (!document.MAX_used) document.MAX_used = ',';
+
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+
+   document.write ("?zoneid=97");
+
+   document.write ('&amp;cb=' + m3_r);
+
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+
+   document.write ("&amp;loc=" + escape(window.location));
+
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+
+   if (document.context) document.write ("&context=" + escape(document.context));
+
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+
+   document.write ("'><\/scr"+"ipt>");
+
+//]]>--></script><noscript><a href='http://ads.lawnet.gr/www/delivery/ck.php?n=ad9871bb&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.lawnet.gr/www/delivery/avw.php?zoneid=97&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ad9871bb' border='0' alt='' /></a></noscript>
+
+            </div>
+
+            </div>
+
+        </div>
+
+        <div id="moonmenu" class="halfmoon">
+
+            <ul><li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"  rel="dropmenu1_e"   href="nomiki-ereuna.html">?????? ??????</a></li>
+
+                <li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"     href="law-news.html">LAW NEWS</a></li>
+
+                <li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"     href="yphresies.html">?????????</a></li>
+
+                <li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"     href="dikaiosynh.html">??????????</a></li>
+
+                <li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"    target="_blank" href="bibliopoleio.html">????????????</a></li>
+
+                <li><a style="font:bold 13px/1.231 arial,helvetica,clean,sans-serif"   rel="dropmenu1_e2"  href="#">?????? ?????</a></li>
+
+            </ul><div id="dropmenu1_e" class="dropmenudiv_e"><a href="nomothesia.html">?????????</a>
+
+            <a href="deltio-nomothesias.html">?????? ??????????</a>
+
+            <a href="nomologia.html">?????????</a>
+
+            <a href="#">eLaw</a>
+
+            <a href="nomosxedia.html">??????????</a>
+
+            <a href="syntagma.html">????????</a>
+
+            <a href="ypodeigmata.html">???????????</a>
+
+            <a href="meletes-arthra.html">??????? - ?????</a>
+
+            <a href="javascript:void(0);" onclick="javascript:window.open('http://legacy.lawnet.gr/law/online/find_kodikes_free2.asp','popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=540,height=480,screenX=150,screenY=150,top=150,left=150');">???????</a>
+
+        </div><div id="dropmenu1_e2" class="dropmenudiv_e2"><a href="deltia-typou-anakoinwseis.html">?????? ????? - ????????????</a>
+
+            <a href="programma-exetasewn.html">????????? ?????????</a>
+
+            <a href="themata-exetasewn.html">?????? ?????????</a>
+
+        </div>	<div class="search">
+
+            <form method="post" action="apotelesmata-anazhthshs.html" name="searchForm" id="searchForm">
+
+                <table border="0" cellpadding="0" cellspacing="0">
+
+                    <tr>
+
+                        <td><input type="textfield" name="keyword" id="keyword" class="textfield"/></td>
+
+                        <td><input type="button" onclick="if($('#keyword').val()=='') {alert('To ????? ?? ?????? ?? ????? ?????.')} else {$('#searchForm').submit()}" value="SEARCH" class="button"/></td>
+
+                    </tr>
+
+                </table>
+
+            </form>
+
+        </div>
+
+        </div>
+
+        <script type="text/javascript">
+
+            tabdropdown.init("moonmenu", "auto");
+
+        </script>
+
+        <div id="quicklinks">
+
+            <span class="ql">QUICK LINKS</span>
+
+            <ul>		<li><a href="Legal-Marketing.html">Legal Marketing </a></li>
+
+                <li><a href="cv.html">CVs</a></li>
+
+                <li><a href="aggelies.html">????????</a></li>
+
+                <li><a href="javascript:document.location='yphresies.html';">??????????????</a></li>
+
+                <li><a href="javascript:document.location='katalogoi.html';">?????????</a></li>
+
+                <li><a href="ergaleia.html">????????</a></li>
+
+                <li><a href="prothesmies-dikasthriwn.html">?????????? ???/????</a></li>
+
+                <li><a href="#" onclick="javascript:window.open('http://legacy.lawnet.gr/law/online/find_kodikes_free2.asp','popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,copyhistory=no,width=540,height=480,screenX=150,screenY=150,top=150,left=150');">???????</a></li>
+
+                <li><a href="lexiko.html">??????</a></li>
+
+                <li class="last"><a href="katalogoi.html?cid=72">A??????? - ??????????????</a></li>
+
+            </ul>
+
+            <span class="rss"><a href="rss.html"/>RSS Feed</a></span>
+
+    </div>
+
+
+
+    <div id="middle">
+
+        <div class="banner"><div class="ban_cnt"><Script>
+
+            var ran_unrounded=Math.random()*11;
+
+            var ran_number=Math.floor(ran_unrounded);
+
+
+
+            if (ran_number>20){
+
+            sas_pageid='23701/161041';	// Page : Lawnet/homepage
+
+            sas_formatid=7913;		// Format : 728x90 1. banner  728x90
+
+            sas_target='';			// Targeting
+
+
+
+            if (!sas_tmstp) var sas_tmstp = Math.round(Math.random()*10000000000);
+
+            if (!sas_masterflag) {var sas_masterflag=1;sas_master='M';} else {sas_master='S';};
+
+
+
+            document.write('<scr'+'ipt src="http://diff4.smartadserver.com/call/pubj/' + sas_pageid + '/' + sas_formatid + '/' + sas_master + '/' + sas_tmstp + '/' + escape(sas_target) + '?"></scr'+'ipt>');
+
+
+
+            }
+
+            else{
+
+
+
+
+
+            var m3_u = (location.protocol=='https:'?'https://ads.lawnet.gr/www/delivery/ajs.php':'http://ads.lawnet.gr/www/delivery/ajs.php');
+
+            var m3_r = Math.floor(Math.random()*99999999999);
+
+            if (!document.MAX_used) document.MAX_used = ',';
+
+            document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+
+            document.write ("?zoneid=98");
+
+            document.write ('&cb=' + m3_r);
+
+            if (document.MAX_used != ',') document.write ("&exclude=" + document.MAX_used);
+
+            document.write (document.charset ? '&charset='+document.charset : (document.characterSet ? '&charset='+document.characterSet : ''));
+
+            document.write ("&loc=" + escape(window.location));
+
+            if (document.referrer) document.write ("&referer=" + escape(document.referrer));
+
+            if (document.context) document.write ("&context=" + escape(document.context));
+
+            if (document.mmm_fo) document.write ("&mmm_fo=1");
+
+            document.write ("'><\/scr"+"ipt>");
+
+
+
+
+
+
+
+
+
+            }
+
+        </script></div>
+
+    </div>
+
+    <div class="members">
+
+        <h2>Members Login</h2>
+
+        <span class="register"><a href="yphresies.html">???????</a></span>
+
+        <form method="post" action="http://legacy.lawnet.gr/law/online/index.asp" target="_blank" name="loginForm" id="loginForm">
+
+            <table border="0" cellpadding="0" cellspacing="3">
+
+                <tr>
+
+                    <td align="right">Username:</td>
+
+                    <td><input type="textfield" tabindex="1" name="username" class="textfield"/></td>
+
+                    <td rowspan="2" valign="bottom"><input onkeypress="if(event.which){if(event.which == 13) {$('#loginForm').submit();}}else if(event.keyCode){if(event.keyCode == 13) {$('#loginForm').submit();}}" tabindex="3" type="button" onclick="if(($('#username').val()=='')||($('#password').val()=='')) {alert('T? ????? ?? ?????? ?? ????? ????.'); return false;} else {$('#loginForm').submit()}" value="" class="submit"/></td>
+
+                </tr>
+
+                <tr>
+
+                    <td align="right">Password:</td>
+
+                    <td><input type="password" tabindex="2" name="password" onkeypress="if(event.which){if(event.which == 13) {$('#loginForm').submit();}}else if(event.keyCode){if(event.keyCode == 13) {$('#loginForm').submit();}}" id="password" class="textfield"/></td>
+
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<div id="main">
+
+<div class="mainarea">
+
+    <div class="tristilo">
+
+        <div class="distilo">
+
+            <p><div class="listcol" style="margin-bottom:20px;">
+
+                <h1 style="font:21px Georgia,Tahoma,Arial">?????????? ???????????</h1><div class="aggelieslinks" style="background-image:none;">
+
+                <form method="GET" action="" class="searchfrm" style="margin:0;" id="cForm" name="cForm">
+
+                    <input type="hidden" name="id" value="20" />
+
+                    <select style="float: none;" name="cat" id="cat" class="aggeliesselection required" onchange="">
+
+                        <option value="">-- E?????? --</option>
+
+                        <option selected value="1">???????? ????</option>
+
+                        <option  value="2">??????? ????</option>
+
+                        <option  value="3">?????????? ????</option>
+
+                    </select><input type="button" onclick="submitForm();$('label.error').css('position','absolute');" class="searchsubmit" value="">
+
+                </form>
+
+            </div><div class="colstwo">
+
+                <div class="colstwol" style="width:auto;">		<div style="float: left; clear: both; display: block; margin-bottom:10px;">
+
+                    <strong>???????? ????</strong><br/><span style="display:block;clear:both;float:left;margin-left:10px;">??????? ??????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=1" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????? ?????????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=4" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????? ?????????? ????????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=6" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????? ?????????? ???????????? </a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">?????? ????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=12" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=8" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????? ???????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=11" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">???????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=10" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=5" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????- ???????? ????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=9" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">?????</a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">??????? ???????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=13" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????-?????? </a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=14" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????? - ??????</a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">??????????? ?????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=15" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">???????? - ?????? </a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=16" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????? - ?????? </a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">??????? ???????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=19" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????? ???????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=18" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=17" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????</a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">?????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=20" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">?????????</a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">??????????? ????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=22" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">???????? (933 ?.???.?., 954 ?.???.?., 986 ?.???.?)</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=21" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=23" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">?????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=25" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????? ?????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=24" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">??????????????</a><br/>
+
+                </span><span style="display:block;clear:both;float:left;margin-left:10px;">??????????????</span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=28" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">?????????? ??????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=27" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">????????? ????????????? ???????????</a><br/>
+
+                </span>	<span style="margin-left:20px;float:left;display:block;clear:both;">
+
+                    <a href="prothesmies-dikasthriwn.html?sid=26" style="color: #457BBB;font: 12px/19px Tahoma,Arial,Verdana; text-decoration: none;}">?????????? ????????????? ???????????</a><br/>
+
+                </span>				</div>
+
+                </div>
+
+            </div></div><script type="text/javascript">
+
+                $(document).ready(function(){
+
+                $("#cForm").validate({
+
+                messages: {
+
+                cat: "?? ????? ????? ??????????"
+
+                }
+
+                });
+
+                });
+
+                function submitForm() {
+
+                if ($("#cForm").valid()) {
+
+                $("#cForm").submit();
+
+                }
+
+                }
+
+            </script></p>
+
+        </div>
+
+        <div class="monostilo">
+
+            <div class="monoboxr bnomargin">
+
+                <div class="ban_cnt"><Script>
+
+                    var ran_unrounded=Math.random()*11;
+
+                    var ran_number=Math.floor(ran_unrounded);
+
+
+
+                    if (ran_number>200){
+
+
+
+
+
+                    sas_pageid='23701/161042';	// Page : Lawnet/ros
+
+                    sas_formatid=7911;		// Format : 300x250 1. rect 300x250
+
+                    sas_target='';			// Targeting
+
+
+
+                    if (!sas_tmstp) var sas_tmstp = Math.round(Math.random()*10000000000);
+
+                    if (!sas_masterflag) {var sas_masterflag=1;sas_master='M';} else {sas_master='S';};
+
+
+
+                    document.write('<scr'+'ipt src="http://diff4.smartadserver.com/call/pubj/' + sas_pageid + '/' + sas_formatid + '/' + sas_master + '/' + sas_tmstp + '/' + escape(sas_target) + '?"></scr'+'ipt>');
+
+
+
+
+
+                    }
+
+                    else{
+
+
+
+                    var m3_u = (location.protocol=='https:'?'https://ads.lawnet.gr/www/delivery/ajs.php':'http://ads.lawnet.gr/www/delivery/ajs.php');
+
+                    var m3_r = Math.floor(Math.random()*99999999999);
+
+                    if (!document.MAX_used) document.MAX_used = ',';
+
+                    document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+
+                    document.write ("?zoneid=99");
+
+                    document.write ('&cb=' + m3_r);
+
+                    if (document.MAX_used != ',') document.write ("&exclude=" + document.MAX_used);
+
+                    document.write (document.charset ? '&charset='+document.charset : (document.characterSet ? '&charset='+document.characterSet : ''));
+
+                    document.write ("&loc=" + escape(window.location));
+
+                    if (document.referrer) document.write ("&referer=" + escape(document.referrer));
+
+                    if (document.context) document.write ("&context=" + escape(document.context));
+
+                    if (document.mmm_fo) document.write ("&mmm_fo=1");
+
+                    document.write ("'><\/scr"+"ipt>");
+
+
+
+
+
+                    }
+
+                </script></div>
+
+
+
+        </div>
+
+        <div class="monoboxr">
+
+            <h1 class="bluebox"><a href="law-news.html"><img src="assets/img/newsroom_right.png" border="0" /></a></h1>
+
+            <div class="nea">
+
+                <div class="links"><a href="http://www.lawnet.gr/news/oi-poinikes-diataxeis-tou-sxediou-nomou-gia-tin-dikaii-diki-kai-tin-antimetopisi-fainomenon-arnisidikias-11012012-25282.html">?? ???????? ????????? ??? ??????? ????? "??? ??? ?????? ???? ??? ??? ???????????? ?????????? ????????????"  (11/01/2012)</a><a href="http://www.lawnet.gr/news/ston-ap-gia-to-sumpliromatiko-upomnima-oi-oikonomikoi-eisaggeleis-25280.html">???? ?? ??? ?? ?????????????? ???????? ?? ??????????? ???????????</a><a href="http://www.lawnet.gr/news/ypourgiko-sumboulio-me-basiko-8ema-to-polunomosxedio-tou-ypourgeiou-oikonomikon-25279.html">????????? ????????? ?? ?????? ???? ?? ?????????????? ??? ?????????? ???????????</a><a href="http://www.lawnet.gr/news/megaluteros-apostoleas-spam-mail-pagkosmios-i-india-25276.html">??????????? ?????????? spam mail ?????????? ? ?????</a><a href="http://www.lawnet.gr/news/austiri-antipeiratiki-nomo8esia-sto-exis-gia-tin-ispania-25278.html">??????? ????-????????? ????????? ??? ???? ??? ??? ???????</a><span><a href="law-news.html">???????????? ????????</a></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="monoboxr">
+
+            <div class="ban_cnt"><!--/* OpenX Javascript Tag v2.8.7 */-->
+
+
+
+                <!--/*
+
+                * The backup image section of this tag has been generated for use on a
+
+                * non-SSL page. If this tag is to be placed on an SSL page, change the
+
+                *   'http://ads.lawnet.gr/www/delivery/...'
+
+                * to
+
+                *   'https://ads.lawnet.gr/www/delivery/...'
+
+                *
+
+                * This noscript section of this tag only shows image banners. There
+
+                * is no width or height in these banners, so if you want these tags to
+
+                * allocate space for the ad before it shows, you will need to add this
+
+                * information to the <img> tag.
+
+                *
+
+                * If you do not want to deal with the intricities of the noscript
+
+                * section, delete the tag (from <noscript>... to </noscript>). On
+
+                * average, the noscript tag is called from less than 1% of internet
+
+                * users.
+
+                */-->
+
+
+
+                <script type='text/javascript'><!--//<![CDATA[
+
+   var m3_u = (location.protocol=='https:'?'https://ads.lawnet.gr/www/delivery/ajs.php':'http://ads.lawnet.gr/www/delivery/ajs.php');
+
+   var m3_r = Math.floor(Math.random()*99999999999);
+
+   if (!document.MAX_used) document.MAX_used = ',';
+
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+
+   document.write ("?zoneid=100");
+
+   document.write ('&amp;cb=' + m3_r);
+
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+
+   document.write ("&amp;loc=" + escape(window.location));
+
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+
+   if (document.context) document.write ("&context=" + escape(document.context));
+
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+
+   document.write ("'><\/scr"+"ipt>");
+
+//]]>--></script><noscript><a href='http://ads.lawnet.gr/www/delivery/ck.php?n=a9779c35&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.lawnet.gr/www/delivery/avw.php?zoneid=100&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a9779c35' border='0' alt='' /></a></noscript>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="monoboxr">
+
+            <h1 class="bluebox" style="padding:0;"><a href="dikaiosynh.html"><img src="assets/img/dikaiosynh_box_title.gif" border="0" /></a></h1>
+
+            <div class="nea">
+
+                <div class="links"><a href="http://www.lawnet.gr/news/prosklisi-tis-enosis-ellinon-poinikologon-se-dimosia-suzitisi-oi-poinikes-diataxeis-tou-sxediou-nomou-gia-tin-dikaii-dikikai-tin-antimetopisi--25281.html">????????? ??? ?????? ??????? ???????????? ?? ??????? ???????? "?? ???????? ????????? ??? ??????? ????? -??? ??? ?????? ??????? ??? ????????????-" </a><a href="http://www.lawnet.gr/news/dsa-anakoinosi-gia-to-merisma-ba-examinou-2011-25273.html">???: ?????????? ??? ?? ??????? ?’ ???????? 2011</a><a href="http://www.lawnet.gr/news/prosklisi-upobolis-aitiseon-gia-askisi-sta-dikastiria-a8inon-25258.html">????????? ???????? ???????? ??? ?????? ??? ?????????? ??????</a><a href="http://www.lawnet.gr/news/ypourgeio-dikaiosunis-deltio-tupou-gia-to-8ema-ton-duo-anteisaggeleon-efeton-25255.html">????????? ???????????: ?????? ????? ??? ?? ???? ??? ??? ?????????????? ??????</a><a href="http://www.lawnet.gr/news/d-tupou-tis-olomeleias-ton-proedron-ton-dikigorikon-sullogon-25246.html">?. ????? ??? ?????????? ??? ???????? ??? ??????????? ????????</a><span><a href="dikaiosynh.html">???????????? ????????</a></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="block rightcol">
+
+            <h1><a style="color:#000000;text-decoration:none;" href="agenda.html">Agenda</a></h1>
+
+            <div class="calendar"><a href="agenda.html"><img border="0" src="assets/img/calendar.jpg"/></a></div>
+
+        </div>
+
+        <script type="text/javascript">
+
+            $().ready(function() {
+
+            function log(event, data, formatted) {
+
+            $("<li>").html( !data ? "No match!" : "Selected: " + formatted).appendTo("#result");
+
+            }
+
+            function formatItem(row) {
+
+            return row[0] + " (<strong>id: " + row[1] + "</strong>)";
+
+            }
+
+            function formatResult(row) {
+
+            return row[0].replace(/(<.+?>)/gi, '');
+
+            }
+
+            $("#cbString").autocomplete("assets/ajax/ajaxMethods.php?m=getcatalogs", {
+
+            width: 169,
+
+            selectFirst: false
+
+            });
+
+            $("#cbString").result(function(event, data, formatted) {
+
+            if (data)
+
+            $(this).parent().next().find("input").val(data[1]);
+
+            });
+
+            $("#clear").click(function() {
+
+            $(":input").unautocomplete();
+
+            });
+
+            });
+
+        </script>
+
+        <div class="block rightcol">
+
+            <h1><div class="catslabel" style="cursor:pointer;cursor:hand;" onclick="document.location='katalogoi.html';">?????????</div>
+
+                <form method="POST" action="katalogoi.html" id="cbForm" name="cbForm">
+
+                    <input type="submit" value="" class="submit"/>
+
+                    <input type="textafield" name="cString" id="cbString" />
+
+                </form>
+
+            </h1>
+
+            <div class="catalogs">
+
+                <ul id="scroll-pane-bc"><li><a href="katalogoi.html?cid=72">???????? - ??????????????</a></li><li><a href="katalogoi.html?cid=1">??????????</a></li><li><a href="katalogoi.html?cid=71">?????????? ??????????</a></li><li><a href="katalogoi.html?cid=14">??????????? ????????</a></li><li><a href="katalogoi.html?cid=15">??????? ???. ??????????</a></li><li><a href="katalogoi.html?cid=22">????????????</a></li><li><a href="katalogoi.html?cid=23">??????????????? ?????????</a></li><li><a href="katalogoi.html?cid=38">??????? ???????</a></li><li><a href="katalogoi.html?cid=40">???????? ???. ??????????</a></li><li><a href="katalogoi.html?cid=50">???????????. ????????</a></li><li><a href="katalogoi.html?cid=60">??????????????? ??????</a></li><li><a href="katalogoi.html?cid=68">????. ??????. ????????</a></li><li><a href="katalogoi.html?cid=69">???????????????</a></li><li><a href="katalogoi.html?cid=70">????????? ???????????</a></li><li><a href="katalogoi.html?cid=39">???????</a></li></ul>
+
+            </div>
+
+        </div><script type="text/javascript">
+
+        jQuery(document).ready(function() {
+
+        $(function() {;
+
+        $("#scroll-pane-bc").jScrollPane();
+
+        })
+
+        })
+
+    </script>
+
+        <div class="monoboxr">
+
+            <h1 class="bluebox"><img src="assets/img/quicktools.png"></h1>
+
+            <div class="services">
+
+                <div class="links">
+
+                    <a href="http://www.lawfirms.gr" target="_blank" title="Lawfirms">LawFirms.gr</a>
+
+                    <a href="bibliografia.html" title="????????????" class="toolb">????????????</a>
+
+                    <a href="ypologismos-tokwn.html" title="??????????? ?????" class="toolb">??????????? ?????</a>
+
+                    <a href="law-clipping.html">LawClipping</a>
+
+                    <a href="http://legacy.lawnet.gr/law/online/find_kodikes_free2.asp" target="_blank">???????</a>
+
+                    <a href="prothesmies-dikasthriwn.html">?????????? ???????????</a>
+
+                </div>
+
+            </div>
+
+        </div><script type="text/javascript">
+
+        $(document).ready(function(){
+
+        $(".toolb").colorbox({width:"640", height:"510", iframe:true});
+
+        });
+
+    </script>
+
+        <div class="monoboxr">
+
+            <h1 class="bluebox"><a href="yphresies.html"><img border="0" src="assets/img/services.png" /></a></h1>
+
+            <div class="services">
+
+                <div class="links">
+
+                    <a href="http://www.lawfirms.gr" target="_blank" title="Lawfirms">LawFirms.gr</a>
+
+                    <a href="yphresies.html">Lawnet Members</a>
+
+                    <a href="yphresies.html">?????????????? ????????</a>
+
+                    <a href="katalogoi.html">K????????</a>
+
+                    <a href="cv.html">CVs</a>
+
+                    <a href="Legal-Marketing.html">Legal Marketing</a>
+
+                    <a href="ypodeigmata.html">Y??????????</a></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="tristilo nobg topdots">
+
+    <div class="bannerleft"><div class="ban_cnt"><script type='text/javascript'><!--//<![CDATA[
+
+   var m3_u = (location.protocol=='https:'?'https://ads.lawnet.gr/www/delivery/ajs.php':'http://ads.lawnet.gr/www/delivery/ajs.php');
+
+   var m3_r = Math.floor(Math.random()*99999999999);
+
+   if (!document.MAX_used) document.MAX_used = ',';
+
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+
+   document.write ("?zoneid=101");
+
+   document.write ('&amp;cb=' + m3_r);
+
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+
+   document.write ("&amp;loc=" + escape(window.location));
+
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+
+   if (document.context) document.write ("&context=" + escape(document.context));
+
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+
+   document.write ("'><\/scr"+"ipt>");
+
+//]]>--></script><noscript><a href='http://ads.lawnet.gr/www/delivery/ck.php?n=a42808e0&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.lawnet.gr/www/delivery/avw.php?zoneid=101&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a42808e0' border='0' alt='' /></a></noscript>
+
+    </div>
+
+    </div>
+
+    <div class="bannerright"><a href="http://www.forthnet.gr" target="_blank"><img border="0" src="http://www.lawnet.gr/assets/files/banners/forthnet.gif" /></a></div>
+
+</div>
+
+
+
+</div>
+
+<div class="mainbottom"><!-- empty--></div>
+
+    </div>
+
+
+
+<div id="footer">
+
+<div class="footerbottom">
+
+    <div class="footerarea">
+
+        <div class="title">Disclaimer</div>
+
+        <div class="text">
+
+            ?? ??????????? ?? ?????? ?????????? ??? ?? lawnet.gr, ??? ????????? ??????? ????????? ???? ?????????????
+
+            ???? ??????????? ????? ?????? ????????? ??? ??????. ? ???????? ??? ? ????? ??? ???????????? ??? ???
+
+            ????????? ??? LawNet ????????? ????? ????? ??? ???????? ????????? (<a href="legal-notice.html">Legal Notice</a>) ???? ??????? ????????????
+
+            ?? ?????????? ?????????? ???? ???????????? ?? lawnet.gr. ?????? ???????????? ???? ????????? ???? ?????
+
+            ??? ??????? ??? ????????? ??? ?????????? ??? ????????? (<a href="privacy-policy.html">Privacy Policy</a>).
+
+        </div>
+
+        <div class="titlesm">
+
+            Copyright &copy; 1997-2011 Lawnet. E-mail: law@lawnet.gr. All Rights Reserved.
+
+            <a href="legal-notice.html">Legal Notice</a> | <a href="privacy-policy.html">Privacy Policy</a>
+
+            <span style="float:right;">??????????? ???:
+
+                <a href="http://www.facebook.com/pages/%CE%9D%CE%9F%CE%9C%CE%99%CE%9A%CE%9F-%CE%94%CE%99%CE%9A%CE%A4%CE%A5%CE%9F-LAWNET-SA/117550941621216" target="_blank"><img src="assets/img/facebook_ico.png" border="0" /></a>&nbsp;
+
+                <a href="http://www.twitter.com/lawnetgr" target="_blank"><img src="assets/img/twitter_ico.png" border="0" /></a>&nbsp;
+
+                <a href="http://www.youtube.com/lawnetlive" target="_blank"><img src="assets/img/youtube_ico.png" border="0" /></a>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+
+
+var _gaq = _gaq || [];
+
+_gaq.push(['_setAccount', 'UA-23387211-1']);
+
+_gaq.push(['_trackPageview']);
+
+
+
+(function() {
+
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+})();
+
+
+
+</script>
+
+
+
+    <!-- Histats.com  START  (aync)-->
+
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+
+_Hasync.push(['Histats.start', '1,1626392,4,0,0,0,00010000']);
+
+_Hasync.push(['Histats.fasi', '1']);
+
+_Hasync.push(['Histats.track_hits', '']);
+
+(function() {
+
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+
+hs.src = ('http://s10.histats.com/js15_as.js');
+
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+
+})();</script>
+
+<noscript><a href="http://www.histats.com" target="_blank"><img  src="http://sstatic1.histats.com/0.gif?1626392&101" alt="web log free" border="0"></a></noscript>
+
+    <!-- Histats.com  END  -->
+
+    </div>
+
+
+
+    </body>
+
+    </html>

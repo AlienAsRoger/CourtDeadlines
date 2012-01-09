@@ -1,0 +1,58 @@
+<resources>
+    <string-array name="trial_types">
+        <item>@string/select_trial_type</item>
+        <item>@string/civil_trial</item>
+        <item>@string/criminal_trial</item>
+        <item>@string/admin_trial</item>
+    </string-array>
+
+    <string-array name="civil_trials">
+        <item>@string/regular_processes</item>
+        <item>@string/remedies</item>
+        <item>@string/appeal</item>
+    </string-array>
+
+
+<!--
+    //        Civil Trial
+    //
+    //        regular Process
+    //
+    //        before a district court
+    //        Before Instance Court
+    //        Before First Instance
+    //
+    //                remedies
+    //        Appeals
+    //        application was
+    //        Anapsilafisi
+    //        counter appeal
+    //        Generally, parties Summons
+    //                appeal
+
+
+
+
+    //        criminal Trial
+    //
+    //        Introduction-General
+    //
+    //        rights of accused
+    //                accusation
+    //        Exclusion of Judges
+    //                Civics
+    //        preliminary examination
+    //
+    //        pre
+
+
+    administrative Trial
+
+    Administrative Actions TRIAL
+
+    Suspension Judgments
+    Suspension of Administrative Actions
+    attorney
+    evidentiary procedure
+    Proceedings before the COE (PD 18/1989)-->
+</resources>

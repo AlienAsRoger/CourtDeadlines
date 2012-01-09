@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CourtDeadlines</string>
+
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_share">Share</string>
+
+    <!--types of trials-->
+
+    <string name="select_trial_type">Select trial type</string>
+    <string name="civil_trial">Civil trial</string>
+    <string name="criminal_trial">Criminal trial</string>
+    <string name="admin_trial">Administrative trial</string>
+
+    <string name="regular_processes">Regular processes</string>
+    <string name="remedies">Remedies</string>
+    <string name="appeal">Appeal</string>
+
+    <string name="unable_to_set_past_date">Unable to set past date</string>
+
+
+    <string name="no_items">No elements</string>
+
+    <string name="search">Search</string>
+
+    <string name="customer">Customer</string>
+    <string name="customer_hint">New Customer</string>
+
+    <string name="case_title">Case</string>
+    <string name="case_hint">New Case</string>
+
+    <string name="notes">Notes</string>
+    <string name="notes_hint">New Notes</string>
+    <string name="court_date">Court Date</string>
+    <string name="deadline_hint">1 Jan 2012</string>
+    <string name="deadline">Proposal deadline</string>
+    <string name="court_date_hint">1 Jan 2012</string>
+    <string name="trial_title">Civil Trial</string>
+
+    <string name="new_task">New Task</string>
+
+
+    <string name="duty_share_msg">Click on item to share</string>
+    <string name="share_subj">I want to share this with you</string>
+    <string name="share_msg_title">Share via</string>
+
+
+
+ <!--   Civil Trial
+
+    regular Process
+
+    before a district court
+    Before Instance Court
+    Before First Instance
+
+    remedies
+
+    Appeals
+    application was
+    Anapsilafisi
+    counter appeal
+    Generally, parties Summons
+    appeal
+    Special Procedures-General Introduction
+    Individual - Special
+
+    interim Measures
+
+    Introduction - General
+    Individual - Special
+
+    voluntarily
+
+    Jurisdiction Notice of Rights
+    Succession
+    adoption
+
+    arbitration
+
+    arbitration
+
+    Enforcement
+
+    Oppositions (933 Code of Civil Procedure, Code of Civil Procedure 954, 986 K.Pol.D)
+    general
+    seizure
+    ranked list
+    auction
+    expropriations
+
+    Identification of Beneficiaries
+    Final Determination of Compensation
+    Temporary Compensation Determination-->
+
+</resources>
+

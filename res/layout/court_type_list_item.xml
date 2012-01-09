@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="45dip">
+    <TextView
+            android:id="@+id/groupNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:visibility="gone"
+            android:text=""
+            />
+    <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/black"
+            android:textStyle="normal"
+            android:visibility="visible"
+            android:text=""
+            android:paddingLeft="20dip"
+            />
+
+
+</LinearLayout>

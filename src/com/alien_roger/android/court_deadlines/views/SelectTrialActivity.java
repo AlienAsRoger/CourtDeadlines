@@ -1,8 +1,23 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+
 import actionbarcompat.ActionBarActivity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,22 +27,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.R;
-import com.alien_roger.android.court_deadlines.adapters.TrialsAdapter;
+import com.alien_roger.android.court_deadlines.adapters.TrialsAdapter2;
+import com.alien_roger.android.court_deadlines.db.DBConstants;
+import com.alien_roger.android.court_deadlines.db.DBDataManager;
+import com.alien_roger.android.court_deadlines.entities.CourtObj;
 import com.alien_roger.android.court_deadlines.entities.CourtType;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.xml_parsers.HtmlHelper;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
 
 /**
  * SelectTrialActivity class
@@ -42,7 +50,8 @@ public class SelectTrialActivity extends ActionBarActivity implements AdapterVie
     private ListView listView;
     private AssetManager assetManager;
 
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setResult(RESULT_CANCELED);
         setContentView(R.layout.trial_list_screen);
@@ -60,6 +69,11 @@ public class SelectTrialActivity extends ActionBarActivity implements AdapterVie
     }
 
     private class Get extends AsyncTask<String, Void, Boolean>{
+    	private List<CourtObj> courtObjs;
+
+    	public Get(){
+    		courtObjs = new ArrayList<CourtObj>();
+    	}
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
@@ -83,33 +97,62 @@ public class SelectTrialActivity extends ActionBarActivity implements AdapterVie
                 BufferedReader buffreader = new BufferedReader(inputreader);
                 String line;
                 StringBuilder text = new StringBuilder();
-                
+
                 while (( line = buffreader.readLine()) != null) {
-                    int level =   line.lastIndexOf(".");
+                	courtObjs.add(parseText(line));
 //                    String group =
                     text.append(line);
 //                    3.1.1.1.Τακτική (type of trial)
 //                    line.lastIndexOf(".")
                     text.append('\n');
+
                 }
-                
+
                 Log.d(TAG,"parsed text" + text.toString());
             } catch (IOException e) {
+            	Log.d(TAG,e.toString());
                 return null;
             }
-                        
 
-            boolean conn = false;
-            try {
-                conn = parseDataFromHtml(ids[0]);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+            boolean conn = true;
+
+
+            // save
+            for (CourtObj courtObj : courtObjs) {
+                Uri uri = getContentResolver().insert(DBConstants.TRIALS_CONTENT_URI, DBDataManager.fillCourtObj(courtObj));
+                Log.d(TAG,"insreted Uri" + uri);
+			}
+
+//            try {
+//                conn = parseDataFromHtml(ids[0]);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             return conn;  //To change body of implemented methods use File | Settings | File Templates.
         }
 
-        private void parseText(String data){
-                      // Log me here
+        private CourtObj parseText(String line){
+        	CourtObj courtObj = new CourtObj();
+        	int numbs =   line.lastIndexOf(".");
+        	String value = line.substring(numbs+1);
+        	String levelLine = line.substring(0,numbs);
+        	String[] levels = levelLine.split(Pattern.quote("."));
+        	int parent = 0;
+        	for (int i = 0; i < levels.length; i++) {
+				parent += Integer.parseInt(levels[i]) + 10 *(i+1);
+			}
+        	Log.d(TAG,"parent" + parent);
+
+            int level =   numbs/2;
+            Log.d(TAG,"level" + level);
+            courtObj.setHaveChilds(false);
+            courtObj.setLevel(level);
+            courtObj.setValue(value.trim());
+            courtObj.setParent(parent);
+
+
+            return courtObj;
         }
 
         @Override
@@ -118,7 +161,9 @@ public class SelectTrialActivity extends ActionBarActivity implements AdapterVie
             progressBar.setVisibility(View.INVISIBLE);
             getActionBarHelper().setRefreshActionItemState(false);
             if(aBoolean){
-                listView.setAdapter(new TrialsAdapter(SelectTrialActivity.this, courtTypes));
+//                listView.setAdapter(new TrialsAdapter(SelectTrialActivity.this, courtTypes));
+
+                listView.setAdapter(new TrialsAdapter2(SelectTrialActivity.this, courtObjs));
             }
         }
     }

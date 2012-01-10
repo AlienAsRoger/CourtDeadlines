@@ -9,7 +9,9 @@ package com.alien_roger.android.court_deadlines.db;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+
 import com.alien_roger.android.court_deadlines.entities.CourtCase;
+import com.alien_roger.android.court_deadlines.entities.CourtObj;
 
 
 public class DBDataManager {
@@ -26,11 +28,11 @@ public class DBDataManager {
             }
         }
         return instance;
-    }	
-    
+    }
+
 	private DBDataManager(){
 	}
-	
+
 	public static ContentValues fillCourtCase(CourtCase courtCase){
 		ContentValues values = new ContentValues();
         values.put(DBConstants.CUSTOMER, courtCase.getCustomer());
@@ -41,7 +43,7 @@ public class DBDataManager {
         values.put(DBConstants.COURT_TYPE, courtCase.getCourtType());
 		return values;
 	}
-	
+
 	public static void fillCourtCaseObjValues(CourtCase courtCase,Cursor cursor ){
         courtCase.setCaseName(getString(cursor,DBConstants.CASE_NAME));
         courtCase.setCustomer(getString(cursor,DBConstants.CUSTOMER));
@@ -51,7 +53,28 @@ public class DBDataManager {
         courtCase.setCourtType(getString(cursor,DBConstants.COURT_TYPE));
 	}
 
+	public static ContentValues fillCourtObj(CourtObj dataObj){
+		ContentValues values = new ContentValues();
+        values.put(DBConstants.TRIAL_HAVE_CHILDS, 0); // TODO
+        values.put(DBConstants.TRIAL_LEVEL, dataObj.getLevel());
+        values.put(DBConstants.TRIAL_PARENT, dataObj.getParent());
+        values.put(DBConstants.TRIAL_VALUE, dataObj.getValue());
+		return values;
+	}
+
+	public static void fillCourtObjObjValues(CourtObj dataObj,Cursor cursor ){
+        dataObj.setLevel(getInt(cursor,DBConstants.TRIAL_LEVEL));
+        dataObj.setParent(getInt(cursor,DBConstants.TRIAL_PARENT));
+        dataObj.setValue(getString(cursor,DBConstants.TRIAL_VALUE));
+
+        dataObj.setHaveChilds(false); // TODO
+	}
+
     private static String getString(Cursor cursor,String column){
         return cursor.getString(cursor.getColumnIndex(column));
+    }
+
+    private static int getInt(Cursor cursor,String column){
+        return cursor.getInt(cursor.getColumnIndex(column));
     }
 }

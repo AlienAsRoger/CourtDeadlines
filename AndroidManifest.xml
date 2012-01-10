@@ -20,7 +20,7 @@
                    android:configChanges="keyboard|orientation"/>
         <activity android:name=".views.SelectTrialActivity"/>
         <activity android:name=".views.TrialDetailsActivity"/>
-        <provider android:name=".db.DBDataProvider" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
+        <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
 
     </application>
 </manifest> 

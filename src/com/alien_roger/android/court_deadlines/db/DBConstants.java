@@ -45,16 +45,17 @@ public class DBConstants {
     public static final String COURT_TYPE	    = "court_type";
 
 
-    public static final String TRIAL_LEVEL	    = "trial_level";
-    public static final String TRIAL_PARENT	    = "trial_parent";
-    public static final String TRIAL_HAVE_CHILDS= "trial_have_childs";
-    public static final String TRIAL_VALUE	    = "trial_value";
+    public static final String TRIAL_DEPTH_LEVEL	= "trial_depth_level";
+    public static final String TRIAL_PARENT_LEVEL	= "trial_parent_level";
+    public static final String TRIAL_CURRENT_LEVEL	= "trial_current_level";
+    public static final String TRIAL_HAVE_CHILDS	= "trial_have_childs";
+    public static final String TRIAL_VALUE	    	= "trial_value";
 
 
     /**
      * DB creation params
      */
-    static final int DATABASE_VERSION 	= 3;
+    static final int DATABASE_VERSION 	= 4;
 
     static final String TASKS_TABLE_CREATE =
         "create table " + COURT_CASE_TABLE +
@@ -69,9 +70,10 @@ public class DBConstants {
     static final String TRIALS_TABLE_CREATE =
         "create table " + COURT_TRIALS_TABLE +
         " (_id integer primary key autoincrement, "
-        + TRIAL_LEVEL 		+ " INTEGER not null,"
-        + TRIAL_HAVE_CHILDS + " INTEGER not null,"
-        + TRIAL_PARENT 		+ " INTEGER not null,"
-        + TRIAL_VALUE 		+ " TEXT not null);";
+        + TRIAL_DEPTH_LEVEL 		+ " INTEGER not null,"
+        + TRIAL_HAVE_CHILDS 		+ " INTEGER not null,"
+        + TRIAL_PARENT_LEVEL 		+ " INTEGER not null,"
+        + TRIAL_CURRENT_LEVEL 		+ " INTEGER not null,"
+        + TRIAL_VALUE 				+ " TEXT not null);";
 
 }

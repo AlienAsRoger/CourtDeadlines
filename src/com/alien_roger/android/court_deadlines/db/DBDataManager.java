@@ -30,8 +30,48 @@ public class DBDataManager {
         return instance;
     }
 
-	private DBDataManager(){
-	}
+	private DBDataManager(){}
+
+//   private static final String[] PROJECTION_ID_IID = new String[] {
+//           BooksStore.Book._ID, BooksStore.Book.INTERNAL_ID
+//   };
+//   private static final String[] PROJECTION_ID = new String[] { BooksStore.Book._ID };
+//
+//   static {
+//       StringBuilder selection = new StringBuilder();
+//       selection.append(BooksStore.Book.INTERNAL_ID);
+//       selection.append("=?");
+//       sBookIdSelection = selection.toString();
+//
+//       selection = new StringBuilder();
+//       selection.append(sBookIdSelection);
+//       selection.append(" OR ");
+//       selection.append(BooksStore.Book.EAN);
+//       selection.append("=? OR ");
+//       selection.append(BooksStore.Book.ISBN);
+//       selection.append("=?");
+//       sBookSelection = selection.toString();
+//   }
+
+    public static String parentLevelSelection;
+
+//    private static String[] sArguments3 = new String[3];
+
+    public static final String[] PROJECTION_PARENT_LEVEL = new String[] {
+    	DBConstants.TRIAL_PARENT_LEVEL
+	};
+
+    static {
+    	StringBuilder selection = new StringBuilder();
+        selection.append(DBConstants.TRIAL_PARENT_LEVEL);
+//        selection.append("=? AND ");
+//        selection.append(DBConstants.SCHEDULE_DATE_TIME);
+//        selection.append("=? AND ");
+//        selection.append(DBConstants.ARR_DEP);
+        selection.append("=?");
+
+        parentLevelSelection = selection.toString();
+    }
 
 	public static ContentValues fillCourtCase(CourtCase courtCase){
 		ContentValues values = new ContentValues();
@@ -56,15 +96,17 @@ public class DBDataManager {
 	public static ContentValues fillCourtObj(CourtObj dataObj){
 		ContentValues values = new ContentValues();
         values.put(DBConstants.TRIAL_HAVE_CHILDS, 0); // TODO
-        values.put(DBConstants.TRIAL_LEVEL, dataObj.getLevel());
-        values.put(DBConstants.TRIAL_PARENT, dataObj.getParent());
+        values.put(DBConstants.TRIAL_DEPTH_LEVEL, dataObj.getDepthLevel());
+        values.put(DBConstants.TRIAL_PARENT_LEVEL, dataObj.getParentLevel());
+        values.put(DBConstants.TRIAL_CURRENT_LEVEL, dataObj.getCurrentLevel());
         values.put(DBConstants.TRIAL_VALUE, dataObj.getValue());
 		return values;
 	}
 
 	public static void fillCourtObjObjValues(CourtObj dataObj,Cursor cursor ){
-        dataObj.setLevel(getInt(cursor,DBConstants.TRIAL_LEVEL));
-        dataObj.setParent(getInt(cursor,DBConstants.TRIAL_PARENT));
+        dataObj.setDepthLevel(getInt(cursor,DBConstants.TRIAL_DEPTH_LEVEL));
+        dataObj.setParentLevel(getInt(cursor,DBConstants.TRIAL_PARENT_LEVEL));
+        dataObj.setCurrentLevel(getInt(cursor,DBConstants.TRIAL_CURRENT_LEVEL));
         dataObj.setValue(getString(cursor,DBConstants.TRIAL_VALUE));
 
         dataObj.setHaveChilds(false); // TODO

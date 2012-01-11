@@ -13,4 +13,7 @@ public class StaticData {
     public static final String URL_PATH = "url_path";
     public static final int GET_TRIAL_DATA = 55;
     public static final String TRIAL_DATA = "trial_data";
+
+	public static final String SHP_DATA_SAVED = "trials_list_data_saved";
+	public static final String TITLE = "title";
 }

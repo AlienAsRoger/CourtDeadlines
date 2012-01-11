@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.alien_roger.android.court_deadlines"
-      android:versionCode="29"
-      android:versionName="0.8.10">
+      android:versionCode="35"
+      android:versionName="0.9.05">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
@@ -20,6 +20,7 @@
                    android:configChanges="keyboard|orientation"/>
         <activity android:name=".views.SelectTrialActivity"/>
         <activity android:name=".views.TrialDetailsActivity"/>
+        <activity android:name=".views.TrialListActivity"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
 
     </application>

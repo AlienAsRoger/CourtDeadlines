@@ -1,5 +1,6 @@
 package com.alien_roger.android.court_deadlines.statics;
 
+
 /**
  * StaticData class
  *
@@ -16,4 +17,5 @@ public class StaticData {
 
 	public static final String SHP_DATA_SAVED = "trials_list_data_saved";
 	public static final String TITLE = "title";
+	public static final String BROADCAST_ACTION = "com.alien_roger.court_deadlines.data_ready";
 }

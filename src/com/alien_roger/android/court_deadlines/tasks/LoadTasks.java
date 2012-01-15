@@ -5,15 +5,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
-import com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 
 public class LoadTasks extends AsyncTask<Long, Void, Boolean> {
 
-	private TaskLoadInterface taskLoadFace;
+	private DataLoadInterface taskLoadFace;
 	private ContentResolver resolver;
 	private Cursor tasksCursor;
 	
-	public LoadTasks(TaskLoadInterface taskLoadFace){
+	public LoadTasks(DataLoadInterface taskLoadFace){
 		this.taskLoadFace = taskLoadFace;
 		resolver = taskLoadFace.getMeContext().getContentResolver();
 	}

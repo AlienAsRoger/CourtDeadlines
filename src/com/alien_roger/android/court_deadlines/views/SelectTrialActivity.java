@@ -36,10 +36,9 @@ import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TrialsCursorAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 import com.alien_roger.android.court_deadlines.db.DBDataManager;
-import com.alien_roger.android.court_deadlines.entities.CourtCase;
 import com.alien_roger.android.court_deadlines.entities.CourtObj;
 import com.alien_roger.android.court_deadlines.entities.CourtType;
-import com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.android.court_deadlines.xml_parsers.HtmlHelper;
@@ -50,7 +49,7 @@ import com.alien_roger.android.court_deadlines.xml_parsers.HtmlHelper;
  * @author alien_roger
  * @created at: 29.12.11 5:38
  */
-public class SelectTrialActivity extends ActionBarActivity implements TaskLoadInterface, AdapterView.OnItemClickListener {
+public class SelectTrialActivity extends ActionBarActivity implements DataLoadInterface<Object>, AdapterView.OnItemClickListener {
     private List<CourtType> courtTypes;
     private String TAG = "SelectTrialActivity";
     private ProgressBar progressBar;
@@ -93,13 +92,6 @@ public class SelectTrialActivity extends ActionBarActivity implements TaskLoadIn
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
             getActionBarHelper().setRefreshActionItemState(true);
-//            getWindow().getDecorView().postDelayed(
-//                    new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            getActionBarHelper().setRefreshActionItemState(false);
-//                        }
-//                    }, 1000);
         }
 
         @Override
@@ -249,7 +241,7 @@ public class SelectTrialActivity extends ActionBarActivity implements TaskLoadIn
 	}
 
 	@Override
-	public void onDataReady(List<CourtCase> cases) {}
+	public void onDataReady(List<Object> cases) {}
 
 	@Override
 	public void onTaskLoaded(Cursor cursor) {

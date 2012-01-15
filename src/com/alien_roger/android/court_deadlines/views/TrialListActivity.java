@@ -17,8 +17,7 @@ import android.widget.Toast;
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TrialsCursorAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
-import com.alien_roger.android.court_deadlines.entities.CourtCase;
-import com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
 
@@ -28,7 +27,7 @@ import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
  * @author alien_roger
  * @created at: 29.12.11 5:38
  */
-public class TrialListActivity extends ActionBarActivity implements TaskLoadInterface, AdapterView.OnItemClickListener {
+public class TrialListActivity extends ActionBarActivity implements DataLoadInterface<Object>, AdapterView.OnItemClickListener {
     private String TAG = "SelectTrialActivity";
     private ProgressBar progressBar;
     private ListView listView;
@@ -85,7 +84,7 @@ public class TrialListActivity extends ActionBarActivity implements TaskLoadInte
 	}
 
 	@Override
-	public void onDataReady(List<CourtCase> cases) {}
+	public void onDataReady(List<Object> cases) {}
 
 	@Override
 	public void onTaskLoaded(Cursor cursor) {

@@ -1,10 +1,14 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.util.List;
+
 import actionbarcompat.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,27 +16,35 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.AppConstants;
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TaskListAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 import com.alien_roger.android.court_deadlines.entities.CourtCase;
-import com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
+import com.alien_roger.android.court_deadlines.services.GetDataService;
+import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTasks;
 
-import java.util.List;
-
-public class TaskListActivity extends ActionBarActivity implements TaskLoadInterface, AdapterView.OnItemClickListener {
+public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
     private Cursor cursor;
-    
+    private SharedPreferences preferences;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task_list_screen);
 
-
         widgetsInit();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
+
+        if(!dataSaved)
+        	startService(new Intent(this,GetDataService.class));
+//        else
+//        	new LoadTrials(this).execute(0);
     }
 
     @Override

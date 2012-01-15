@@ -46,4 +46,13 @@
     <style name="ActionBarCompatHomeItem" parent="style/ActionBarCompatItemBase">
     </style>
 
+    <style name="spinnerStyle" parent="@android:style/Widget.Spinner.DropDown">
+		<item name="android:layout_margin">2dip</item>
+		<item name="android:drawSelectorOnTop">true</item>
+		<item name="android:background">@drawable/spinner_background</item>
+		<item name="android:textSize">14sp</item>
+    </style>
+		<!-- <item name="android:spinnerSelector">@drawable/spinner_selector</item> -->
+    
+    
 </resources>

@@ -1,21 +1,45 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 import actionbarcompat.ActionBarActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.*;
-import android.widget.*;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.android.court_deadlines.adapters.CustomSpinnerAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 import com.alien_roger.android.court_deadlines.db.DBDataManager;
 import com.alien_roger.android.court_deadlines.entities.CourtCase;
+import com.alien_roger.android.court_deadlines.interfaces.AbstractDataUpdater;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
-
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import com.alien_roger.android.court_deadlines.tasks.GetTrialsTask;
+import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
 
 /**
  * TaskDetailsActivity class
@@ -23,36 +47,160 @@ import java.util.Locale;
  * @author alien_roger
  * @created at: 24.12.11 13:03
  */
-public class TaskDetailsActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class TaskDetailsActivity extends ActionBarActivity implements DataLoadInterface<Object> {
 
     private static final int SET_FROM_TIME 	= 1;
     private static final int SET_FROM_DATE 	= 2;
     private Calendar fromCalendar;
     private DatePickerDialog fromDatePickerDialog;
     private EditText customerEdt;
-    private EditText caseNameEdt;
+
     private EditText courtDateEdt;
-    private EditText proposalDateEdt;
     private EditText courtTypeEdt;
     private EditText notesEdt;
     private Button showCourtTypesBtn;
-    private Spinner trialSpinner;
+    private Spinner typeSpinner1;
+    private Spinner typeSpinner2;
+    private Spinner trialSpinner1;
+    private Spinner trialSpinner2;
 
-    public void onCreate(Bundle savedInstanceState) {
+//    private View loadingLayout;
+    private Context context;
+
+
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_screen);
 
+        setTitle(R.string.customer_hint);
         widgetsInit();
+
+        context = this;
 
         fromCalendar = Calendar.getInstance();
         fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener,
                 fromCalendar.get(Calendar.YEAR),fromCalendar.get(Calendar.MONTH),fromCalendar.get(Calendar.DAY_OF_MONTH));
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
+
+
+        if(!dataSaved){
+        	trialSpinner1.setEnabled(false);
+        	trialSpinner2.setEnabled(false);
+        	typeSpinner1.setEnabled(false);
+        	typeSpinner2.setEnabled(false);
+			new GetTrialsTask(this).execute("d2.txt");
+        }else{
+        	// set adapters
+        	new LoadTrials(new DataUpdater(typeSpinner1)).execute(13);
+        }
     }
+
+    private class DataUpdater extends AbstractDataUpdater{
+    	private Spinner spinner;
+		public DataUpdater(Spinner spinner) {
+			super(TaskDetailsActivity.this, getActionBarHelper());
+			this.spinner = spinner;
+		}
+
+		@Override
+		public void onTaskLoaded(Cursor cursor) {
+
+        	adjustSpinner(spinner, new CustomSpinnerAdapter(context, cursor));
+		}
+    }
+
+    private class DataUpdater2 extends AbstractDataUpdater{
+
+		public DataUpdater2() {
+			super(TaskDetailsActivity.this, getActionBarHelper());
+		}
+
+		@Override
+		public void onTaskLoaded(Cursor cursor) {
+			if(cursor.getCount() > 0){
+				cursor.moveToFirst();
+				String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
+
+				Log.d("onTaskLoaded","String "  +string);
+				notesEdt.setText(string);
+			}
+		}
+    }
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		registerReceiver(dataUpdateReceiver,new IntentFilter(StaticData.BROADCAST_ACTION));
+	}
+
+	@Override
+	protected void onPause() {
+		unregisterReceiver(dataUpdateReceiver);
+		super.onPause();
+	}
+
+
+	private final BroadcastReceiver dataUpdateReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			int code = intent.getIntExtra(StaticData.SHP_DATA_SAVED, RESULT_CANCELED);
+			Log.d("BC","BC received data = " + code);
+
+			if(code == RESULT_OK){
+	        	// set adapters
+	        	new LoadTrials(new DataUpdater(typeSpinner1)).execute(13);
+
+			}else if(code == RESULT_CANCELED){
+				new GetTrialsTask(TaskDetailsActivity.this).execute("d2.txt");
+	        }
+
+		}
+	};
+
+    private class SpinnerSeletedListener implements AdapterView.OnItemSelectedListener{
+    	private Spinner spinner;
+
+    	public SpinnerSeletedListener(Spinner spinner){
+    		this.spinner = spinner;
+    	}
+
+		@Override
+		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+	    	Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
+//	        showToast(cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE)));
+//	    	String title = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
+	    	int currLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_CURRENT_LEVEL));
+	    	if(spinner.equals(typeSpinner1)){
+	    		new LoadTrials(new DataUpdater(typeSpinner2)).execute(currLevel);
+	    	}else if(spinner.equals(typeSpinner2)){
+	    		new LoadTrials(new DataUpdater(trialSpinner1)).execute(currLevel);
+	    	}else if(spinner.equals(trialSpinner1)){
+	    		new LoadTrials(new DataUpdater(trialSpinner2)).execute(currLevel);
+	    	}else if(spinner.equals(trialSpinner2)){
+	    		new LoadTrials(new DataUpdater2()).execute(currLevel);
+//	    		notesEdt.setText(cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE)));
+	    	}
+
+
+//	        if(i > 0){
+//	            Intent intent = new Intent(this,SelectTrialActivity.class);
+//	            intent.putExtra(StaticData.URL_PATH, StaticData.DEFAULT_URL + StaticData.PART_1 + i);
+//	            startActivityForResult(intent,StaticData.GET_TRIAL_DATA);
+//	        }
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {}
+
+    }
+
+
 
     private void widgetsInit(){
         customerEdt = (EditText) findViewById(R.id.customerEdt);
-        caseNameEdt = (EditText) findViewById(R.id.caseNameEdt);
-        proposalDateEdt = (EditText) findViewById(R.id.proposalDateEdt);
         notesEdt = (EditText) findViewById(R.id.notesEdt);
 
         courtDateEdt = (EditText) findViewById(R.id.courtDateEdt);
@@ -64,14 +212,32 @@ public class TaskDetailsActivity extends ActionBarActivity implements AdapterVie
             }
         });
 
-        trialSpinner = (Spinner) findViewById(R.id.selectTrial);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.trial_types, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        trialSpinner.setAdapter(adapter);
-        trialSpinner.setOnItemSelectedListener(this);
+        trialSpinner1 = (Spinner) findViewById(R.id.selectTrial1);
+        trialSpinner2 = (Spinner) findViewById(R.id.selectTrial2);
+        typeSpinner1 = (Spinner) findViewById(R.id.selectType1);
+        typeSpinner2 = (Spinner) findViewById(R.id.selectType2);
+
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//                this, R.array.trial_types, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        adjustSpinner(trialSpinner2, adapter);
+//        adjustSpinner(typeSpinner1, adapter);
+//        adjustSpinner(typeSpinner2, adapter);
+
+//    	loadingLayout = getLayoutInflater().inflate(R.layout.loading_layout, null);
+//		addContentView(loadingLayout,
+//				new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,
+//				LinearLayout.LayoutParams.WRAP_CONTENT ));
+//        Animation animation = AnimationUtils.loadAnimation(this, R.anim.shrink_to_middle);
+//        loadingLayout.setAnimation(animation);
+
 //        showCourtTypesBtn = (Button) findViewById(R.id.selectTrial);
 //        showCourtTypesBtn.setOnClickListener(this);
+    }
+
+    private void adjustSpinner(Spinner spinner,SpinnerAdapter adapter){
+    	spinner.setOnItemSelectedListener(new SpinnerSeletedListener(spinner));
+    	spinner.setAdapter(adapter);
     }
 
     @Override
@@ -89,11 +255,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements AdapterVie
                 Toast.makeText(this, "Tapped home", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menu_done:
+            case R.id.menu_refresh:
                 // fill task params
                 CourtCase courtCase = new CourtCase();
-                courtCase.setCaseName(caseNameEdt.getText().toString().trim());
-                courtCase.setCustomer(caseNameEdt.getText().toString().trim());
+                courtCase.setCaseName("");
+                courtCase.setCustomer(customerEdt.getText().toString().trim());
                 courtCase.setCourtDate(fromCalendar);
                 courtCase.setProposalDate(fromCalendar);
                 courtCase.setNotes(notesEdt.getText().toString().trim());
@@ -184,16 +350,37 @@ public class TaskDetailsActivity extends ActionBarActivity implements AdapterVie
 //        alarms.setRepeating(AlarmManager.RTC_WAKEUP, time2Set, StaticData.REMIND_ALARM_INTERVAL, pendingIntent);
 //    }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(i > 0){
-            Intent intent = new Intent(this,SelectTrialActivity.class);
-            intent.putExtra(StaticData.URL_PATH, StaticData.DEFAULT_URL + StaticData.PART_1 + i);
-            startActivityForResult(intent,StaticData.GET_TRIAL_DATA);
-        }
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-    }
+
+
+	@Override
+	public void showProgress(boolean show) {
+		getActionBarHelper().setRefreshActionItemState(show);
+	}
+
+	@Override
+	public void onDataReady(List<Object> cases) {
+
+    	trialSpinner1.setEnabled(true);
+    	trialSpinner2.setEnabled(true);
+    	typeSpinner1.setEnabled(true);
+    	typeSpinner2.setEnabled(true);
+
+		new LoadTrials(new DataUpdater(typeSpinner1)).execute(13);
+	}
+
+	@Override
+	public void onTaskLoaded(Cursor cursor) {
+        adjustSpinner(trialSpinner1, new CustomSpinnerAdapter(this, cursor));
+	}
+
+	@Override
+	public void onError() {
+
+	}
+
+	@Override
+	public Context getMeContext() {
+		return this;
+	}
 }

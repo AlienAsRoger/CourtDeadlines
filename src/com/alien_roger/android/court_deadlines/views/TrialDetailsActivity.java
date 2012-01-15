@@ -1,5 +1,14 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+
 import actionbarcompat.ActionBarActivity;
 import android.content.Intent;
 import android.net.http.AndroidHttpClient;
@@ -13,21 +22,14 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.xml_parsers.HtmlHelper;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * TrialDetailsActivity class
- * 
+ *
  * @author alien_roger
  * @created at: 06.01.12 16:30
  */
@@ -58,7 +60,7 @@ public class TrialDetailsActivity extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_done:
+		case R.id.menu_refresh:
             Intent intent = new Intent();
             intent.putExtra(StaticData.TRIAL_DATA,description);
             setResult(RESULT_OK,intent);

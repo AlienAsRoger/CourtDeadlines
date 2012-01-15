@@ -6,6 +6,8 @@
     <string name="menu_search">Search</string>
     <string name="menu_share">Share</string>
 
+    <string name="loading_trials">Loading trials</string>
+
     <!--types of trials-->
 
     <string name="select_trial_type">Select trial type</string>
@@ -36,7 +38,7 @@
     <string name="deadline_hint">1 Jan 2012</string>
     <string name="deadline">Proposal deadline</string>
     <string name="court_date_hint">1 Jan 2012</string>
-    <string name="trial_title">Civil Trial</string>
+    <string name="trial_title">Select trial type</string>
 
     <string name="new_task">New Task</string>
 

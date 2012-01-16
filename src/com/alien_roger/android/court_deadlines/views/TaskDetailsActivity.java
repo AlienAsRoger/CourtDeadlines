@@ -23,9 +23,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -49,22 +49,26 @@ import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
  */
 public class TaskDetailsActivity extends ActionBarActivity implements DataLoadInterface<Object> {
 
-    private static final int SET_FROM_TIME 	= 1;
+    private static final int SET_FROM_DATE2 	= 1;
     private static final int SET_FROM_DATE 	= 2;
     private Calendar fromCalendar;
+    private Calendar toCalendar;
+    private DateFormat df;
+
     private DatePickerDialog fromDatePickerDialog;
+    private DatePickerDialog fromDatePickerDialog2;
     private EditText customerEdt;
 
     private EditText courtDateEdt;
-    private EditText courtTypeEdt;
+    private EditText proposalDateEdt;
     private EditText notesEdt;
-    private Button showCourtTypesBtn;
+
     private Spinner typeSpinner1;
     private Spinner typeSpinner2;
     private Spinner trialSpinner1;
     private Spinner trialSpinner2;
+    private LinearLayout additionSpinnersView;
 
-//    private View loadingLayout;
     private Context context;
 
 
@@ -79,8 +83,14 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
         context = this;
 
         fromCalendar = Calendar.getInstance();
+        toCalendar = Calendar.getInstance();
+        df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
+
         fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener,
                 fromCalendar.get(Calendar.YEAR),fromCalendar.get(Calendar.MONTH),fromCalendar.get(Calendar.DAY_OF_MONTH));
+        fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener2,
+        		toCalendar.get(Calendar.YEAR),toCalendar.get(Calendar.MONTH),toCalendar.get(Calendar.DAY_OF_MONTH));
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
 
@@ -203,6 +213,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
         customerEdt = (EditText) findViewById(R.id.customerEdt);
         notesEdt = (EditText) findViewById(R.id.notesEdt);
 
+
         courtDateEdt = (EditText) findViewById(R.id.courtDateEdt);
         courtDateEdt.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -212,10 +223,21 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
             }
         });
 
+        proposalDateEdt = (EditText) findViewById(R.id.deadlineDateEdt);
+        proposalDateEdt.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                showDialog(SET_FROM_DATE2);
+                return true;
+            }
+        });
+
         trialSpinner1 = (Spinner) findViewById(R.id.selectTrial1);
         trialSpinner2 = (Spinner) findViewById(R.id.selectTrial2);
         typeSpinner1 = (Spinner) findViewById(R.id.selectType1);
         typeSpinner2 = (Spinner) findViewById(R.id.selectType2);
+
+        additionSpinnersView = (LinearLayout) findViewById(R.id.additionSpinnersView);
 
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 //                this, R.array.trial_types, android.R.layout.simple_spinner_item);
@@ -291,8 +313,10 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id){
-            case SET_FROM_DATE:
-                return fromDatePickerDialog;
+        case SET_FROM_DATE:
+            return fromDatePickerDialog;
+        case SET_FROM_DATE2:
+            return fromDatePickerDialog2;
         }
         return null;
     }
@@ -319,8 +343,35 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
                 return;
             }
 
-            DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
+//            DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
             courtDateEdt.setText(df.format(fromCalendar.getTime()));
+        }
+    };
+
+    private DatePickerDialog.OnDateSetListener fromDateSetListener2 = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year,int monthOfYear, int dayOfMonth) {
+        	toCalendar.set(Calendar.YEAR, year);
+        	toCalendar.set(Calendar.MONTH, monthOfYear);
+        	toCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Calendar currentDay = Calendar.getInstance();
+
+            // drop down other values
+            toCalendar.set(Calendar.HOUR_OF_DAY, 0);
+            toCalendar.set(Calendar.MINUTE, 0);
+            toCalendar.set(Calendar.SECOND, 0);
+            toCalendar.set(Calendar.MILLISECOND,0);
+            currentDay.set(Calendar.HOUR_OF_DAY, 0);
+            currentDay.set(Calendar.MINUTE, 0);
+            currentDay.set(Calendar.SECOND, 0);
+            currentDay.set(Calendar.MILLISECOND,0);
+            if (toCalendar.before(currentDay)){
+                showToast(R.string.unable_to_set_past_date);
+                return;
+            }
+
+
+            proposalDateEdt.setText(df.format(toCalendar.getTime()));
         }
     };
 

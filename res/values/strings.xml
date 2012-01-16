@@ -19,6 +19,8 @@
     <string name="remedies">Remedies</string>
     <string name="appeal">Appeal</string>
 
+	<string name="proposal">proposal_date</string>
+    
     <string name="unable_to_set_past_date">Unable to set past date</string>
 
 

@@ -88,19 +88,22 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 
         fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener,
                 fromCalendar.get(Calendar.YEAR),fromCalendar.get(Calendar.MONTH),fromCalendar.get(Calendar.DAY_OF_MONTH));
-        fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener2,
+        fromDatePickerDialog2 = new DatePickerDialog(this, fromDateSetListener2,
         		toCalendar.get(Calendar.YEAR),toCalendar.get(Calendar.MONTH),toCalendar.get(Calendar.DAY_OF_MONTH));
 
+        init();
+    }
+
+    private void init(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
-
 
         if(!dataSaved){
         	trialSpinner1.setEnabled(false);
         	trialSpinner2.setEnabled(false);
         	typeSpinner1.setEnabled(false);
         	typeSpinner2.setEnabled(false);
-			new GetTrialsTask(this).execute("d2.txt");
+			new GetTrialsTask(this).execute(StaticData.LOAD_FILE);
         }else{
         	// set adapters
         	new LoadTrials(new DataUpdater(typeSpinner1)).execute(13);
@@ -223,7 +226,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
             }
         });
 
-        proposalDateEdt = (EditText) findViewById(R.id.deadlineDateEdt);
+        proposalDateEdt = (EditText) findViewById(R.id.proposalDateEdt);
         proposalDateEdt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

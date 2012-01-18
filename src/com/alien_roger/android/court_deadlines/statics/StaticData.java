@@ -16,6 +16,8 @@ public class StaticData {
     public static final String TRIAL_DATA = "trial_data";
 
 	public static final String SHP_DATA_SAVED = "trials_list_data_saved";
+	public static final String SHP_LOAD_FILE = "file_to_load";
 	public static final String TITLE = "title";
 	public static final String BROADCAST_ACTION = "com.alien_roger.court_deadlines.data_ready";
+	public static final String LOAD_FILE = "d1.txt";
 }

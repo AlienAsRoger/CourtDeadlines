@@ -10,6 +10,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
+import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.GetTrialsTask;
 
 public class GetDataService extends Service implements DataLoadInterface<Object>{
@@ -28,7 +29,7 @@ public class GetDataService extends Service implements DataLoadInterface<Object>
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		new GetTrialsTask(this).execute("d2.txt");
+		new GetTrialsTask(this).execute(StaticData.LOAD_FILE);
 		return START_STICKY_COMPATIBILITY;
 	}
 

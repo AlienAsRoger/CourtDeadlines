@@ -6,6 +6,7 @@ import actionbarcompat.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -38,13 +39,26 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
         setContentView(R.layout.task_list_screen);
 
         widgetsInit();
+        init();
+    }
+
+    private void init(){
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
 
+        String prevFileName = preferences.getString(StaticData.SHP_LOAD_FILE, "");
+        prevFileName = "d2.txt";
+        if(!prevFileName.equals(StaticData.LOAD_FILE)){
+        	dataSaved = false;
+        	Editor editor = preferences.edit();
+        	editor.putBoolean(StaticData.SHP_DATA_SAVED, false);
+        	editor.commit();
+//        	DBDataProvider2 provider = new DBDataProvider2();
+        	getContentResolver().delete(DBConstants.TRIALS_CONTENT_URI, null, null);
+        }
+
         if(!dataSaved)
         	startService(new Intent(this,GetDataService.class));
-//        else
-//        	new LoadTrials(this).execute(0);
     }
 
     @Override

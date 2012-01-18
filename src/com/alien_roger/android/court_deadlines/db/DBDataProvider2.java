@@ -36,9 +36,9 @@ public class DBDataProvider2 extends ContentProvider{
 	public boolean onCreate() {
  		Context context = getContext();
 		dbHelper = new DatabaseHelper(context);
-		CourtDeadlines_DB = dbHelper.getWritableDatabase();
+		CourtDeadlinesDB = dbHelper.getWritableDatabase();
 
-	    return (CourtDeadlines_DB == null)? false:true;
+	    return (CourtDeadlinesDB == null)? false:true;
 	}
 
 
@@ -107,7 +107,7 @@ public class DBDataProvider2 extends ContentProvider{
 			}
 
 			if(found){
-				Cursor c = sqlBuilder.query(CourtDeadlines_DB, projection, selection, selectionArgs, null, null, sortOrder);
+				Cursor c = sqlBuilder.query(CourtDeadlinesDB, projection, selection, selectionArgs, null, null, sortOrder);
 		        c.setNotificationUri(getContext().getContentResolver(), uri);
 		        return c;
 			}
@@ -122,10 +122,10 @@ public class DBDataProvider2 extends ContentProvider{
 		boolean found = false;
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i]){
-			    count = CourtDeadlines_DB.update(tablesArray[i],values,selection,selectionArgs);
+			    count = CourtDeadlinesDB.update(tablesArray[i],values,selection,selectionArgs);
 			    found = true;
 			}else if(uriMatcherIds.match(uri) == pathsArray[i]){
-		         count = CourtDeadlines_DB.update(tablesArray[i], values,
+		         count = CourtDeadlinesDB.update(tablesArray[i], values,
 		        		 DBConstants._ID + " = " + uri.getPathSegments().get(1) +
 		        		 (!TextUtils.isEmpty(selection) ? " AND (" + selection + ')' : ""),
 		        		 selectionArgs);
@@ -145,7 +145,7 @@ public class DBDataProvider2 extends ContentProvider{
 
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i] || uriMatcherIds.match(uri) == pathsArray[i]){
-				long rowID = CourtDeadlines_DB.insert(tablesArray[i], "", values);
+				long rowID = CourtDeadlinesDB.insert(tablesArray[i], "", values);
 			    //---if added successfully---
 			    if (rowID > 0){
 			         Uri _uri = ContentUris.withAppendedId(uriArray[i], rowID);
@@ -179,11 +179,11 @@ public class DBDataProvider2 extends ContentProvider{
 		boolean found = false;
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i]){
-      		 	count = CourtDeadlines_DB.delete(tablesArray[i],arg1,arg2);
+      		 	count = CourtDeadlinesDB.delete(tablesArray[i],arg1,arg2);
 			    found = true;
 			}else if(uriMatcherIds.match(uri) == pathsArray[i]){
 				String id = uri.getPathSegments().get(1);
-				count = CourtDeadlines_DB.delete(
+				count = CourtDeadlinesDB.delete(
 						tablesArray[i],
 						DBConstants._ID + " = " + id +(!TextUtils.isEmpty(arg1) ? " AND (" +arg1 + ')' : ""),
 						arg2);
@@ -226,7 +226,7 @@ public class DBDataProvider2 extends ContentProvider{
 	}
 
 
-	private SQLiteDatabase CourtDeadlines_DB;
+	private SQLiteDatabase CourtDeadlinesDB;
 
 
     private static class DatabaseHelper extends SQLiteOpenHelper{

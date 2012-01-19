@@ -1,7 +1,5 @@
 package com.alien_roger.android.court_deadlines.views;
 
-import java.util.List;
-
 import actionbarcompat.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.alien_roger.android.court_deadlines.AppConstants;
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TaskListAdapter;
@@ -27,6 +24,8 @@ import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.services.GetDataService;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTasks;
+
+import java.util.List;
 
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
@@ -47,7 +46,6 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
         boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
 
         String prevFileName = preferences.getString(StaticData.SHP_LOAD_FILE, "");
-        prevFileName = "d2.txt";
         if(!prevFileName.equals(StaticData.LOAD_FILE)){
         	dataSaved = false;
         	Editor editor = preferences.edit();

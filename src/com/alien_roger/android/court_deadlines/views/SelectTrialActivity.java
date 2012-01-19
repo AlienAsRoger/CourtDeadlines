@@ -1,19 +1,5 @@
 package com.alien_roger.android.court_deadlines.views;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-
 import actionbarcompat.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TrialsCursorAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
@@ -42,6 +27,19 @@ import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.android.court_deadlines.xml_parsers.HtmlHelper;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * SelectTrialActivity class
@@ -141,7 +139,7 @@ public class SelectTrialActivity extends ActionBarActivity implements DataLoadIn
         	Log.d(TAG,"parent = " + parentLevel + "current = " + currentLevel + "\nlevel = " + level + "\nvalue = " + value );
 
 //            Log.d(TAG,"level" + level);
-            courtObj.setHaveChilds(false);
+            courtObj.setHaveChild(false);
             courtObj.setDepthLevel(level);
             courtObj.setValue(value.trim());
             courtObj.setParentLevel(parentLevel);

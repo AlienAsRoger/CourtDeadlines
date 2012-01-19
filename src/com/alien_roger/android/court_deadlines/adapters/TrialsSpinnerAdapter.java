@@ -10,16 +10,16 @@ import android.widget.TextView;
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 
-public class CustomSpinnerAdapter extends CursorAdapter {
+public class TrialsSpinnerAdapter extends CursorAdapter {
 
-	private Context myContext;
+	protected Context myContext;
 
-//	public CustomSpinnerAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {
+//	public TrialsSpinnerAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {
 ////	    super(context, layout, c, from, to);
 //	    myContext = context;
 //	}
 
-	public CustomSpinnerAdapter(Context context, Cursor cursor){
+	public TrialsSpinnerAdapter(Context context, Cursor cursor){
 		super(context, cursor);
 		myContext = context;
 

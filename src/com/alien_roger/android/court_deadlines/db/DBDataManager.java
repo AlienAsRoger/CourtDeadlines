@@ -95,7 +95,7 @@ public class DBDataManager {
 
 	public static ContentValues fillCourtObj(CourtObj dataObj){
 		ContentValues values = new ContentValues();
-        values.put(DBConstants.TRIAL_HAVE_CHILDS, 0); // TODO
+        values.put(DBConstants.TRIAL_HAVE_CHILD, dataObj.doesHaveChild()); // TODO
         values.put(DBConstants.TRIAL_DEPTH_LEVEL, dataObj.getDepthLevel());
         values.put(DBConstants.TRIAL_PARENT_LEVEL, dataObj.getParentLevel());
         values.put(DBConstants.TRIAL_CURRENT_LEVEL, dataObj.getCurrentLevel());
@@ -109,7 +109,7 @@ public class DBDataManager {
         dataObj.setCurrentLevel(getInt(cursor,DBConstants.TRIAL_CURRENT_LEVEL));
         dataObj.setValue(getString(cursor,DBConstants.TRIAL_VALUE));
 
-        dataObj.setHaveChilds(false); // TODO
+        dataObj.setHaveChild(getInt(cursor,DBConstants.TRIAL_HAVE_CHILD)); // TODO
 	}
 
     private static String getString(Cursor cursor,String column){

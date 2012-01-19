@@ -5,7 +5,7 @@ public class CourtObj {
 	private int parentLevel;
 	private int currentLevel;
 
-	private boolean haveChilds;
+	private boolean haveChild;
 	private String value = "";
 
 	public int getDepthLevel() {
@@ -20,11 +20,17 @@ public class CourtObj {
 	public void setParentLevel(int parent) {
 		this.parentLevel = parent;
 	}
-	public boolean isHaveChilds() {
-		return haveChilds;
+	public boolean isHaveChild() {
+		return haveChild;
 	}
-	public void setHaveChilds(boolean haveChilds) {
-		this.haveChilds = haveChilds;
+	public int doesHaveChild() {
+		return haveChild ?1:0;
+	}
+	public void setHaveChild(boolean haveChild) {
+		this.haveChild = haveChild;
+	}
+	public void setHaveChild(int haveChild) {
+		this.haveChild = haveChild>0;
 	}
 	public String getValue() {
 		return value;

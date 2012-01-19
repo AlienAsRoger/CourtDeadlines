@@ -3,7 +3,6 @@ package com.alien_roger.android.court_deadlines.tasks;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.AsyncTask;
-
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 import com.alien_roger.android.court_deadlines.db.DBDataManager;
 import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
@@ -33,11 +32,12 @@ public class LoadTrials extends AsyncTask<Integer, Void, Boolean> {
 				null,
 				DBDataManager.parentLevelSelection,
 				arguments1, null);
-		if (tasksCursor.getCount() > 0) {
-			return true;
-		}
+//		tasksCursor = resolver.query(DBConstants.TRIALS_CONTENT_URI,
+//				null,
+//				null,
+//				null, "");
+		return tasksCursor.getCount() > 0;
 
-		return tasksCursor.getCount()>0;
 	}
 
 	@Override

@@ -1,5 +1,17 @@
 package com.alien_roger.android.court_deadlines.tasks;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import com.alien_roger.android.court_deadlines.db.DBConstants;
+import com.alien_roger.android.court_deadlines.db.DBDataManager;
+import com.alien_roger.android.court_deadlines.entities.CourtObj;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
+import com.alien_roger.android.court_deadlines.statics.StaticData;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,19 +19,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.util.Log;
-
-import com.alien_roger.android.court_deadlines.db.DBConstants;
-import com.alien_roger.android.court_deadlines.db.DBDataManager;
-import com.alien_roger.android.court_deadlines.entities.CourtObj;
-import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
-import com.alien_roger.android.court_deadlines.statics.StaticData;
 
 public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
 	private static final String TAG = "GetTrialsTask";
@@ -30,6 +29,7 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
 	public GetTrialsTask(DataLoadInterface<Object> dataFace){
     	this.context = dataFace.getMeContext();
     	this.dataFace = dataFace;
+		context = dataFace.getMeContext();
 	}
 
 	@Override
@@ -65,11 +65,11 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
 
     private CourtObj parseText(String line){
     	CourtObj courtObj = new CourtObj();
-    	int numbs =   line.lastIndexOf(".");
+    	int numbs =   line.lastIndexOf(StaticData.LEVEL_DELIMITER);
 
     	String value = line.substring(numbs + 1);
     	String levelLine = line.substring(0,numbs);
-    	String[] levels = levelLine.split(Pattern.quote("."));
+    	String[] levels = levelLine.split(Pattern.quote(StaticData.LEVEL_DELIMITER));
 
     	int parentLevel = 0;
     	int currentLevel = 0;
@@ -80,14 +80,11 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
     		}
 		}
 
-//    	for (int i = 0; i < levels.length - 1; i++) {
-//    		parentLevel += Integer.parseInt(levels[i]) + 10 *(i+1);
-//		}
+		courtObj.setHaveChild(!value.contains(StaticData.CHILD_DELIMITER));
 
         int level = numbs/2;
 //    	Log.d(TAG,"parent = " + parentLevel + "current = " + currentLevel + "\nlevel = " + level + "\nvalue = " + value );
 
-        courtObj.setHaveChilds(false);
         courtObj.setDepthLevel(level);
         courtObj.setValue(value.trim());
         courtObj.setParentLevel(parentLevel);
@@ -102,7 +99,8 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
         if(result){
         	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         	Editor editor = preferences.edit();
-        	editor.putBoolean(StaticData.SHP_DATA_SAVED, true);
+			editor.putBoolean(StaticData.SHP_DATA_SAVED, true);
+			editor.putString(StaticData.SHP_LOAD_FILE, StaticData.LOAD_FILE);
         	editor.commit();
         }
         dataFace.onDataReady(null);

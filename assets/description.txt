@@ -1,0 +1,6 @@
+ATC60 - 60 calendar days from trial
+ACW0 - on court date
+ATW3 - within 3 working days after the trial
+BTC10 - 10 calendar days before Trial
+BTC30 - 30 days before the trial
+?? - den exei

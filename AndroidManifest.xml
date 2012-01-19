@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.alien_roger.android.court_deadlines"
-      android:versionCode="40"
-      android:versionName="0.9.50">
+      android:versionCode="60"
+      android:versionName="0.9.70" android:installLocation="auto">
 <!--     <uses-permission android:name="android.permission.INTERNET" />
  -->
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
@@ -21,6 +21,7 @@
         <activity android:name=".views.SelectTrialActivity"/>
         <activity android:name=".views.TrialDetailsActivity"/>
         <activity android:name=".views.TrialListActivity"/>
+        <service android:name=".services.GetDataService"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
 
     </application>

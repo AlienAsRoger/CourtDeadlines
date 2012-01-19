@@ -20,4 +20,18 @@ public class StaticData {
 	public static final String TITLE = "title";
 	public static final String BROADCAST_ACTION = "com.alien_roger.court_deadlines.data_ready";
 	public static final String LOAD_FILE = "d1.txt";
+	public static final String CHILD_DELIMITER = " - ";
+	public static final String LEVEL_DELIMITER = ".";
+
+	public static final String D_AFTER_T 	= "AT";
+	public static final String D_BEFORE_T 	= "BT";
+	public static final String D_AFTER_C 	= "AC";
+	public static final String D_BEFORE_C 	= "BC";
+	public static final String D_WORK 		= "C";
+	public static final String D_CALENDAR	= "W";
+
+	public static final String D_TIME_1	= "(";
+	public static final String D_TIME_2	= ")";
+	public static final String D_TIME_am	= "am";
+	public static final String D_TIME_pm	= "pm";
 }

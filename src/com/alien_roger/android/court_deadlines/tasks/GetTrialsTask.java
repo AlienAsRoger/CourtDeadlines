@@ -1,17 +1,5 @@
 package com.alien_roger.android.court_deadlines.tasks;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import com.alien_roger.android.court_deadlines.db.DBConstants;
-import com.alien_roger.android.court_deadlines.db.DBDataManager;
-import com.alien_roger.android.court_deadlines.entities.CourtObj;
-import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
-import com.alien_roger.android.court_deadlines.statics.StaticData;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +7,19 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import com.alien_roger.android.court_deadlines.db.DBConstants;
+import com.alien_roger.android.court_deadlines.db.DBDataManager;
+import com.alien_roger.android.court_deadlines.entities.CourtObj;
+import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
+import com.alien_roger.android.court_deadlines.statics.StaticData;
 
 public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
 	private static final String TAG = "GetTrialsTask";
@@ -71,25 +72,27 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
     	String levelLine = line.substring(0,numbs);
     	String[] levels = levelLine.split(Pattern.quote(StaticData.LEVEL_DELIMITER));
 
-    	int parentLevel = 0;
-    	int currentLevel = 0;
+    	long parentLevel = 0;
+    	long currentLevel = 0;
     	for (int i = 0; i < levels.length; i++) {
-    		currentLevel += Integer.parseInt(levels[i]) + 10 *(i+1);
+    		currentLevel ^=  createLevel(levels, i);
     		if(i < levels.length - 1){
-    			parentLevel += Integer.parseInt(levels[i]) + 10 *(i+1);
+    			parentLevel ^= createLevel(levels, i);
     		}
 		}
-
-		courtObj.setHaveChild(!value.contains(StaticData.CHILD_DELIMITER));
-
+		Log.d(TAG,"currentLevel = "  + currentLevel + " levelLine  = " + levelLine);
         int level = numbs/2;
-//    	Log.d(TAG,"parent = " + parentLevel + "current = " + currentLevel + "\nlevel = " + level + "\nvalue = " + value );
 
+		courtObj.setHaveChild(!value.contains(StaticData.CHILD_DELIMITER.trim()));
         courtObj.setDepthLevel(level);
         courtObj.setValue(value.trim());
         courtObj.setParentLevel(parentLevel);
         courtObj.setCurrentLevel(currentLevel);
         return courtObj;
+    }
+
+    private long createLevel(String[] levels, int i) {
+    	return Integer.parseInt(levels[i]) << i*3;
     }
 
     @Override

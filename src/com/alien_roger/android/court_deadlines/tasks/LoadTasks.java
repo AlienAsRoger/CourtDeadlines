@@ -40,7 +40,7 @@ public class LoadTasks extends AsyncTask<Long, Void, Boolean> {
 		super.onPostExecute(result);
 		taskLoadFace.showProgress(false);
         if(result)
-		    taskLoadFace.onTaskLoaded(tasksCursor);
+		    taskLoadFace.onDataLoaded(tasksCursor);
         else
             taskLoadFace.onError();
 	}

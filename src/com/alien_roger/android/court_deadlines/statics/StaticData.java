@@ -13,6 +13,7 @@ public class StaticData {
     public static final String ID = "id";
     public static final String URL_PATH = "url_path";
     public static final int GET_TRIAL_DATA = 55;
+	public static final Long FIRST_LEVEL = 3L;
     public static final String TRIAL_DATA = "trial_data";
 
 	public static final String SHP_DATA_SAVED = "trials_list_data_saved";
@@ -34,4 +35,6 @@ public class StaticData {
 	public static final String D_TIME_2	= ")";
 	public static final String D_TIME_am	= "am";
 	public static final String D_TIME_pm	= "pm";
+
+	public static final String SHP_DB_VERSION = "db_version";
 }

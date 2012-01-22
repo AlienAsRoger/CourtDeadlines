@@ -11,8 +11,8 @@ import java.util.Calendar;
  * @created at: 19.01.12 8:10
  */
 public class CommonUtils {
-	
-	public static Calendar getDateByCode(Calendar courtCalendar,String code){
+
+	public static Calendar getDateByCode(Calendar courtCalendar,String code) throws NumberFormatException{
 		Calendar calendar = (Calendar) courtCalendar.clone();
 //		Calendar calendar = Calendar. getInstance();
 		// ATC60
@@ -28,7 +28,7 @@ public class CommonUtils {
 //		public static final String D_AFTER_C 	= "AC";
 //		public static final String D_BEFORE_C 	= "BC";
 //		public static final String D_WORK 		= "C";
-//		public static final String D_CALENDAR	= "W";	
+//		public static final String D_CALENDAR	= "W";
 
 		String posCode = code.substring(0,2);
 		String daysCode = code.substring(2,3);
@@ -39,7 +39,14 @@ public class CommonUtils {
 			numberOfDays = code.substring(3);
 		}
 
-		int daysCnt = Integer.parseInt(numberOfDays);
+		int daysCnt = 0 ;
+
+//		try {
+			daysCnt = Integer.parseInt(numberOfDays);
+//		} catch (NumberFormatException e) {
+////			throw NumberFormatException
+//		}
+
 
 		if(posCode.equals(StaticData.D_AFTER_T) || posCode.equals(StaticData.D_AFTER_C)){
 			calendar.add(Calendar.DATE, daysCnt);

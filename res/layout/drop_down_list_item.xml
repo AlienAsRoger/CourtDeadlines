@@ -2,7 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="45dip">
+    android:layout_height="48dip"
+    android:padding="10dip">
 
     <TextView
         android:id="@+id/nameTxt"
@@ -10,8 +11,8 @@
         android:layout_height="wrap_content"
 		android:textStyle="normal"
 		android:textSize="18sp"
-        android:textColor="@android:color/black"
-        android:text=""
+        android:textColor="@color/text_black_selector"
+        android:paddingLeft="10dip"
         />
 
 

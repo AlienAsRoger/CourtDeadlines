@@ -8,7 +8,7 @@ import android.database.Cursor;
 public interface DataLoadInterface<T> {
 	void showProgress(boolean show);
 	void onDataReady(List<T> cases);
-	void onTaskLoaded(Cursor cursor);
+	void onDataLoaded(Cursor cursor);
     void onError();
 	Context getMeContext();
 }

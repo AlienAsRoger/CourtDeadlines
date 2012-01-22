@@ -18,9 +18,6 @@
         </activity>
         <activity android:name=".views.TaskDetailsActivity"
                    android:configChanges="keyboard|orientation" android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".views.SelectTrialActivity"/>
-        <activity android:name=".views.TrialDetailsActivity"/>
-        <activity android:name=".views.TrialListActivity"/>
         <service android:name=".services.GetDataService"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
 

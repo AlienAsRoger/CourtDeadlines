@@ -2,6 +2,7 @@ package com.alien_roger.android.court_deadlines.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
@@ -13,6 +14,7 @@ import com.alien_roger.android.court_deadlines.db.DBConstants;
 public class TrialsSpinnerAdapter extends CursorAdapter {
 
 	protected Context myContext;
+	private LayoutInflater layoutInflater;
 
 //	public TrialsSpinnerAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {
 ////	    super(context, layout, c, from, to);
@@ -22,6 +24,7 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 	public TrialsSpinnerAdapter(Context context, Cursor cursor){
 		super(context, cursor);
 		myContext = context;
+		layoutInflater = LayoutInflater.from(context);
 
 	}
 
@@ -38,7 +41,7 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 //	    super.newView(context, cursor, parent);
-	    View view = View.inflate(context, R.layout.default_list_item, null);
+	    View view = layoutInflater.inflate(R.layout.default_list_item, parent, false);
 	    return view;
 	}
 
@@ -46,7 +49,7 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 	public View newDropDownView(Context context, Cursor cursor, ViewGroup parent) {
 	    super.newDropDownView(context, cursor, parent);
 
-	    View view = View.inflate(context, R.layout.drop_down_list_item, null);
+	    View view = layoutInflater.inflate(R.layout.drop_down_list_item, parent, false);
 	    bindView(view, context, cursor);
 //	    int nameColumn = cursor.getColumnIndex("name");
 //	    String getName = cursor.getString(nameColumn);

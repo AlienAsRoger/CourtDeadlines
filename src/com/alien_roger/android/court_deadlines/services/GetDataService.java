@@ -51,7 +51,7 @@ public class GetDataService extends Service implements DataLoadInterface<Object>
 	}
 
 	@Override
-	public void onTaskLoaded(Cursor cursor) {}
+	public void onDataLoaded(Cursor cursor) {}
 
 	@Override
 	public void onError() {

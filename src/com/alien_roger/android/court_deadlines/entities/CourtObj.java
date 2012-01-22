@@ -2,8 +2,8 @@ package com.alien_roger.android.court_deadlines.entities;
 
 public class CourtObj {
 	private int depthLevel;
-	private int parentLevel;
-	private int currentLevel;
+	private long parentLevel;
+	private long currentLevel;
 
 	private boolean haveChild;
 	private String value = "";
@@ -14,10 +14,10 @@ public class CourtObj {
 	public void setDepthLevel(int level) {
 		this.depthLevel = level;
 	}
-	public int getParentLevel() {
+	public long getParentLevel() {
 		return parentLevel;
 	}
-	public void setParentLevel(int parent) {
+	public void setParentLevel(long parent) {
 		this.parentLevel = parent;
 	}
 	public boolean isHaveChild() {
@@ -38,10 +38,10 @@ public class CourtObj {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public void setCurrentLevel(int currentLevel) {
+	public void setCurrentLevel(long currentLevel) {
 		this.currentLevel = currentLevel;
 	}
-	public int getCurrentLevel() {
+	public long getCurrentLevel() {
 		return currentLevel;
 	}
 }

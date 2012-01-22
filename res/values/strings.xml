@@ -8,6 +8,9 @@
 
     <string name="loading_trials">Loading trials</string>
 
+    <string name="error">Error!</string>
+    
+    <string name="number_format_msg">Error happens while parsing date code from text. Please contact developer to resolve this problem.</string>
     <!--types of trials-->
 
     <string name="select_trial_type">Select trial type</string>

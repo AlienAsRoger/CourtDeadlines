@@ -1,14 +1,37 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 import actionbarcompat.ActionBarActivity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.*;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.*;
-import android.widget.*;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.CaseSpinnerAdapter;
 import com.alien_roger.android.court_deadlines.adapters.TrialsSpinnerAdapter;
@@ -21,19 +44,13 @@ import com.alien_roger.android.court_deadlines.tasks.GetTrialsTask;
 import com.alien_roger.android.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.android.court_deadlines.utils.CommonUtils;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-
 /**
  * TaskDetailsActivity class
  *
  * @author alien_roger
  * @created at: 24.12.11 13:03
  */
-public class TaskDetailsActivity extends ActionBarActivity implements DataLoadInterface<Object> {
+public class TaskDetailsActivity extends ActionBarActivity implements DataLoadInterface<Object>, DialogInterface.OnClickListener {
 
 	private static final int SET_FROM_DATE2 = 1;
 	private static final int SET_FROM_DATE = 2;
@@ -56,10 +73,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	private Spinner trialSpinner3;
 	private Spinner trialSpinner4;
 	private List<Spinner> spinnersList;
-	private LinearLayout additionSpinnersView;
 
 	private Context context;
-//	private UpdateSpinner updateSpinnerListener;
 	private SpinnerSelectedListener spinnerSelectedListener;
 
 	@Override
@@ -92,46 +107,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean dataSaved = preferences.getBoolean(StaticData.SHP_DATA_SAVED, false);
 
-		if (!dataSaved) {
-			enableSpinners(false);
-//			new GetTrialsTask(this).execute(StaticData.LOAD_FILE);
-		} else {
-			new LoadTrials(this).execute(13);
-//			new LoadTrials(updateSpinnerListener).execute(13);
+		if (dataSaved) {
+			new LoadTrials(this).execute(StaticData.FIRST_LEVEL);
 		}
+		enableSpinners(dataSaved);
 	}
-
-//	private class UpdateSpinner extends AbstractDataUpdater {
-//		public UpdateSpinner() {
-//			super(TaskDetailsActivity.this, getActionBarHelper());
-//		}
-//
-//		@Override
-//		public void onTaskLoaded(Cursor cursor) {
-//			cursor.moveToFirst();
-//			int depthLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_DEPTH_LEVEL)) -1;
-//			boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
-//
-//			if (haveChild) {
-//				adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
-//			} else {
-//				adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
-//				setProposalDate(cursor);
-//			}
-//		}
-//	}
-
-	private void setProposalDate(Cursor cursor) {
-		String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
-
-		String code = string.substring(string.indexOf(StaticData.CHILD_DELIMITER) + StaticData.CHILD_DELIMITER.length());
-
-		if (code.length() > 0) {
-			Calendar cal = CommonUtils.getDateByCode(fromCalendar, code);
-			proposalDateEdt.setText(df.format(cal.getTime()));
-		}
-	}
-
 
 	private class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
 		public SpinnerSelectedListener() {
@@ -140,24 +120,15 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		@Override
 		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 			Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
-			int currLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_CURRENT_LEVEL));
+			boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
 			int depthLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_DEPTH_LEVEL));
-//			new LoadTrials(updateSpinnerListener).execute(currLevel);
-//			boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
 
-//			if (haveChild) {
+			if (haveChild) {
+				long currLevel = cursor.getLong(cursor.getColumnIndex(DBConstants.TRIAL_CURRENT_LEVEL));
 				new LoadTrials(TaskDetailsActivity.this).execute(currLevel);
-//			} else {
-//				adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
-//				setProposalDate(cursor);
-//				if(depthLevel < spinnersList.size()){
-//					spinnersList.get(depthLevel).setEnabled(false);
-//				}
-//			}
-			
-
-			if (depthLevel > 3) {
-				additionSpinnersView.setVisibility(View.VISIBLE);
+				disableSpinners(depthLevel);
+			} else {
+				setProposalDate(cursor);
 			}
 		}
 
@@ -166,93 +137,72 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		}
 	}
 
-	private void widgetsInit() {
-		customerEdt = (EditText) findViewById(R.id.customerEdt);
-		notesEdt = (EditText) findViewById(R.id.notesEdt);
-
-
-		courtDateEdt = (EditText) findViewById(R.id.courtDateEdt);
-		courtDateEdt.setOnTouchListener(new View.OnTouchListener() {
-			@Override
-			public boolean onTouch(View view, MotionEvent motionEvent) {
-				showDialog(SET_FROM_DATE);
-				return true;
-			}
-		});
-
-		proposalDateEdt = (EditText) findViewById(R.id.proposalDateEdt);
-		proposalDateEdt.setOnTouchListener(new View.OnTouchListener() {
-			@Override
-			public boolean onTouch(View view, MotionEvent motionEvent) {
-				showDialog(SET_FROM_DATE2);
-				return true;
-			}
-		});
-
-		spinnersList = new ArrayList<Spinner>();
-
-		typeSpinner1 = (Spinner) findViewById(R.id.selectType1);
-		typeSpinner2 = (Spinner) findViewById(R.id.selectType2);
-		trialSpinner1 = (Spinner) findViewById(R.id.selectTrial1);
-		trialSpinner2 = (Spinner) findViewById(R.id.selectTrial2);
-		trialSpinner3 = (Spinner) findViewById(R.id.selectTrial3);
-		trialSpinner4 = (Spinner) findViewById(R.id.selectTrial4);
-
-		spinnersList.add(typeSpinner1);
-		spinnersList.add(typeSpinner2);
-		spinnersList.add(trialSpinner1);
-		spinnersList.add(trialSpinner2);
-		spinnersList.add(trialSpinner3);
-		spinnersList.add(trialSpinner4);
-
-		additionSpinnersView = (LinearLayout) findViewById(R.id.additionSpinnersView);
+	private void disableSpinners(int depthLevel) {
+		for(int i=depthLevel; i< spinnersList.size(); i++) {
+			spinnersList.get(i).setEnabled(false);
+		}
 	}
+
+
+	@Override
+	public void onDataReady(List<Object> cases) {
+//		enableSpinners(true);
+//		new LoadTrials(updateSpinnerListener).execute(13);
+		new LoadTrials(this).execute(StaticData.FIRST_LEVEL);
+	}
+
+	private void enableSpinners(boolean enable) {
+		for (Spinner spinner : spinnersList) {
+			spinner.setEnabled(enable);
+			spinner.setOnItemSelectedListener(spinnerSelectedListener);
+		}
+	}
+
+	@Override
+	public void onDataLoaded(Cursor cursor) {
+		cursor.moveToFirst();
+		int depthLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_DEPTH_LEVEL)) -1;
+		boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
+
+		if (haveChild) {
+			adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
+		} else {
+			adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
+			setProposalDate(cursor);
+		}
+	}
+
+	private void setProposalDate(Cursor cursor) {
+		String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
+
+		if(string.indexOf(StaticData.CHILD_DELIMITER) < 0)
+			return;
+
+		String code = string.substring(string.indexOf(StaticData.CHILD_DELIMITER) + StaticData.CHILD_DELIMITER.length());
+
+		Log.d("setProposalDate", " code = " + code + " length = " + code.length()  );
+
+		Calendar cal = Calendar.getInstance();
+		try {
+			cal = CommonUtils.getDateByCode(fromCalendar, code);
+		} catch (NumberFormatException  e) {
+			Log.d("setProposalDate", e.toString());
+			new AlertDialog.Builder(context)
+			.setTitle(R.string.error)
+			.setMessage(R.string.number_format_msg)
+			.setPositiveButton(android.R.string.ok, this)
+			.setNegativeButton(android.R.string.cancel, this)
+			.show();
+
+		}
+		proposalDateEdt.setText(df.format(cal.getTime()));
+	}
+
 
 	private void adjustSpinner(Spinner spinner, SpinnerAdapter adapter) {
-		spinner.setOnItemSelectedListener(spinnerSelectedListener);
-		spinner.setAdapter(null);
-		spinner.refreshDrawableState();
+		spinner.setEnabled(true);
 		spinner.setAdapter(adapter);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater menuInflater = getMenuInflater();
-		menuInflater.inflate(R.menu.details_main, menu);
-
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				Toast.makeText(this, "Tapped home", Toast.LENGTH_SHORT).show();
-				break;
-
-			case R.id.menu_refresh:
-				// fill task params
-				CourtCase courtCase = new CourtCase();
-				courtCase.setCaseName("");
-				courtCase.setCustomer(customerEdt.getText().toString().trim());
-				courtCase.setCourtDate(fromCalendar);
-				courtCase.setProposalDate(fromCalendar);
-				courtCase.setNotes(notesEdt.getText().toString().trim());
-				courtCase.setCourtType("indictment");
-
-				// create task in DB
-				getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.fillCourtCase(courtCase));
-				finish();
-				break;
-
-			case R.id.menu_cancel:
-				Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
-				finish();
-				break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -261,8 +211,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				return fromDatePickerDialog;
 			case SET_FROM_DATE2:
 				return fromDatePickerDialog2;
+			default: return null;
 		}
-		return null;
 	}
 
 	private DatePickerDialog.OnDateSetListener fromDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -316,6 +266,17 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			proposalDateEdt.setText(df.format(toCalendar.getTime()));
 		}
 	};
+
+	@Override
+	public void onClick(DialogInterface arg0, int which) {
+		switch (which) {
+		case DialogInterface.BUTTON_POSITIVE:
+			// TODO send email
+			break;
+		default: break;
+		}
+	}
+
 
 	private void showToast(String msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
@@ -373,34 +334,86 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		}
 	};
 
-	@Override
-	public void onDataReady(List<Object> cases) {
-		enableSpinners(true);
-//		new LoadTrials(updateSpinnerListener).execute(13);
-		new LoadTrials(this).execute(13);
-	}
 
-	private void enableSpinners(boolean enable) {
-		for (Spinner spinner : spinnersList) {
-			spinner.setEnabled(enable);
-		}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater menuInflater = getMenuInflater();
+		menuInflater.inflate(R.menu.details_main, menu);
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
-	public void onTaskLoaded(Cursor cursor) {
-		cursor.moveToFirst();
-		int depthLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_DEPTH_LEVEL)) -1;
-		boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Toast.makeText(this, "Tapped home", Toast.LENGTH_SHORT).show();
+				break;
 
-		if (haveChild) {
-			adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
-		} else {
-			adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
-			setProposalDate(cursor);
+			case R.id.menu_refresh:
+				// fill task params
+				CourtCase courtCase = new CourtCase();
+				courtCase.setCaseName("");
+				courtCase.setCustomer(customerEdt.getText().toString().trim());
+				courtCase.setCourtDate(fromCalendar);
+				courtCase.setProposalDate(fromCalendar);
+				courtCase.setNotes(notesEdt.getText().toString().trim());
+				courtCase.setCourtType("indictment");
+
+				// create task in DB
+				getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.fillCourtCase(courtCase));
+				finish();
+				break;
+
+			case R.id.menu_cancel:
+				Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
+				finish();
+				break;
 		}
-
-//		adjustSpinner(trialSpinner1, new TrialsSpinnerAdapter(this, cursor));
+		return super.onOptionsItemSelected(item);
 	}
+
+	private void widgetsInit() {
+		customerEdt = (EditText) findViewById(R.id.customerEdt);
+		notesEdt = (EditText) findViewById(R.id.notesEdt);
+
+
+		courtDateEdt = (EditText) findViewById(R.id.courtDateEdt);
+		courtDateEdt.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+				showDialog(SET_FROM_DATE);
+				return true;
+			}
+		});
+
+		proposalDateEdt = (EditText) findViewById(R.id.proposalDateEdt);
+		proposalDateEdt.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+				showDialog(SET_FROM_DATE2);
+				return true;
+			}
+		});
+
+		spinnersList = new ArrayList<Spinner>();
+
+		typeSpinner1 = (Spinner) findViewById(R.id.selectType1);
+		typeSpinner2 = (Spinner) findViewById(R.id.selectType2);
+		trialSpinner1 = (Spinner) findViewById(R.id.selectTrial1);
+		trialSpinner2 = (Spinner) findViewById(R.id.selectTrial2);
+		trialSpinner3 = (Spinner) findViewById(R.id.selectTrial3);
+		trialSpinner4 = (Spinner) findViewById(R.id.selectTrial4);
+
+		spinnersList.add(typeSpinner1);
+		spinnersList.add(typeSpinner2);
+		spinnersList.add(trialSpinner1);
+		spinnersList.add(trialSpinner2);
+		spinnersList.add(trialSpinner3);
+		spinnersList.add(trialSpinner4);
+	}
+
 
 	@Override
 	public void onError() {
@@ -410,4 +423,26 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	public Context getMeContext() {
 		return this;
 	}
+
+
+
+//	private class UpdateSpinner extends AbstractDataUpdater {
+//		public UpdateSpinner() {
+//			super(TaskDetailsActivity.this, getActionBarHelper());
+//		}
+//
+//		@Override
+//		public void onTaskLoaded(Cursor cursor) {
+//			cursor.moveToFirst();
+//			int depthLevel = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_DEPTH_LEVEL)) -1;
+//			boolean haveChild = cursor.getInt(cursor.getColumnIndex(DBConstants.TRIAL_HAVE_CHILD)) > 0;
+//
+//			if (haveChild) {
+//				adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
+//			} else {
+//				adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
+//				setProposalDate(cursor);
+//			}
+//		}
+//	}
 }

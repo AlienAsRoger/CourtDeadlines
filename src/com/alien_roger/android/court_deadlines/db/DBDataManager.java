@@ -30,7 +30,7 @@ public class DBDataManager {
         return instance;
     }
 
-	private DBDataManager(){}
+
 
 //   private static final String[] PROJECTION_ID_IID = new String[] {
 //           BooksStore.Book._ID, BooksStore.Book.INTERNAL_ID

@@ -4,17 +4,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.widget.TextView;
+
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 
 public class CaseSpinnerAdapter extends TrialsSpinnerAdapter {
 
-	private Context myContext;
 
 	public CaseSpinnerAdapter(Context context, Cursor cursor){
 		super(context, cursor);
-		myContext = context;
 	}
 
 	@Override
@@ -28,6 +27,7 @@ public class CaseSpinnerAdapter extends TrialsSpinnerAdapter {
 			TextView nameTxt = (TextView)view.findViewById(R.id.nameTxt);
 			nameTxt.setText(name);
 		}else{
+			/*Service -*/
 			super.bindView(view,context,cursor);
 		}
 

@@ -51,6 +51,7 @@
 		<item name="android:drawSelectorOnTop">true</item>
 		<item name="android:background">@drawable/spinner_background</item>
 		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">@color/text_black_selector</item>
     </style>
 		<!-- <item name="android:spinnerSelector">@drawable/spinner_selector</item> -->
     

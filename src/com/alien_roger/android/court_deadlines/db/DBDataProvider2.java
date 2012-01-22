@@ -221,7 +221,7 @@ public class DBDataProvider2 extends ContentProvider{
 	 * Retrieve version of DB to sync data, and exclude null data request from DB
 	 * @return DATABASE_VERSION integer value
 	 */
-	public static int getDB_version(){
+	public static int getDbVersion(){
 		return DBConstants.DATABASE_VERSION;
 	}
 

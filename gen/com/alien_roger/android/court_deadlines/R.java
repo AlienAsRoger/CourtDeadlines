@@ -43,8 +43,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int actionbar_title_color=0x7f060002;
+        public static final int disabled=0x7f060003;
         public static final int list_selected_1=0x7f060000;
         public static final int list_selected_2=0x7f060001;
+        public static final int text_black_selector=0x7f060004;
     }
     public static final class dimen {
         public static final int actionbar_compat_button_home_width=0x7f070002;
@@ -136,42 +138,44 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main=0x7f0b0001;
     }
     public static final class string {
-        public static final int admin_trial=0x7f090009;
+        public static final int admin_trial=0x7f09000b;
         public static final int app_name=0x7f090001;
-        public static final int appeal=0x7f09000c;
-        public static final int case_hint=0x7f090014;
-        public static final int case_title=0x7f090013;
+        public static final int appeal=0x7f09000e;
+        public static final int case_hint=0x7f090016;
+        public static final int case_title=0x7f090015;
         /** types of trials
          */
-        public static final int civil_trial=0x7f090007;
-        public static final int court_date=0x7f090017;
-        public static final int court_date_hint=0x7f09001a;
-        public static final int criminal_trial=0x7f090008;
-        public static final int customer=0x7f090011;
-        public static final int customer_hint=0x7f090012;
-        public static final int deadline=0x7f090019;
-        public static final int deadline_hint=0x7f090018;
-        public static final int duty_share_msg=0x7f09001d;
+        public static final int civil_trial=0x7f090009;
+        public static final int court_date=0x7f090019;
+        public static final int court_date_hint=0x7f09001c;
+        public static final int criminal_trial=0x7f09000a;
+        public static final int customer=0x7f090013;
+        public static final int customer_hint=0x7f090014;
+        public static final int deadline=0x7f09001b;
+        public static final int deadline_hint=0x7f09001a;
+        public static final int duty_share_msg=0x7f09001f;
+        public static final int error=0x7f090006;
         public static final int loading_trials=0x7f090005;
         public static final int maps_api_key=0x7f090000;
         public static final int menu_refresh=0x7f090002;
         public static final int menu_search=0x7f090003;
         public static final int menu_share=0x7f090004;
-        public static final int new_task=0x7f09001c;
-        public static final int no_items=0x7f09000f;
-        public static final int notes=0x7f090015;
-        public static final int notes_hint=0x7f090016;
-        public static final int proposal=0x7f09000d;
-        public static final int regular_processes=0x7f09000a;
-        public static final int remedies=0x7f09000b;
-        public static final int search=0x7f090010;
+        public static final int new_task=0x7f09001e;
+        public static final int no_items=0x7f090011;
+        public static final int notes=0x7f090017;
+        public static final int notes_hint=0x7f090018;
+        public static final int number_format_msg=0x7f090007;
+        public static final int proposal=0x7f09000f;
+        public static final int regular_processes=0x7f09000c;
+        public static final int remedies=0x7f09000d;
+        public static final int search=0x7f090012;
         /** types of trials
          */
-        public static final int select_trial_type=0x7f090006;
-        public static final int share_msg_title=0x7f09001f;
-        public static final int share_subj=0x7f09001e;
-        public static final int trial_title=0x7f09001b;
-        public static final int unable_to_set_past_date=0x7f09000e;
+        public static final int select_trial_type=0x7f090008;
+        public static final int share_msg_title=0x7f090021;
+        public static final int share_subj=0x7f090020;
+        public static final int trial_title=0x7f09001d;
+        public static final int unable_to_set_past_date=0x7f090010;
     }
     public static final class style {
         public static final int ActionBar=0x7f0a0009;

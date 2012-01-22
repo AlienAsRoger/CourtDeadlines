@@ -1,5 +1,7 @@
 package com.alien_roger.android.court_deadlines.views;
 
+import java.util.List;
+
 import actionbarcompat.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,17 +17,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.alien_roger.android.court_deadlines.AppConstants;
 import com.alien_roger.android.court_deadlines.R;
 import com.alien_roger.android.court_deadlines.adapters.TaskListAdapter;
 import com.alien_roger.android.court_deadlines.db.DBConstants;
+import com.alien_roger.android.court_deadlines.db.DBDataProvider2;
 import com.alien_roger.android.court_deadlines.entities.CourtCase;
 import com.alien_roger.android.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.android.court_deadlines.services.GetDataService;
 import com.alien_roger.android.court_deadlines.statics.StaticData;
 import com.alien_roger.android.court_deadlines.tasks.LoadTasks;
-
-import java.util.List;
 
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
@@ -48,15 +50,21 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
         String prevFileName = preferences.getString(StaticData.SHP_LOAD_FILE, "");
         if(!prevFileName.equals(StaticData.LOAD_FILE)){
         	dataSaved = false;
-        	Editor editor = preferences.edit();
-        	editor.putBoolean(StaticData.SHP_DATA_SAVED, false);
-        	editor.commit();
-//        	DBDataProvider2 provider = new DBDataProvider2();
         	getContentResolver().delete(DBConstants.TRIALS_CONTENT_URI, null, null);
         }
 
-        if(!dataSaved)
+        if(DBDataProvider2.getDbVersion() != preferences.getInt(StaticData.SHP_DB_VERSION, 0)) {
+        	dataSaved = false;
+        }
+
+        if(!dataSaved) {
         	startService(new Intent(this,GetDataService.class));
+        	Editor editor = preferences.edit();
+        	editor.putBoolean(StaticData.SHP_DATA_SAVED, false);
+        	editor.putInt(StaticData.SHP_DB_VERSION, DBDataProvider2.getDbVersion());
+        	editor.commit();
+        }
+
     }
 
     @Override
@@ -184,7 +192,7 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
     }
 
     @Override
-    public void onTaskLoaded(Cursor cursor) {
+    public void onDataLoaded(Cursor cursor) {
         this.cursor = cursor;
 //        stubTxt.setVisibility(View.INVISIBLE);
         listView.setAdapter(new TaskListAdapter(this,cursor));

@@ -5,6 +5,9 @@ import android.net.Uri;
 
 public class DBConstants {
 
+    static final int DATABASE_VERSION 	= 10;
+
+
 	public static final String PROVIDER_NAME = "com.alien_roger.android.courtdeadlines.case_provider";
 	/*
 	 * DB table names
@@ -55,7 +58,6 @@ public class DBConstants {
     /**
      * DB creation params
      */
-    static final int DATABASE_VERSION 	= 6;
 
     static final String TASKS_TABLE_CREATE =
         "create table " + COURT_CASE_TABLE +
@@ -72,8 +74,8 @@ public class DBConstants {
         " (_id integer primary key autoincrement, "
         + TRIAL_DEPTH_LEVEL 		+ " INTEGER not null,"
         + TRIAL_HAVE_CHILD 			+ " INTEGER not null,"
-        + TRIAL_PARENT_LEVEL 		+ " INTEGER not null,"
-        + TRIAL_CURRENT_LEVEL 		+ " INTEGER not null,"
+        + TRIAL_PARENT_LEVEL 		+ " LONG not null,"
+        + TRIAL_CURRENT_LEVEL 		+ " LONG not null,"
         + TRIAL_VALUE 				+ " TEXT not null);";
 
 }

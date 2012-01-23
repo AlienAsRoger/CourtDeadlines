@@ -1,8 +1,8 @@
 package com.alien_roger.android.court_deadlines.utils;
 
-import com.alien_roger.android.court_deadlines.statics.StaticData;
-
 import java.util.Calendar;
+
+import com.alien_roger.android.court_deadlines.statics.StaticData;
 
 /**
  * CommonUtils class

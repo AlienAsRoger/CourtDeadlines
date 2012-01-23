@@ -1,4 +1,4 @@
-package com.alien_roger.court_deadlines.views;
+package com.alien_roger.court_deadlines.ui;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -33,8 +33,8 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.alien_roger.court_deadlines.R;
-import com.alien_roger.court_deadlines.adapters.CaseSpinnerAdapter;
-import com.alien_roger.court_deadlines.adapters.TrialsSpinnerAdapter;
+import com.alien_roger.court_deadlines.ui.adapters.CaseSpinnerAdapter;
+import com.alien_roger.court_deadlines.ui.adapters.TrialsSpinnerAdapter;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
 import com.alien_roger.court_deadlines.entities.CourtCase;

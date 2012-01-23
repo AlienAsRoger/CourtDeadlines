@@ -8,7 +8,7 @@
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
 
     <application android:label="@string/app_name" android:theme="@style/AppTheme" >
-        <activity android:name="com.alien_roger.court_deadlines.views.TaskListActivity"
+        <activity android:name="com.alien_roger.court_deadlines.ui.TaskListActivity"
                   android:label="@string/app_name"
                   android:configChanges="keyboard|orientation">
             <intent-filter>
@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.TaskDetailsActivity"
+        <activity android:name=".ui.TaskDetailsActivity"
                    android:configChanges="keyboard|orientation" android:windowSoftInputMode="stateHidden"/>
         <service android:name=".services.GetDataService"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>

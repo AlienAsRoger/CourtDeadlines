@@ -1,4 +1,4 @@
-package com.alien_roger.court_deadlines.views;
+package com.alien_roger.court_deadlines.ui;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
-import com.alien_roger.court_deadlines.adapters.TaskListAdapter;
+import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataProvider2;
 import com.alien_roger.court_deadlines.entities.CourtCase;

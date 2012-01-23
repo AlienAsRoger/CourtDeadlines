@@ -1,4 +1,4 @@
-package com.alien_roger.court_deadlines.adapters;
+package com.alien_roger.court_deadlines.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

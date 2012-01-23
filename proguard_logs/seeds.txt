@@ -19,13 +19,13 @@ com.actionbarsherlock.internal.view.menu.ActionMenuItemView: ActionMenuItemView(
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
 android.support.v4.app.FragmentActivity
-com.alien_roger.android.court_deadlines.views.TaskListActivity
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity
+TaskListActivity
+TaskDetailsActivity
 com.alien_roger.android.court_deadlines.views.SelectTrialActivity
 com.alien_roger.android.court_deadlines.db.DBDataProvider
 android.support.v4.app.FragmentActivity: void setContentView(android.view.View)
 android.support.v4.app.FragmentActivity: void setContentView(android.view.View)
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity: void onClick(android.view.View)
+TaskDetailsActivity: void onClick(android.view.View)
 android.support.v4.app.FragmentActivity: void setContentView(android.view.View)
 android.support.v4.app.Fragment$SavedState
 android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR

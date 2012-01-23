@@ -18093,7 +18093,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.alien_roger.android.court_deadlines.views.TaskListActivity extends android.support.v4.app.FragmentActivity
+    = public class TaskListActivity extends android.support.v4.app.FragmentActivity
 
 Interfaces (count = 1):
   - Class [com/alien_roger/android/court_deadlines/d/a]
@@ -36276,12 +36276,12 @@ Constant Pool (count = 27):
 Fields (count = 1):
   + Field:        a Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;
     Access flags: 0x1002
-      = private com.alien_roger.android.court_deadlines.views.TaskDetailsActivity a
+      = private TaskDetailsActivity a
 
 Methods (count = 2):
   - Method:       <init>(Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;)V
     Access flags: 0x0
-      = a(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity)
+      = a(TaskDetailsActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -36408,12 +36408,12 @@ Constant Pool (count = 81):
 Fields (count = 1):
   + Field:        a Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;
     Access flags: 0x1002
-      = private com.alien_roger.android.court_deadlines.views.TaskDetailsActivity a
+      = private TaskDetailsActivity a
 
 Methods (count = 2):
   - Method:       <init>(Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;)V
     Access flags: 0x0
-      = b(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity)
+      = b(TaskDetailsActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -37634,7 +37634,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.alien_roger.android.court_deadlines.views.TaskDetailsActivity extends android.support.v4.app.FragmentActivity
+    = public class TaskDetailsActivity extends android.support.v4.app.FragmentActivity
 
 Interfaces (count = 1):
   - Class [android/view/View$OnClickListener]
@@ -38252,7 +38252,7 @@ Methods (count = 8):
         - [23] Var: ..., Stack: (empty)
   + Method:       a(Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;)Ljava/util/Calendar;
     Access flags: 0x1008
-      = static java.util.Calendar a(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity)
+      = static java.util.Calendar a(TaskDetailsActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -38263,7 +38263,7 @@ Methods (count = 8):
       Code attribute attributes (attribute count = 0):
   + Method:       b(Lcom/alien_roger/android/court_deadlines/views/TaskDetailsActivity;)Landroid/widget/EditText;
     Access flags: 0x1008
-      = static android.widget.EditText b(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity)
+      = static android.widget.EditText b(TaskDetailsActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0

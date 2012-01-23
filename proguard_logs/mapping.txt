@@ -1282,7 +1282,7 @@ com.actionbarsherlock.internal.widget.ScrollingTextView -> com.actionbarsherlock
     void onFocusChanged(boolean,int,android.graphics.Rect) -> onFocusChanged
     void onWindowFocusChanged(boolean) -> onWindowFocusChanged
     boolean isFocused() -> isFocused
-com.alien_roger.android.court_deadlines.adapters.TaskListAdapter -> com.alien_roger.android.court_deadlines.a.f:
+TaskListAdapter -> com.alien_roger.android.court_deadlines.a.f:
     android.view.LayoutInflater inflater -> a
     java.text.SimpleDateFormat dateTimeFormat -> b
     java.util.Calendar fromCalendar -> c
@@ -1296,18 +1296,18 @@ com.alien_roger.android.court_deadlines.adapters.TaskListAdapter -> com.alien_ro
     void bindView(android.view.View,android.content.Context,android.database.Cursor) -> bindView
     android.view.View newView(android.content.Context,android.database.Cursor,android.view.ViewGroup) -> newView
     android.database.Cursor runQueryOnBackgroundThread(java.lang.CharSequence) -> runQueryOnBackgroundThread
-com.alien_roger.android.court_deadlines.adapters.TaskListAdapter$1 -> com.alien_roger.android.court_deadlines.a.b:
-    com.alien_roger.android.court_deadlines.adapters.TaskListAdapter this$0 -> a
+TaskListAdapter$1 -> com.alien_roger.android.court_deadlines.a.b:
+    TaskListAdapter this$0 -> a
     void onClick(android.view.View) -> onClick
-com.alien_roger.android.court_deadlines.adapters.TaskListAdapter$2 -> com.alien_roger.android.court_deadlines.a.a:
-    com.alien_roger.android.court_deadlines.adapters.TaskListAdapter this$0 -> a
+TaskListAdapter$2 -> com.alien_roger.android.court_deadlines.a.a:
+    TaskListAdapter this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.alien_roger.android.court_deadlines.adapters.TaskListAdapter$ViewHolder -> com.alien_roger.android.court_deadlines.a.d:
+TaskListAdapter$ViewHolder -> com.alien_roger.android.court_deadlines.a.d:
     android.widget.TextView customer -> a
     android.widget.TextView courtDate -> b
     android.widget.TextView proposalDate -> c
     android.widget.TextView courtType -> d
-com.alien_roger.android.court_deadlines.adapters.TrialsAdapter -> com.alien_roger.android.court_deadlines.a.c:
+TrialsAdapter -> com.alien_roger.android.court_deadlines.a.c:
     android.content.Context context -> a
     java.util.List listObjs -> b
     android.view.LayoutInflater inflater -> c
@@ -1315,14 +1315,14 @@ com.alien_roger.android.court_deadlines.adapters.TrialsAdapter -> com.alien_roge
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-com.alien_roger.android.court_deadlines.adapters.TrialsAdapter$ViewHolder -> com.alien_roger.android.court_deadlines.a.e:
+TrialsAdapter$ViewHolder -> com.alien_roger.android.court_deadlines.a.e:
     android.widget.TextView groupName -> a
     android.widget.TextView name -> b
-com.alien_roger.android.court_deadlines.db.DBConstants -> com.alien_roger.android.court_deadlines.db.a:
+DBConstants -> com.alien_roger.android.court_deadlines.db.a:
     android.net.Uri TASKS_CONTENT_URI -> a
-com.alien_roger.android.court_deadlines.db.DBDataManager -> com.alien_roger.android.court_deadlines.db.c:
+DBDataManager -> com.alien_roger.android.court_deadlines.db.c:
     java.lang.String TAG -> a
-    android.content.ContentValues fillCourtCase(com.alien_roger.android.court_deadlines.entities.CourtCase) -> a
+    android.content.ContentValues fillCourtCase(CourtCase) -> a
 com.alien_roger.android.court_deadlines.db.DBDataProvider -> com.alien_roger.android.court_deadlines.db.DBDataProvider:
     android.content.UriMatcher uriMatcher -> a
     com.alien_roger.android.court_deadlines.db.DBDataProvider$DatabaseHelper dbHelper -> b
@@ -1336,7 +1336,7 @@ com.alien_roger.android.court_deadlines.db.DBDataProvider -> com.alien_roger.and
 com.alien_roger.android.court_deadlines.db.DBDataProvider$DatabaseHelper -> com.alien_roger.android.court_deadlines.db.b:
     void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
-com.alien_roger.android.court_deadlines.entities.CourtCase -> com.alien_roger.android.court_deadlines.c.a:
+CourtCase -> com.alien_roger.android.court_deadlines.c.a:
     java.lang.String customer -> a
     java.lang.String caseName -> b
     java.util.Calendar courtDate -> c
@@ -1355,7 +1355,7 @@ com.alien_roger.android.court_deadlines.entities.CourtCase -> com.alien_roger.an
     void setProposalDate(java.util.Calendar) -> b
     java.lang.String getNotes() -> f
     void setNotes(java.lang.String) -> d
-com.alien_roger.android.court_deadlines.entities.CourtType -> com.alien_roger.android.court_deadlines.c.c:
+CourtType -> com.alien_roger.android.court_deadlines.c.c:
     int level -> a
     java.lang.String body -> b
     java.lang.String parent -> c
@@ -1363,7 +1363,7 @@ com.alien_roger.android.court_deadlines.entities.CourtType -> com.alien_roger.an
     void setLevel(int) -> a
     java.lang.String getBody() -> b
     void setBody(java.lang.String) -> a
-com.alien_roger.android.court_deadlines.entities.CourtTypeLevels -> com.alien_roger.android.court_deadlines.c.b:
+CourtTypeLevels -> com.alien_roger.android.court_deadlines.c.b:
     java.lang.String level_0 -> a
     java.lang.String level_1 -> b
     java.lang.String level_2 -> c
@@ -1374,7 +1374,7 @@ com.alien_roger.android.court_deadlines.entities.CourtTypeLevels -> com.alien_ro
 com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface -> com.alien_roger.android.court_deadlines.d.a:
     void onTaskLoaded(android.database.Cursor) -> a
     android.content.Context getMeContext() -> a_
-com.alien_roger.android.court_deadlines.tasks.LoadTasks -> com.alien_roger.android.court_deadlines.e.a:
+LoadTasks -> com.alien_roger.android.court_deadlines.e.a:
     com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface taskLoadFace -> a
     android.content.ContentResolver resolver -> b
     android.database.Cursor tasksCursor -> c
@@ -1389,7 +1389,7 @@ com.alien_roger.android.court_deadlines.views.SelectTrialActivity -> com.alien_r
     android.graphics.Bitmap getBitmapFromAsset$5a19b3dd() -> a
     java.lang.Boolean parseDataFromXML$50f9e1bc() -> b
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity -> com.alien_roger.android.court_deadlines.views.TaskDetailsActivity:
+TaskDetailsActivity -> TaskDetailsActivity:
     java.util.Calendar fromCalendar -> e
     android.app.DatePickerDialog fromDatePickerDialog -> f
     android.widget.EditText customerEdt -> g
@@ -1404,15 +1404,15 @@ com.alien_roger.android.court_deadlines.views.TaskDetailsActivity -> com.alien_r
     boolean onOptionsItemSelected(android.support.v4.view.MenuItem) -> a
     android.app.Dialog onCreateDialog(int) -> onCreateDialog
     void onClick(android.view.View) -> onClick
-    java.util.Calendar access$000(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity) -> a
-    android.widget.EditText access$200(com.alien_roger.android.court_deadlines.views.TaskDetailsActivity) -> b
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity$1 -> com.alien_roger.android.court_deadlines.views.a:
-    com.alien_roger.android.court_deadlines.views.TaskDetailsActivity this$0 -> a
+    java.util.Calendar access$000(TaskDetailsActivity) -> a
+    android.widget.EditText access$200(TaskDetailsActivity) -> b
+TaskDetailsActivity$1 -> com.alien_roger.android.court_deadlines.views.a:
+    TaskDetailsActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity$2 -> com.alien_roger.android.court_deadlines.views.b:
-    com.alien_roger.android.court_deadlines.views.TaskDetailsActivity this$0 -> a
+TaskDetailsActivity$2 -> com.alien_roger.android.court_deadlines.views.b:
+    TaskDetailsActivity this$0 -> a
     void onDateSet(android.widget.DatePicker,int,int,int) -> onDateSet
-com.alien_roger.android.court_deadlines.views.TaskListActivity -> com.alien_roger.android.court_deadlines.views.TaskListActivity:
+TaskListActivity -> TaskListActivity:
     int THEME -> e
     android.widget.ListView listView -> f
     android.database.Cursor cursor -> g
@@ -1424,9 +1424,9 @@ com.alien_roger.android.court_deadlines.views.TaskListActivity -> com.alien_roge
     void onTaskLoaded(android.database.Cursor) -> a
     void onDestroy() -> onDestroy
     android.content.Context getMeContext() -> a_
-com.alien_roger.android.court_deadlines.xml_parsers.CourtsParser -> com.alien_roger.android.court_deadlines.b.a:
-    com.alien_roger.android.court_deadlines.entities.CourtTypeLevels currentMessages -> a
-    com.alien_roger.android.court_deadlines.entities.CourtType currentMessage -> b
+CourtsParser -> com.alien_roger.android.court_deadlines.b.a:
+    CourtTypeLevels currentMessages -> a
+    CourtType currentMessage -> b
     java.util.List messages -> c
     int levelLength -> d
     java.lang.StringBuilder builder -> e

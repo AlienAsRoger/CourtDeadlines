@@ -928,7 +928,7 @@ com.actionbarsherlock.internal.widget.ActionBarView:
     69:69:static android.widget.LinearLayout access$0(com.actionbarsherlock.internal.widget.ActionBarView)
 com.actionbarsherlock.internal.widget.ActionBarView$TabImpl
 com.actionbarsherlock.internal.widget.ActionBarView$TabImpl$1
-com.alien_roger.android.court_deadlines.AppConstants
+AppConstants
 com.alien_roger.android.court_deadlines.R
 com.alien_roger.android.court_deadlines.R$array
 com.alien_roger.android.court_deadlines.R$attr
@@ -941,7 +941,7 @@ com.alien_roger.android.court_deadlines.R$menu
 com.alien_roger.android.court_deadlines.R$string
 com.alien_roger.android.court_deadlines.R$style
 com.alien_roger.android.court_deadlines.R$styleable
-com.alien_roger.android.court_deadlines.db.DBConstants:
+DBConstants:
     public static final java.lang.String PROVIDER_NAME
     static final java.lang.String DATABASE_NAME
     static final java.lang.String COURT_CASE_TABLE
@@ -957,22 +957,22 @@ com.alien_roger.android.court_deadlines.db.DBConstants:
     public static final java.lang.String COURT_TYPE
     static final int DATABASE_VERSION
     static final java.lang.String TASKS_TABLE_CREATE
-com.alien_roger.android.court_deadlines.db.DBDataManager:
-    private static volatile com.alien_roger.android.court_deadlines.db.DBDataManager instance
-    21:28:public static com.alien_roger.android.court_deadlines.db.DBDataManager getInstance()
-    46:52:public static void fillCourtCaseObjValues(com.alien_roger.android.court_deadlines.entities.CourtCase,android.database.Cursor)
+DBDataManager:
+    private static volatile DBDataManager instance
+    21:28:public static DBDataManager getInstance()
+    46:52:public static void fillCourtCaseObjValues(CourtCase,android.database.Cursor)
     55:55:private static java.lang.String getString(android.database.Cursor,java.lang.String)
 com.alien_roger.android.court_deadlines.db.DBDataProvider:
     129:129:public static int getDB_version()
-com.alien_roger.android.court_deadlines.entities.CourtCase:
+CourtCase:
     45:45:public java.util.Calendar getCourtDate()
     57:58:public void setCourtDate(long)
     61:61:public java.util.Calendar getProposalDate()
     73:74:public void setProposalDate(long)
-com.alien_roger.android.court_deadlines.entities.CourtType:
+CourtType:
     15:15:public java.lang.String getParent()
     19:20:public void setParent(java.lang.String)
-com.alien_roger.android.court_deadlines.entities.CourtTypeLevels:
+CourtTypeLevels:
     39:39:public java.lang.String getLevel_0()
     43:44:public void setLevel_0(java.lang.String)
     47:47:public java.lang.String getLevel_1()
@@ -983,7 +983,7 @@ com.alien_roger.android.court_deadlines.interfaces.TaskLoadInterface:
     public abstract void onDataReady(java.util.List)
 com.alien_roger.android.court_deadlines.views.SelectTrialActivity:
     108:109:private void showToast(int)
-com.alien_roger.android.court_deadlines.views.TaskDetailsActivity:
+TaskDetailsActivity:
     private static final int CUSTOMERS_MENU
     private static final int DONE_MENU
     private static final int CANCEL_MENU
@@ -991,13 +991,13 @@ com.alien_roger.android.court_deadlines.views.TaskDetailsActivity:
     private static final int SET_FROM_DATE
     private android.widget.EditText courtTypeEdt
     159:160:private void showToast(java.lang.String)
-com.alien_roger.android.court_deadlines.views.TaskListActivity:
+TaskListActivity:
     private static final int UPLOAD_MENU
     private static final int EDIT_MENU
     118:119:private void showToast(java.lang.String)
     122:123:private void showToast(int)
     133:133:public void onDataReady(java.util.List)
-com.alien_roger.android.court_deadlines.xml_parsers.CourtsParser:
+CourtsParser:
     private static final java.lang.String BODY
     private static final java.lang.String STRONG
     private static final java.lang.String LINK
@@ -1005,4 +1005,4 @@ com.alien_roger.android.court_deadlines.xml_parsers.CourtsParser:
     private static final java.lang.String SPAN
     private static final java.lang.String STYLE
     private static final java.lang.String LEVEL
-    48:48:public com.alien_roger.android.court_deadlines.entities.CourtType getMessage()
+    48:48:public CourtType getMessage()

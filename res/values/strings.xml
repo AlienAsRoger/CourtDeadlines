@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CourtDeadlines</string>
 
+    <string name="app_name">CourtDeadlines</string>
+    <string name="notifications">Notifications</string>
+    <string name="preferences">Settings</string>
+    
     <string name="menu_refresh">Refresh</string>
     <string name="menu_search">Search</string>
     <string name="menu_share">Share</string>
 
-    <string name="loading_trials">Loading trials</string>
+    <!-- Priorities -->
+	<string name="very_high">Very High</string>
+    <string name="high">High</string>
+	<string name="medium">Medium</string>
+    <string name="low">Low</string>
+	<string name="very_low">Very Low</string>
 
-    <string name="error">Error!</string>
+
     
+    <!-- Reminder -->
+    <string name="five_minutes">5 minutes</string>
+    <string name="ten_minutes">10 minutes</string>
+    <string name="fifteen_minutes">15 minutes</string>
+    <string name="firty_minutes">30 minutes</string>
+    <string name="forty_five_minutes">45 minutes</string>
+    <string name="one_hour">1 hour</string>
+    <string name="two_hour">2 hours</string>
+    <string name="three_hour">3 hours</string>
+    <string name="one_day">1 day</string>
+    <string name="one_week">1 week</string>
+
+    <!-- Notification screen -->
+    <string name="notification_screen_message">alarm message</string>
+    <string name="notification_screen_status_title">alarm message Title</string>
+    <string name="notification_screen_status_message">alarm message Body</string>
+    <string name="social_account_default_title">Assignee account</string>
+    <string name="social_account_default_summary">Used for default task assignee</string>
+
+    <!-- Preferences -->
+
+    <string name="remind_time_title">Remind time</string>
+    <string name="remind_time_summary">Default value for every task</string>
+    <string name="notification_sound_title">Ringtones</string>
+    <string name="notification_sound_summary">Set your nice sound</string>
+    <string name="location_update_time_title">Location update time</string>
+    <string name="location_update_time_summary">More often update the faster battery drain.</string>
+    <string name="notification_vibrate_title">Vibrate</string>
+    <string name="notification_vibrate_summary">When notification occurred</string>
+    <string name="loading_trials">Loading trials</string>
+    <string name="error">Error!</string>
     <string name="number_format_msg">Error happens while parsing date code from text. Please contact developer to resolve this problem.</string>
-    <!--types of trials-->
+    <!-- types of trials -->
 
     <string name="select_trial_type">Select trial type</string>
     <string name="civil_trial">Civil trial</string>
     <string name="criminal_trial">Criminal trial</string>
     <string name="admin_trial">Administrative trial</string>
-
     <string name="regular_processes">Regular processes</string>
     <string name="remedies">Remedies</string>
     <string name="appeal">Appeal</string>
-
-	<string name="proposal">proposal_date</string>
-    
+    <string name="proposal">Proposal Date</string>
     <string name="unable_to_set_past_date">Unable to set past date</string>
-
-
     <string name="no_items">No elements</string>
-
     <string name="search">Search</string>
-
     <string name="customer">Customer</string>
     <string name="customer_hint">New Customer</string>
-
     <string name="case_title">Case</string>
     <string name="case_hint">New Case</string>
-
     <string name="notes">Notes</string>
     <string name="notes_hint">New Notes</string>
     <string name="court_date">Court Date</string>
@@ -44,62 +74,11 @@
     <string name="deadline">Proposal deadline</string>
     <string name="court_date_hint">1 Jan 2012</string>
     <string name="trial_title">Select trial type</string>
-
     <string name="new_task">New Task</string>
-
-
     <string name="duty_share_msg">Click on item to share</string>
     <string name="share_subj">I want to share this with you</string>
     <string name="share_msg_title">Share via</string>
 
-
-
- <!--   Civil Trial
-
-    regular Process
-
-    before a district court
-    Before Instance Court
-    Before First Instance
-
-    remedies
-
-    Appeals
-    application was
-    Anapsilafisi
-    counter appeal
-    Generally, parties Summons
-    appeal
-    Special Procedures-General Introduction
-    Individual - Special
-
-    interim Measures
-
-    Introduction - General
-    Individual - Special
-
-    voluntarily
-
-    Jurisdiction Notice of Rights
-    Succession
-    adoption
-
-    arbitration
-
-    arbitration
-
-    Enforcement
-
-    Oppositions (933 Code of Civil Procedure, Code of Civil Procedure 954, 986 K.Pol.D)
-    general
-    seizure
-    ranked list
-    auction
-    expropriations
-
-    Identification of Beneficiaries
-    Final Determination of Compensation
-    Temporary Compensation Determination-->
+   
 
 </resources>
-

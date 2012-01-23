@@ -2,35 +2,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:padding="4dip"
+    android:paddingTop="4dip" 
+    android:paddingBottom="4dip" 
+    android:paddingRight="4dip" 
     >
+
+    <View
+        android:id="@+id/priorityView"
+        android:layout_width="10dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/priority" 
+        android:layout_marginRight="4dip"
+        />
+
     <TextView
-            android:id="@+id/proposalDateTxt"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5th october"
-            />
+        android:id="@+id/proposalDateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/priorityView"
+        android:text="5th october" 
+        />
+
     <TextView
-            android:id="@+id/courtDateTxt"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20th october"
-            />
+        android:id="@+id/courtDateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="20th october" 
+        />
+
     <TextView
-            android:id="@+id/customerTxt"
-            android:layout_below="@id/proposalDateTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="John Smith"
-            />
+        android:id="@+id/customerTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/proposalDateTxt"
+        android:layout_toRightOf="@id/priorityView"
+        android:text="John Smith" 
+        />
+
     <TextView
-            android:id="@+id/courtTypeTxt"
-            android:layout_below="@id/proposalDateTxt"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Indictment"
-            />
+        android:id="@+id/courtTypeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/proposalDateTxt"
+        android:text="Indictment" 
+        />
+
 </RelativeLayout>

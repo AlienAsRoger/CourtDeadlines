@@ -26,9 +26,9 @@
         android:orderInCategory="0"
         android:showAsAction="always" />
 
-<!--    <item android:id="@+id/menu_share"
-        android:title="@string/menu_share"
-        android:icon="@drawable/ic_menu_share"
+   <item android:id="@+id/menu_preferences"
+        android:title="@string/preferences"
+        android:icon="@android:drawable/ic_menu_preferences"
         android:orderInCategory="1"
-        android:showAsAction="never" />-->
+        android:showAsAction="never" />
 </menu>

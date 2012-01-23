@@ -9,8 +9,17 @@
         <item name="actionbarCompatItemStyle">@style/ActionBarCompatItem</item>
         <item name="actionbarCompatItemHomeStyle">@style/ActionBarCompatHomeItem</item>
         <item name="actionbarCompatProgressIndicatorStyle">@style/ActionBarCompatProgressIndicator</item>
-    </style>
+        
+        <item name="android:textSize">17sp</item>
+        </style>
 
+    <style name="TaskTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">normal</item>
+	</style>
+    
+    
     <style name="ActionBarCompat">
         <item name="android:background">#eee</item>
     </style>

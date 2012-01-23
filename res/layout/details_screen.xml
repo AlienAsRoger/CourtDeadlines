@@ -1,156 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_height="fill_parent" >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dip">
+        android:padding="5dip" >
 
-        
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:padding="5dip"
-	        >
-	        <TextView
-	                android:id="@+id/customerTxt"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:text="@string/customer"
-	                />
-	        <EditText
-	                android:id="@+id/customerEdt"
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                android:hint="@string/customer_hint"
-	                />
-	        
-	    </LinearLayout>
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:padding="5dip"
-	        >
-	        <TextView
-	                android:id="@+id/courtDateTxt"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:text="@string/court_date"
-	                />
-	        <EditText
-	                android:id="@+id/courtDateEdt"
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                />		
-	        	        
-	    </LinearLayout>	    
-		<TextView
-			android:id="@+id/trailTxt"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/trial_title"
-			/>
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        >
-			<Spinner
-	            android:id="@+id/selectType1"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:text="Select Trial"
-	            
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-			<Spinner
-	            android:id="@+id/selectType2"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:text="Select Trial"
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
 
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-	    </LinearLayout>
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        >
-			<Spinner
-	            android:id="@+id/selectTrial1"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-			<Spinner
-	            android:id="@+id/selectTrial2"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-	    </LinearLayout>
-	    <LinearLayout 
-	        android:id="@+id/additionSpinnersView"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        >
-			<Spinner
-	            android:id="@+id/selectTrial3"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-			<Spinner
-	            android:id="@+id/selectTrial4"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-
-	            style="@style/spinnerStyle"
-	            android:layout_weight="1"
-	            />
-	    </LinearLayout>
-	    <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:padding="5dip"
-	        >
-	        <TextView
-	                android:id="@+id/proposalTxt"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:text="@string/proposal"
-	                />
-	        <EditText
-	                android:id="@+id/proposalDateEdt"
-	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                />
-	    </LinearLayout>	    
-	    <TextView
-                android:id="@+id/notesTxt"
+            <TextView
+                android:id="@+id/customerTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/notes"
-                />
-        <EditText
-                android:id="@+id/notesEdt"
+                android:text="@string/customer" />
+
+            <EditText
+                android:id="@+id/customerEdt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/notes_hint"
-                />
+                android:hint="@string/customer_hint" />
+        </LinearLayout>
 
-<!-- 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/courtDateTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/court_date" />
+
+            <EditText
+                android:id="@+id/courtDateEdt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/trailTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trial_title" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:id="@+id/selectType1"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Select Trial" />
+
+            <Spinner
+                android:id="@+id/selectType2"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Select Trial" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:id="@+id/selectTrial1"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/selectTrial2"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/additionSpinnersView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:id="@+id/selectTrial3"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/selectTrial4"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dip" >
+
+            <TextView
+                android:id="@+id/proposalTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/proposal" />
+
+            <EditText
+                android:id="@+id/proposalDateEdt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/prioritySpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/priorities" 
+            style="@style/spinnerStyle"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Spinner
+                android:id="@+id/soundSpinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+				style="@style/spinnerStyle"	
+                android:layout_weight="1" 
+                />
+            <Spinner
+                android:id="@+id/remindSpinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/reminder_update_time_entries" 
+                android:layout_weight="1"
+                style="@style/spinnerStyle" 
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/notesTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notes" />
+
+        <EditText
+            android:id="@+id/notesEdt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/notes_hint" />
+
+        <!--
         <Spinner
             android:id="@+id/selectTrial"
             android:layout_width="fill_parent"
@@ -183,6 +201,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/notes_hint"
-                /> -->
+                />
+        -->
     </LinearLayout>
+
 </ScrollView>

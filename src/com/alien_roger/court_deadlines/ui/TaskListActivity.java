@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
-import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataProvider2;
 import com.alien_roger.court_deadlines.entities.CourtCase;
@@ -28,6 +27,7 @@ import com.alien_roger.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.court_deadlines.services.GetDataService;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.LoadTasks;
+import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
 
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
@@ -194,7 +194,6 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
     @Override
     public void onDataLoaded(Cursor cursor) {
         this.cursor = cursor;
-//        stubTxt.setVisibility(View.INVISIBLE);
         listView.setAdapter(new TaskListAdapter(this,cursor));
     }
 
@@ -207,8 +206,6 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
 
     @Override
     public void onError() {
-//        stubTxt.setVisibility(View.VISIBLE);
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -218,7 +215,6 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-        showToast("pos = " + i);
 
     }
 }

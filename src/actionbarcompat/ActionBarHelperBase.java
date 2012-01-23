@@ -22,7 +22,7 @@ import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 

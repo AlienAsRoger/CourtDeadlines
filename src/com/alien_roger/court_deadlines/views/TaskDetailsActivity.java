@@ -32,7 +32,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.adapters.CaseSpinnerAdapter;
 import com.alien_roger.court_deadlines.adapters.TrialsSpinnerAdapter;
 import com.alien_roger.court_deadlines.db.DBConstants;

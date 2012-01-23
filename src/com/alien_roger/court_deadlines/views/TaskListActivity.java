@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.alien_roger.court_deadlines.AppConstants;
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.adapters.TaskListAdapter;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataProvider2;

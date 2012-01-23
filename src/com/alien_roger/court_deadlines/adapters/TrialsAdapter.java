@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.entities.CourtType;
 
 import java.util.List;

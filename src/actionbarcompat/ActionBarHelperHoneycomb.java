@@ -22,7 +22,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 
 /**
  * An extension of {@link ActionBarHelper} that provides Android 3.0-specific functionality for

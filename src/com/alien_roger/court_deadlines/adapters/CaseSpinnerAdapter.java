@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alien_roger.android.court_deadlines.R;
+import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.statics.StaticData;
 

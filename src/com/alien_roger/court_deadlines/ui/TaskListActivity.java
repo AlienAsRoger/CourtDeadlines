@@ -3,6 +3,8 @@ package com.alien_roger.court_deadlines.ui;
 import java.util.List;
 
 import actionbarcompat.ActionBarActivity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +12,7 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +27,7 @@ import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataProvider2;
 import com.alien_roger.court_deadlines.entities.CourtCase;
 import com.alien_roger.court_deadlines.interfaces.DataLoadInterface;
+import com.alien_roger.court_deadlines.services.AlarmReceiver;
 import com.alien_roger.court_deadlines.services.GetDataService;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.LoadTasks;
@@ -70,6 +74,18 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
     @Override
     protected void onResume() {
         super.onResume();
+		Bundle extras = getIntent().getExtras();
+		if(extras != null && extras.getBoolean(StaticData.CLEAR_ALARM)){
+			int ID = extras.getInt(StaticData.REQUEST_CODE);
+		   	Log.d("TaskListActivity","id = " + ID);
+			Intent statusUpdate = new Intent(this, AlarmReceiver.class);
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, statusUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
+			AlarmManager alarms = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+			alarms.cancel(pendingIntent);
+
+			getIntent().removeExtra(StaticData.REQUEST_CODE);
+			getIntent().removeExtra(StaticData.CLEAR_ALARM);
+		}
         new LoadTasks(this).execute();
     }
 

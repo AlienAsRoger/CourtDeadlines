@@ -11,6 +11,7 @@
         <item name="actionbarCompatProgressIndicatorStyle">@style/ActionBarCompatProgressIndicator</item>
         
         <item name="android:textSize">17sp</item>
+        <item name="android:editTextStyle">@style/DateEdt</item>
         </style>
 
     <style name="TaskTextAppearance" parent="@android:style/TextAppearance">
@@ -63,6 +64,12 @@
 		<item name="android:textColor">@color/text_black_selector</item>
     </style>
 		<!-- <item name="android:spinnerSelector">@drawable/spinner_selector</item> -->
+		
+    <style name="DateEdt" parent="@android:style/Widget.EditText">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">@android:color/black</item>
+    </style>
+		
     
     
 </resources>

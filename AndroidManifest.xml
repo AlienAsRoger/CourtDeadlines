@@ -21,6 +21,6 @@
         
         <service android:name=".services.GetDataService"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
-
+		<receiver android:name=".services.AlarmReceiver"/>
     </application>
 </manifest> 

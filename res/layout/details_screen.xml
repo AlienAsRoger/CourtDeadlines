@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:padding="7dip" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dip" >
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dip" >
+            android:layout_height="fill_parent" >
 
             <TextView
                 android:id="@+id/customerTxt"
@@ -29,19 +28,27 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dip" >
+            android:layout_height="fill_parent" >
 
             <TextView
                 android:id="@+id/courtDateTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/court_date" />
 
             <EditText
                 android:id="@+id/courtDateEdt"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" 
+                />
+
+            <EditText
+                android:id="@+id/courtTimeEdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
@@ -112,48 +119,77 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dip" >
+            android:layout_height="fill_parent" 
+            android:gravity="clip_vertical"
+            >
 
             <TextView
                 android:id="@+id/proposalTxt"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/proposal" />
 
             <EditText
                 android:id="@+id/proposalDateEdt"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/proposalTimeEdt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
-        <Spinner
-            android:id="@+id/prioritySpinner"
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/priorities" 
-            style="@style/spinnerStyle"
-            />
+            android:layout_height="wrap_content" 
+            android:weightSum="3"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/priorities" 
+                android:layout_weight="2"/>
+
+            <Spinner
+                android:id="@+id/prioritySpinner"
+                style="@style/spinnerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/priorities" 
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <Spinner
+<!--             <Spinner
                 android:id="@+id/soundSpinner"
+                style="@style/spinnerStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-				style="@style/spinnerStyle"	
-                android:layout_weight="1" 
-                />
+                android:layout_weight="1" />
+ -->
+             <Button
+                android:id="@+id/soundBtn"
+                style="@style/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sound" />
+            
             <Spinner
                 android:id="@+id/remindSpinner"
+                style="@style/spinnerStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/reminder_update_time_entries" 
                 android:layout_weight="1"
-                style="@style/spinnerStyle" 
-                />
+                android:entries="@array/reminder_update_time_entries" />
         </LinearLayout>
 
         <TextView
@@ -201,7 +237,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/notes_hint"
-                />
+                />
         -->
     </LinearLayout>
 

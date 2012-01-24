@@ -59,6 +59,7 @@
     <string name="regular_processes">Regular processes</string>
     <string name="remedies">Remedies</string>
     <string name="appeal">Appeal</string>
+    <string name="priorities">Priorities</string>
     <string name="proposal">Proposal Date</string>
     <string name="unable_to_set_past_date">Unable to set past date</string>
     <string name="no_items">No elements</string>

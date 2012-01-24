@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory android:title="@string/notifications">
+	    <ListPreference 
+		    android:key="remind_time_default" 
+		    android:title="@string/remind_time_title" 
+		    android:summary="@string/remind_time_summary" 
+		    android:shouldDisableView="true" 
+		    android:persistent="true" 
+		    android:entries="@array/reminder_update_time_entries"
+	    	android:entryValues="@array/reminder_update_time_entry_values" 
+		    />
+		<RingtonePreference 
+		    android:name="Ringtone"
+			android:title="@string/notification_sound_title"
+			android:key="notification_sound_default"
+			android:summary="@string/notification_sound_summary"
+			android:showSilent="true" 
+			android:ringtoneType="alarm" 
+			android:showDefault="true"
+			android:defaultValue="content://settings/system/notification_sound"
+			/>
+        <CheckBoxPreference
+            android:key="notification_vibrate_default"
+            android:title="@string/notification_vibrate_title"
+            android:summary="@string/notification_vibrate_summary"
+            android:defaultValue="false"/>		    
+	</PreferenceCategory>
+    
+</PreferenceScreen>

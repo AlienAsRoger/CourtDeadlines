@@ -1,5 +1,6 @@
 package com.alien_roger.court_deadlines.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
@@ -8,14 +9,20 @@ import java.util.Calendar;
  * @author alien_roger
  * @created at: 25.12.11 21:59
  */
-public class CourtCase {
-    private String customer = "";
+public class CourtCase implements Serializable {
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 7726898801291064990L;
+
+	private String customer = "";
     private String caseName = "";
     private Calendar courtDate;
     private Calendar proposalDate;
     private String notes = "";
+	private long id;
 
-    public String getCourtType() {
+	public String getCourtType() {
         return courtType;
     }
 
@@ -24,6 +31,7 @@ public class CourtCase {
     }
 
     private String courtType = "";
+
 
     public String getCustomer() {
         return customer;
@@ -80,4 +88,12 @@ public class CourtCase {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

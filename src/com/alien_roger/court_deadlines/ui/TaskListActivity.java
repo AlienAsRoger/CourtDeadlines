@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
+import com.alien_roger.court_deadlines.db.DBDataManager;
 import com.alien_roger.court_deadlines.db.DBDataProvider2;
 import com.alien_roger.court_deadlines.entities.CourtCase;
 import com.alien_roger.court_deadlines.interfaces.DataLoadInterface;
@@ -231,6 +232,13 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-
+    	// TODO open details view
+    	Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
+    	CourtCase courtCase = new CourtCase();
+    	courtCase.setId(id);
+    	DBDataManager.fillCourtCase2Object(courtCase, cursor);
+    	Intent intent = new Intent(this, TaskDetailsViewActivity.class);
+    	intent.putExtra(StaticData.COURT_CASE, courtCase);
+    	startActivity(intent);
     }
 }

@@ -68,39 +68,39 @@ import com.alien_roger.court_deadlines.utils.CommonUtils;
 public class TaskDetailsActivity extends ActionBarActivity implements DataLoadInterface<Object>,
 		DialogInterface.OnClickListener, OnTouchListener, OnClickListener {
 
-	private static final int SET_FROM_DATE = 1;
-	private static final int SET_FROM_TIME = 2;
-	private static final int SET_TO_DATE = 3;
-	private static final int SET_TO_TIME = 4;
-	private TimePickerDialog fromTimePickerDialog;
-	private TimePickerDialog toTimePickerDialog;
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-	private SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	protected static final int SET_FROM_DATE = 1;
+	protected static final int SET_FROM_TIME = 2;
+	protected static final int SET_TO_DATE = 3;
+	protected static final int SET_TO_TIME = 4;
+	protected TimePickerDialog fromTimePickerDialog;
+	protected TimePickerDialog toTimePickerDialog;
+	protected SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	protected SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 
-	private Calendar fromCalendar;
-	private Calendar toCalendar;
-	private DateFormat df;
+	protected Calendar fromCalendar;
+	protected Calendar toCalendar;
+	protected DateFormat df;
 
-	private DatePickerDialog fromDatePickerDialog;
-	private DatePickerDialog toDatePickerDialog;
-	private EditText customerEdt;
+	protected DatePickerDialog fromDatePickerDialog;
+	protected DatePickerDialog toDatePickerDialog;
+	protected EditText customerEdt;
 
-	private EditText courtDateEdt;
-	private EditText proposalDateEdt;
-	private EditText courtTimeEdt;
-	private EditText proposalTimeEdt;
-	private EditText notesEdt;
+	protected EditText courtDateEdt;
+	protected EditText proposalDateEdt;
+	protected EditText courtTimeEdt;
+	protected EditText proposalTimeEdt;
+	protected EditText notesEdt;
 
-	private Spinner typeSpinner1;
-	private Spinner typeSpinner2;
-	private Spinner trialSpinner1;
-	private Spinner trialSpinner2;
-	private Spinner trialSpinner3;
-	private Spinner trialSpinner4;
-	private List<Spinner> spinnersList;
+	protected Spinner typeSpinner1;
+	protected Spinner typeSpinner2;
+	protected Spinner trialSpinner1;
+	protected Spinner trialSpinner2;
+	protected Spinner trialSpinner3;
+	protected Spinner trialSpinner4;
+	protected List<Spinner> spinnersList;
 
-	private Context context;
-	private SpinnerSelectedListener spinnerSelectedListener;
+	protected Context context;
+	protected SpinnerSelectedListener spinnerSelectedListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +117,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
 
 		courtDateEdt.setText(df.format(fromCalendar.getTime()));
+		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
 
 		fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener, fromCalendar.get(Calendar.YEAR),
 				fromCalendar.get(Calendar.MONTH), fromCalendar.get(Calendar.DAY_OF_MONTH));
@@ -142,7 +143,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		enableSpinners(dataSaved);
 	}
 
-	private class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
+	protected class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
 		public SpinnerSelectedListener() {
 		}
 
@@ -200,7 +201,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		}
 	}
 
-	private void setProposalDate(Cursor cursor) {
+	protected void setProposalDate(Cursor cursor) {
 		String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
 
 		if (string.indexOf(StaticData.CHILD_DELIMITER) < 0)
@@ -211,15 +212,19 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 
 		Log.d("setProposalDate", " code = " + code + " length = " + code.length());
 
-		Calendar cal = Calendar.getInstance();
+//		Calendar cal = Calendar.getInstance();
 		try {
-			cal = CommonUtils.getDateByCode(fromCalendar, code);
+			toCalendar = CommonUtils.getDateByCode(fromCalendar, code);
 		} catch (NumberFormatException e) {
 			Log.d("setProposalDate", e.toString());
 			new AlertDialog.Builder(context).setTitle(R.string.error).setMessage(R.string.number_format_msg).setPositiveButton(android.R.string.ok, this).setNegativeButton(android.R.string.cancel, this).show();
 
 		}
-		proposalDateEdt.setText(df.format(cal.getTime()));
+		proposalDateEdt.setText(df.format(toCalendar.getTime()));
+		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
+
+		toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR), toCalendar.get(Calendar.MONTH), toCalendar.get(Calendar.DAY_OF_MONTH));
+
 	}
 
 	private void adjustSpinner(Spinner spinner, SpinnerAdapter adapter) {
@@ -243,7 +248,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		}
 	}
 
-	private DatePickerDialog.OnDateSetListener fromDateSetListener = new DatePickerDialog.OnDateSetListener() {
+	protected DatePickerDialog.OnDateSetListener fromDateSetListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 			fromCalendar.set(Calendar.YEAR, year);
@@ -327,8 +332,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	@Override
 	public void onClick(DialogInterface arg0, int which) {
 		switch (which) {
-		case DialogInterface.BUTTON_POSITIVE:
-			// TODO send email
+		case DialogInterface.BUTTON_POSITIVE: // dissmiss calendar warning dialog
 			break;
 		default:
 			break;
@@ -343,7 +347,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
 	}
 
-	private void setReminderTime(long triggerAtTime, String taskTitle, int id) {
+	protected void setReminderTime(long triggerAtTime, String taskTitle, int id) {
 		long msBefore = 1000;
 		long time2Set = triggerAtTime - msBefore;
 		Intent statusUpdate = new Intent(context, AlarmReceiver.class);
@@ -411,12 +415,12 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			courtCase.setCaseName("");
 			courtCase.setCustomer(customerEdt.getText().toString().trim());
 			courtCase.setCourtDate(fromCalendar);
-			courtCase.setProposalDate(fromCalendar);
+			courtCase.setProposalDate(toCalendar);
 			courtCase.setNotes(notesEdt.getText().toString().trim());
 			courtCase.setCourtType("indictment");
 
 			// create task in DB
-			Uri uri = getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.fillCourtCase(courtCase));
+			Uri uri = getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.fillCourtCase2ContentValues(courtCase));
 			long id = ContentUris.parseId(uri);
 			setReminderTime(toCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) id);
 

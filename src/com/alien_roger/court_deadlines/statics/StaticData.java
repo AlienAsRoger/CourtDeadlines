@@ -46,5 +46,6 @@ public class StaticData {
 
 	public static final String NOTIFICATION_SOUND_DEFAULT = "notification_sound_default";
 	public static final String NOTIFICATION_VIBRO_DEFAULT = "notification_vibrate_default";
+	public static final String COURT_CASE = "court_case";
 
 }

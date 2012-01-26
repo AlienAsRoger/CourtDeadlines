@@ -7,6 +7,8 @@
 //
 package com.alien_roger.court_deadlines.db;
 
+import java.util.Calendar;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 
@@ -73,7 +75,7 @@ public class DBDataManager {
         parentLevelSelection = selection.toString();
     }
 
-	public static ContentValues fillCourtCase(CourtCase courtCase){
+	public static ContentValues fillCourtCase2ContentValues(CourtCase courtCase){
 		ContentValues values = new ContentValues();
         values.put(DBConstants.CUSTOMER, courtCase.getCustomer());
         values.put(DBConstants.CASE_NAME, courtCase.getCaseName());
@@ -84,16 +86,21 @@ public class DBDataManager {
 		return values;
 	}
 
-	public static void fillCourtCaseObjValues(CourtCase courtCase,Cursor cursor ){
+	public static void fillCourtCase2Object(CourtCase courtCase,Cursor cursor ){
         courtCase.setCaseName(getString(cursor,DBConstants.CASE_NAME));
         courtCase.setCustomer(getString(cursor,DBConstants.CUSTOMER));
+
+        courtCase.setCourtDate(Calendar.getInstance());
+        courtCase.setProposalDate(Calendar.getInstance());
+
         courtCase.setCourtDate(cursor.getLong(cursor.getColumnIndex(DBConstants.COURT_DATE)));
         courtCase.setProposalDate(cursor.getLong(cursor.getColumnIndex(DBConstants.PROPOSAL_DATE)));
+
         courtCase.setNotes(getString(cursor,DBConstants.NOTES));
         courtCase.setCourtType(getString(cursor,DBConstants.COURT_TYPE));
 	}
 
-	public static ContentValues fillCourtObj(CourtObj dataObj){
+	public static ContentValues fillCourtObj2ContentValues(CourtObj dataObj){
 		ContentValues values = new ContentValues();
         values.put(DBConstants.TRIAL_HAVE_CHILD, dataObj.doesHaveChild()); // TODO
         values.put(DBConstants.TRIAL_DEPTH_LEVEL, dataObj.getDepthLevel());
@@ -103,7 +110,7 @@ public class DBDataManager {
 		return values;
 	}
 
-	public static void fillCourtObjObjValues(CourtObj dataObj,Cursor cursor ){
+	public static void fillCourtObj2Object(CourtObj dataObj,Cursor cursor ){
         dataObj.setDepthLevel(getInt(cursor,DBConstants.TRIAL_DEPTH_LEVEL));
         dataObj.setParentLevel(getInt(cursor,DBConstants.TRIAL_PARENT_LEVEL));
         dataObj.setCurrentLevel(getInt(cursor,DBConstants.TRIAL_CURRENT_LEVEL));

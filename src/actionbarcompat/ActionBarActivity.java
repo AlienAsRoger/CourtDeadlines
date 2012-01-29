@@ -17,6 +17,7 @@
 package actionbarcompat;
 
 import android.app.Activity;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +34,14 @@ import android.view.MenuInflater;
 public abstract class ActionBarActivity extends Activity {
     final ActionBarHelper mActionBarHelper = ActionBarHelper.createInstance(this);
 
-    /**
+	@Override
+	public void onAttachedToWindow() {
+		super.onAttachedToWindow();
+
+		// Eliminates color banding
+		getWindow().setFormat(PixelFormat.RGBA_8888);
+	}
+	/**
      * Returns the {@link ActionBarHelper} for this activity.
      */
     protected ActionBarHelper getActionBarHelper() {

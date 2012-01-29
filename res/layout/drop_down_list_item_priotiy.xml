@@ -13,7 +13,6 @@
         android:layout_width="10dip"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/priority_0"
         android:layout_marginRight="4dip"
         />
     <TextView
@@ -22,12 +21,13 @@
         android:layout_height="wrap_content"
         style="@style/PriorityStyle"
         android:paddingLeft="10dip"
-        android:text="Very high"
+        android:text=""
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@id/priorityView"
+        android:textColor="@color/text_black_selector"
         />
 
-    <ToggleButton
+<!--    <ToggleButton
         android:id="@+id/radioBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_marginRight="8dip"
         android:textOn=""
         android:textOff=""
-        />
+        />-->
 
 
 

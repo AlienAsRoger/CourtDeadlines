@@ -166,7 +166,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/priorities"/>
+                android:text="@string/priorities"
+                android:layout_gravity="center_vertical"
+                />
 
             <Spinner
                 android:id="@+id/prioritySpinner"
@@ -174,7 +176,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:entries="@array/priorities"/>
+                />
+            <!--android:entries="@array/priorities"-->
         </LinearLayout>
 
         <LinearLayout
@@ -186,14 +189,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/sound"/>
+                android:text="@string/sound"
+                android:layout_gravity="center_vertical"
+                />
             <Button
                 android:id="@+id/soundBtn"
                 style="@style/spinnerStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sound"/>
+                android:text="@string/sound"
+                android:layout_gravity="center_vertical"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -206,7 +213,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/remind_before"/>
+                android:text="@string/remind_before"
+                android:layout_gravity="center_vertical"
+                />
             <Spinner
                 android:id="@+id/remindSpinner"
                 style="@style/spinnerStyle"

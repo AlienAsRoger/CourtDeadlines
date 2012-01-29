@@ -25,16 +25,11 @@ public class TaskListAdapter extends CursorAdapter{
 //	private Context context;
 	private int idColIndex = 0;
 	private int[] drawables;
+	private int[] drawablesBack;
 	
 	public TaskListAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
 		init(context,c);
-		drawables = new int[]{R.drawable.priority_0_selector,
-				R.drawable.priority_1_selector,
-				R.drawable.priority_2_selector,
-				R.drawable.priority_3_selector,
-				R.drawable.priority_4_selector};
-		
 	}
 
 	public TaskListAdapter(Context context, Cursor c) {
@@ -48,11 +43,19 @@ public class TaskListAdapter extends CursorAdapter{
 		toCalendar = Calendar.getInstance();
 //		cursor = c;
 		idColIndex = c.getColumnIndex(DBConstants._ID);
-		drawables = new int[]{R.drawable.priority_0_selector,
+		drawables = new int[]{
+				R.drawable.priority_0_selector,
 				R.drawable.priority_1_selector,
 				R.drawable.priority_2_selector,
 				R.drawable.priority_3_selector,
 				R.drawable.priority_4_selector};
+		drawablesBack = new int[]{
+				R.drawable.priority_0,
+				R.drawable.priority_1,
+				R.drawable.priority_2,
+				R.drawable.priority_3,
+				R.drawable.priority_4
+		};
 
 	}
 
@@ -65,13 +68,16 @@ public class TaskListAdapter extends CursorAdapter{
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		ViewHolder	holder = (ViewHolder) view.getTag();
-		setBackground(view, cursor);
+		int priorValue = cursor.getInt(cursor.getColumnIndex(DBConstants.PRIOTIY));
+		view.setBackgroundResource(drawables[priorValue]);
+//		setBackground(view, cursor);
 
         holder.customer.setText(cursor.getString(cursor.getColumnIndex(DBConstants.CUSTOMER)));
         
         holder.courtDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.COURT_DATE))));
         holder.proposalDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.PROPOSAL_DATE))));
         holder.courtType.setText(cursor.getString(cursor.getColumnIndex(DBConstants.COURT_TYPE)));
+		holder.priorityView.setBackgroundResource(drawablesBack[priorValue]);
 //		view.setOnClickListener(itemClickListener);
 		view.setTag(holder);
 	}
@@ -94,6 +100,7 @@ public class TaskListAdapter extends CursorAdapter{
         holder.courtDate = (TextView) view.findViewById(R.id.courtDateTxt);
         holder.proposalDate = (TextView) view.findViewById(R.id.proposalDateTxt);
         holder.courtType = (TextView) view.findViewById(R.id.courtTypeTxt);
+		holder.priorityView = view.findViewById(R.id.priorityView);
 		view.setTag(holder);
 		return view;
 	}
@@ -129,6 +136,7 @@ public class TaskListAdapter extends CursorAdapter{
 	};
 	
 	private static class ViewHolder{
+		public View priorityView;
 		public TextView customer;
 //        public TextView caseName;
         public TextView courtDate;

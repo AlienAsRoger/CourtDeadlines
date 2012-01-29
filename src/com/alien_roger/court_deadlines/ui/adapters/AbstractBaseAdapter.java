@@ -51,10 +51,10 @@ public abstract class AbstractBaseAdapter<T> extends BaseAdapter {
 	protected abstract View createView(ViewGroup viewGroup);
 	protected abstract void bindView(int i, View view);
 
-	@Override
-	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-//		super.getDropDownView(position, convertView, parent);
-		return createView(parent);
-	}
+//	@Override
+//	public View getDropDownView(int position, View convertView, ViewGroup parent) {
+////		super.getDropDownView(position, convertView, parent);
+//		return createView(parent);
+//	}
 
 }

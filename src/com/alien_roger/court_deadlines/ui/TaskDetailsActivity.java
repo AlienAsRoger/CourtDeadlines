@@ -84,6 +84,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected boolean userChangedCalendar;
 	protected List<PriorityObject> prioritiesList;
 	protected Spinner prioritiesSpinner;
+	protected int priority;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -182,7 +183,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected class PrioritySelectedListenr implements AdapterView.OnItemSelectedListener {
 		@Override
 		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+			priority = i;
 		}
 
 		@Override
@@ -478,8 +479,6 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		int pPos = prioritiesSpinner.getSelectedItemPosition();
 		Log.d("TEST", "Priority set = " + pPos);
 		courtCase.setPriority(pPos);
-
-
 	}
 
 	private void widgetsInit() {

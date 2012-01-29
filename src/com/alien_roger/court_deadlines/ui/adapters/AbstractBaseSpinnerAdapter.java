@@ -25,7 +25,10 @@ public abstract class AbstractBaseSpinnerAdapter<T> extends AbstractBaseAdapter<
 
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-		return createDropDownView(parent);
+		if(convertView == null) convertView = createDropDownView(parent);
+		bindView(position,convertView);
+		return convertView;
+
 	}
 
 }

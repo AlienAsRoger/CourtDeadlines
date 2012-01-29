@@ -1,7 +1,5 @@
 package com.alien_roger.court_deadlines.ui;
 
-import java.util.List;
-
 import actionbarcompat.ActionBarActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -20,7 +19,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
@@ -34,10 +32,13 @@ import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.LoadTasks;
 import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
 
+import java.util.List;
+
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
     private Cursor cursor;
     private SharedPreferences preferences;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){

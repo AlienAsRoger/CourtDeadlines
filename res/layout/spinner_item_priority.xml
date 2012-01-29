@@ -8,8 +8,8 @@
 
     <View
         android:id="@+id/priorityView"
-        android:layout_width="10dip"
-        android:layout_height="wrap_content"
+        android:layout_width="8dip"
+        android:layout_height="20dip"
         android:layout_alignParentLeft="true"
         android:background="@drawable/priority_0"
         android:layout_marginRight="4dip"
@@ -24,7 +24,7 @@
 		android:textSize="15sp"
         android:textColor="@color/text_spinner_selector"
         android:text="asdas"
-
+        android:layout_gravity="center_vertical"
         />
 
 

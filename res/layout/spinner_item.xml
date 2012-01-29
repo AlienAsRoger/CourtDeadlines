@@ -15,7 +15,7 @@
 		android:textSize="15sp"
         android:textColor="@color/text_spinner_selector"
         android:text="asdas"
-
+        android:layout_gravity="center_vertical"
         />
 
 

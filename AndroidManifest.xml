@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.alien_roger.court_deadlines"
-      android:versionCode="86"
-      android:versionName="0.9.86" android:installLocation="auto">
+      android:versionCode="102"
+      android:versionName="0.9.93" android:installLocation="auto">
 
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <application android:label="@string/app_name" android:theme="@style/AppTheme" >
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="15" />
+
+    <application android:label="@string/app_name" android:theme="@style/MyAppTheme" >
         <activity android:name="com.alien_roger.court_deadlines.ui.TaskListActivity"
                   android:label="@string/app_name"
                   android:configChanges="keyboard|orientation">

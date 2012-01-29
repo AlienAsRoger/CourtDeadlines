@@ -5,7 +5,7 @@ import android.net.Uri;
 
 public class DBConstants {
 
-    static final int DATABASE_VERSION 	= 10;
+    static final int DATABASE_VERSION 	= 11;
 
 
 	public static final String PROVIDER_NAME = "com.alien_roger.android.courtdeadlines.case_provider";
@@ -28,24 +28,21 @@ public class DBConstants {
     public static final int COURT_TRIALS = 2;
     public static final int COURT_TRIAL_ID = 3;
 
-//    public static final int COURT_CASES = 0;
-//    public static final int COURT_CASE_ID = 1;
-//
-//    public static final int COURT_TRIALS = 2;
-//    public static final int COURT_TRIAL_ID = 3;
 
     // general fields
     public static final String _ID = "_id";
     public static final String _COUNT = "_count";
 
 
-    // Flight fields
+    // Court Case fields
     public static final String CUSTOMER	        = "customer";
     public static final String CASE_NAME	    = "case_name";
     public static final String COURT_DATE	    = "court_date";
     public static final String PROPOSAL_DATE	= "proposal_date";
     public static final String NOTES	        = "notes";
-    public static final String COURT_TYPE	    = "court_type";
+	public static final String COURT_TYPE	    = "court_type";
+	public static final String REMIND_SOUND	    = "remind_sound";
+	public static final String REMIND_TIME	    = "remind_time";
 
 
     public static final String TRIAL_DEPTH_LEVEL	= "depth_level";
@@ -66,7 +63,9 @@ public class DBConstants {
         + CUSTOMER 			+ " TEXT not null,"
         + CASE_NAME 		+ " TEXT not null,"
         + COURT_DATE 		+ " LONG not null,"
-        + PROPOSAL_DATE 	+ " LONG not null,"
+		+ PROPOSAL_DATE 	+ " LONG not null,"
+		+ REMIND_SOUND 		+ " TEXT not null,"
+		+ REMIND_TIME 		+ " INTEGER not null,"
         + NOTES 			+ " TEXT not null);";
 
     static final String TRIALS_TABLE_CREATE =

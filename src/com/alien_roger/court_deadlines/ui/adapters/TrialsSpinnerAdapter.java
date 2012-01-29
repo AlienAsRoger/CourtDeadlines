@@ -35,13 +35,13 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 	    int nameColumn = cursor.getColumnIndex(DBConstants.TRIAL_VALUE);
 	    String getName = cursor.getString(nameColumn);
 	    TextView name = (TextView)view.findViewById(R.id.nameTxt);
-	    name.setText(getName);
+		name.setText(getName);
 	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 //	    super.newView(context, cursor, parent);
-	    View view = layoutInflater.inflate(R.layout.default_list_item, parent, false);
+	    View view = layoutInflater.inflate(R.layout.spinner_item, parent, false);
 	    return view;
 	}
 
@@ -51,21 +51,6 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 
 	    View view = layoutInflater.inflate(R.layout.drop_down_list_item, parent, false);
 	    bindView(view, context, cursor);
-//	    int nameColumn = cursor.getColumnIndex("name");
-//	    String getName = cursor.getString(nameColumn);
-//	    TextView name = (TextView)view.findViewById(R.id.nameTxt);
-//	    name.setText(getName);
-
-//	    int loviColumn = cursor.getColumnIndex("lovibond");
-//	    String getLovi = cursor.getString(loviColumn);
-//	    TextView lovi = (TextView)view.findViewById(R.id.GrainSpinnerLovibond);
-//	    lovi.setText(getLovi);
-//
-//	    int gravityColumn = cursor.getColumnIndex("gravity");
-//	    String getGravity = cursor.getString(gravityColumn);
-//	    TextView gravity = (TextView)view.findViewById(R.id.GrainSpinnerGravity);
-//	    gravity.setText(getGravity);
-
 	    return view;
 	}
 }

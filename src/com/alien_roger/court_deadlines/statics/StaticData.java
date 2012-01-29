@@ -12,7 +12,6 @@ public class StaticData {
     public static String PART_1 = "prothesmies-dikasthriwn.html?id=20&cat=";
     public static final String ID = "id";
     public static final String URL_PATH = "url_path";
-    public static final int GET_TRIAL_DATA = 55;
 	public static final Long FIRST_LEVEL = 3L;
     public static final String TRIAL_DATA = "trial_data";
 
@@ -37,15 +36,18 @@ public class StaticData {
 	public static final String D_TIME_pm	= "pm";
 
 	public static final String SHP_DB_VERSION = "db_version";
+	public static final String TASK_SOUND = "task_sound";
 	public static final String TASK_TITLE = "task_title";
 	public static final String CLEAR_ALARM = "clear_alarm";
 
 	public static final String REQUEST_CODE = "pending_intent_request_code";
-    public static final int REMIND_ALARM_INTERVAL = 5*60*1000; // 5 minutes
+//	public static final int REMIND_ALARM_INTERVAL = 5*60*1000; // 5 minutes
+	public static final int REMIND_ALARM_INTERVAL = 20*1000; // 20 minutes
 
 
 	public static final String NOTIFICATION_SOUND_DEFAULT = "notification_sound_default";
 	public static final String NOTIFICATION_VIBRO_DEFAULT = "notification_vibrate_default";
 	public static final String COURT_CASE = "court_case";
 
+	public static final int PICK_SOUND = 55;
 }

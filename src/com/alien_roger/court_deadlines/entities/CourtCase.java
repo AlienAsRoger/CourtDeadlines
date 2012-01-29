@@ -21,6 +21,8 @@ public class CourtCase implements Serializable {
     private Calendar proposalDate;
     private String notes = "";
 	private long id;
+	private String reminderSound = "";
+	private int reminderTimePosition;
 
 	public String getCourtType() {
         return courtType;
@@ -95,5 +97,21 @@ public class CourtCase implements Serializable {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public void setReminderSound(String reminderSound) {
+		this.reminderSound = reminderSound;
+	}
+
+	public String getReminderSound() {
+		return reminderSound;
+	}
+
+	public void setReminderTimePosition(int reminderSelectedPos) {
+		this.reminderTimePosition = reminderSelectedPos;
+	}
+
+	public int getReminderTimePosition() {
+		return reminderTimePosition;
 	}
 }

@@ -16,6 +16,9 @@
     <string name="low">Low</string>
 	<string name="very_low">Very Low</string>
 
+    <!--Details-->
+    <string name="remind_before">Reminders</string>
+    <string name="sound">Sound</string>
 
     
     <!-- Reminder -->
@@ -30,19 +33,27 @@
     <string name="one_day">1 day</string>
     <string name="one_week">1 week</string>
 
-    <!-- Notification screen -->
+    <!-- Notification -->
+    <string name="notification_update_message">Updating data file, please wait</string>
+    <string name="notification_update_status_title">Updating data file</string>
+    <string name="notification_update_status_message">Saving trials type to DataBase</string>
+
+    <string name="notification_update_message_finished">Updating data file finished</string>
+    <string name="notification_update_status_title_finished">Updating data file finished</string>
+    <string name="notification_update_status_message_finished"></string>
+
     <string name="notification_screen_message">alarm message</string>
     <string name="notification_screen_status_title">alarm message Title</string>
     <string name="notification_screen_status_message">alarm message Body</string>
-    <string name="social_account_default_title">Assignee account</string>
-    <string name="social_account_default_summary">Used for default task assignee</string>
 
     <!-- Preferences -->
 
     <string name="remind_time_title">Remind time</string>
     <string name="remind_time_summary">Default value for every task</string>
+
     <string name="notification_sound_title">Ringtones</string>
     <string name="notification_sound_summary">Set your nice sound</string>
+
     <string name="location_update_time_title">Location update time</string>
     <string name="location_update_time_summary">More often update the faster battery drain.</string>
     <string name="notification_vibrate_title">Vibrate</string>

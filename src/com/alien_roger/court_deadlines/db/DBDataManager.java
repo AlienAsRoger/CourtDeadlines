@@ -7,13 +7,12 @@
 //
 package com.alien_roger.court_deadlines.db;
 
-import java.util.Calendar;
-
 import android.content.ContentValues;
 import android.database.Cursor;
-
 import com.alien_roger.court_deadlines.entities.CourtCase;
 import com.alien_roger.court_deadlines.entities.CourtObj;
+
+import java.util.Calendar;
 
 
 public class DBDataManager {
@@ -83,6 +82,10 @@ public class DBDataManager {
         values.put(DBConstants.PROPOSAL_DATE, courtCase.getProposalDateLong());
         values.put(DBConstants.NOTES, courtCase.getNotes());
         values.put(DBConstants.COURT_TYPE, courtCase.getCourtType());
+
+		values.put(DBConstants.REMIND_SOUND, courtCase.getReminderSound());
+		values.put(DBConstants.REMIND_TIME, courtCase.getReminderTimePosition());
+
 		return values;
 	}
 
@@ -98,6 +101,9 @@ public class DBDataManager {
 
         courtCase.setNotes(getString(cursor,DBConstants.NOTES));
         courtCase.setCourtType(getString(cursor,DBConstants.COURT_TYPE));
+
+		courtCase.setReminderSound(getString(cursor,DBConstants.REMIND_SOUND));
+		courtCase.setReminderTimePosition(getInt(cursor,DBConstants.REMIND_TIME));
 	}
 
 	public static ContentValues fillCourtObj2ContentValues(CourtObj dataObj){

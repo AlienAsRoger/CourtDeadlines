@@ -6,7 +6,16 @@
     android:duplicateParentState="true"
     >
 
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    <View
+        android:id="@+id/priorityView"
+        android:layout_width="10dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/priority_0"
+        android:layout_marginRight="4dip"
+        android:duplicateParentState="true"
+        />
+    <TextView
         android:id="@+id/nameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

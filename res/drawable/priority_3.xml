@@ -3,8 +3,8 @@
 
     <gradient
         android:angle="270"
-        android:endColor="@color/list_selected_2"
-        android:startColor="@color/list_selected_1" />
+        android:endColor="@color/priority_3_1"
+        android:startColor="@color/priority_3_2" />
 
     <size 
         android:width="10dip" 

@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:padding="7dip">
+            android:padding="8dip">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="48dip">
 
             <TextView
                 android:id="@+id/customerTxt"
@@ -28,14 +28,15 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="clip_vertical">
+            android:layout_height="48dip"
+            android:gravity="clip_vertical"
+            android:weightSum="100">
 
             <TextView
                 android:id="@+id/proposalTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="32"
                 android:text="@string/proposal"
                 style="@style/CalendarTxt"/>
 
@@ -43,38 +44,49 @@
                 android:id="@+id/proposalDateEdt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="30"/>
 
             <EditText
                 android:id="@+id/proposalTimeEdt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="38"
+                android:layout_gravity="right"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="48dip"
+            android:weightSum="100"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/courtDateTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="32"
                 android:text="@string/court_date"
-                style="@style/CalendarTxt"/>
+                style="@style/CalendarTxt"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                />
 
             <EditText
                 android:id="@+id/courtDateEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="30"/>
 
             <EditText
                 android:id="@+id/courtTimeEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="38"/>
         </LinearLayout>
 
 
@@ -82,6 +94,7 @@
             android:id="@+id/trailTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             android:text="@string/trial_title"/>
 
         <LinearLayout

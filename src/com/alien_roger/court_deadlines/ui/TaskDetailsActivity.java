@@ -18,12 +18,14 @@ import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
 import com.alien_roger.court_deadlines.entities.CourtCase;
+import com.alien_roger.court_deadlines.entities.PriorityObject;
 import com.alien_roger.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.court_deadlines.services.AlarmReceiver;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.GetTrialsTask;
 import com.alien_roger.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.court_deadlines.ui.adapters.CaseSpinnerAdapter;
+import com.alien_roger.court_deadlines.ui.adapters.PrioritiesAdapter;
 import com.alien_roger.court_deadlines.ui.adapters.TrialsSpinnerAdapter;
 import com.alien_roger.court_deadlines.utils.CommonUtils;
 
@@ -74,11 +76,14 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected boolean need2update;
 	protected Spinner remindSpinner;
 	private ReminderSelectedListenr reminderSelectedListener;
+	private PrioritySelectedListenr prioritySelectedListenr;
 	protected int reminderSelectedPos;
 	protected int[] remindTimes;
 	protected String remindSound;
 	protected Button soundBtn;
 	protected boolean userChangedCalendar;
+	protected List<PriorityObject> prioritiesList;
+	protected Spinner prioritiesSpinner;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +129,18 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			showProgress(true);
 		}
 		enableSpinners(dataSaved);
+
+		String[] prioritiesStrings = getResources().getStringArray(R.array.priorities);
+
+		prioritiesList = new ArrayList<PriorityObject>();
+		for (int h = 0; h < prioritiesStrings.length; h++) {
+			PriorityObject priorityObject = new PriorityObject();
+			priorityObject.setValue(h);
+			priorityObject.setText(prioritiesStrings[h]);
+			prioritiesList.add(priorityObject);
+		}
+
+		prioritiesSpinner.setAdapter(new PrioritiesAdapter(this,prioritiesList));
 	}
 
 	protected class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -141,7 +158,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				new LoadTrials(TaskDetailsActivity.this).execute(currLevel);
 				disableSpinners(depthLevel);
 			} else {
-				setProposalDate(cursor);
+				if (!userChangedCalendar)
+					setProposalDate(cursor);
 			}
 		}
 
@@ -151,11 +169,20 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	}
 
 	protected class ReminderSelectedListenr implements AdapterView.OnItemSelectedListener {
-
 		@Override
 		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 			reminderSelectedPos = i;
-//			adapterView.getItemAtPosition(i);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> adapterView) {
+		}
+	}
+
+	protected class PrioritySelectedListenr implements AdapterView.OnItemSelectedListener {
+		@Override
+		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
 		}
 
 		@Override
@@ -192,7 +219,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
 		} else {
 			adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
-			if(!userChangedCalendar)
+			if (!userChangedCalendar)
 				setProposalDate(cursor);
 		}
 	}
@@ -448,6 +475,10 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		courtCase.setCourtType(cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE)));
 		courtCase.setReminderSound(remindSound);
 		courtCase.setReminderTimePosition(reminderSelectedPos);
+		int pPos = prioritiesSpinner.getSelectedItemPosition();
+		Log.d("TEST", "Priority set = " + pPos);
+		courtCase.setPriority(pPos);
+
 
 	}
 
@@ -486,6 +517,9 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		remindTimes = getResources().getIntArray(R.array.reminder_update_time_entry_int_values);
 		remindSpinner = (Spinner) findViewById(R.id.remindSpinner);
 		remindSpinner.setOnItemSelectedListener(reminderSelectedListener);
+
+		prioritiesSpinner = (Spinner) findViewById(R.id.prioritySpinner);
+		prioritiesSpinner.setOnItemSelectedListener(prioritySelectedListenr);
 	}
 
 	@Override

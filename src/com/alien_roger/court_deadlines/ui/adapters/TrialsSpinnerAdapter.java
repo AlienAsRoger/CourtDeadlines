@@ -16,11 +16,6 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 	protected Context myContext;
 	private LayoutInflater layoutInflater;
 
-//	public TrialsSpinnerAdapter(Context context, int layout, Cursor c, String[] from, int[] to) {
-////	    super(context, layout, c, from, to);
-//	    myContext = context;
-//	}
-
 	public TrialsSpinnerAdapter(Context context, Cursor cursor){
 		super(context, cursor);
 		myContext = context;
@@ -30,8 +25,6 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-//	    super.bindView(view, context, cursor);
-
 	    int nameColumn = cursor.getColumnIndex(DBConstants.TRIAL_VALUE);
 	    String getName = cursor.getString(nameColumn);
 	    TextView name = (TextView)view.findViewById(R.id.nameTxt);
@@ -40,7 +33,6 @@ public class TrialsSpinnerAdapter extends CursorAdapter {
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-//	    super.newView(context, cursor, parent);
 	    View view = layoutInflater.inflate(R.layout.spinner_item, parent, false);
 	    return view;
 	}

@@ -21,13 +21,20 @@ public class TaskListAdapter extends CursorAdapter{
 	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd' 'MMMM");
 	private Calendar fromCalendar;
 	private Calendar toCalendar;
-	private Cursor cursor;
-	private Context context;
+//	private Cursor cursor;
+//	private Context context;
 	private int idColIndex = 0;
+	private int[] drawables;
 	
 	public TaskListAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
 		init(context,c);
+		drawables = new int[]{R.drawable.priority_0_selector,
+				R.drawable.priority_1_selector,
+				R.drawable.priority_2_selector,
+				R.drawable.priority_3_selector,
+				R.drawable.priority_4_selector};
+		
 	}
 
 	public TaskListAdapter(Context context, Cursor c) {
@@ -39,9 +46,14 @@ public class TaskListAdapter extends CursorAdapter{
 		inflater = LayoutInflater.from(context);
 		fromCalendar = Calendar.getInstance();
 		toCalendar = Calendar.getInstance();
-		cursor = c;
+//		cursor = c;
 		idColIndex = c.getColumnIndex(DBConstants._ID);
-		this.context = context;
+		drawables = new int[]{R.drawable.priority_0_selector,
+				R.drawable.priority_1_selector,
+				R.drawable.priority_2_selector,
+				R.drawable.priority_3_selector,
+				R.drawable.priority_4_selector};
+
 	}
 
     private String getDate(long calendarTime){
@@ -53,6 +65,7 @@ public class TaskListAdapter extends CursorAdapter{
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		ViewHolder	holder = (ViewHolder) view.getTag();
+		setBackground(view, cursor);
 
         holder.customer.setText(cursor.getString(cursor.getColumnIndex(DBConstants.CUSTOMER)));
         
@@ -61,6 +74,11 @@ public class TaskListAdapter extends CursorAdapter{
         holder.courtType.setText(cursor.getString(cursor.getColumnIndex(DBConstants.COURT_TYPE)));
 //		view.setOnClickListener(itemClickListener);
 		view.setTag(holder);
+	}
+	
+	private void setBackground(View view, Cursor cursor){
+		int priorValue = cursor.getInt(cursor.getColumnIndex(DBConstants.PRIOTIY));
+		view.setBackgroundResource(drawables[priorValue]);
 	}
 	
 	@Override

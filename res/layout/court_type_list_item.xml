@@ -11,7 +11,7 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:visibility="gone"
-            android:text=""
+            android:text="ddd"
             />
     <TextView
             android:id="@+id/nameTxt"
@@ -21,7 +21,7 @@
             android:textColor="@android:color/black"
             android:textStyle="normal"
             android:visibility="visible"
-            android:text=""
+            android:text="aaa"
             android:paddingLeft="20dip"
             />
 

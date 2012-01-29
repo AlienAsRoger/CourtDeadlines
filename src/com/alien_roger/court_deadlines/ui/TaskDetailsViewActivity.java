@@ -1,7 +1,11 @@
 package com.alien_roger.court_deadlines.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -9,6 +13,7 @@ import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
 import com.alien_roger.court_deadlines.entities.CourtCase;
+import com.alien_roger.court_deadlines.services.AlarmReceiver;
 import com.alien_roger.court_deadlines.statics.StaticData;
 
 
@@ -50,6 +55,10 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 		remindSound = courtCase.getReminderSound();
 		
 		remindSpinner.setSelection(courtCase.getReminderTimePosition());
+		userChangedCalendar = true;
+
+		prioritiesList.get(courtCase.getPriority()).setChecked(true);
+		prioritiesSpinner.setSelection(courtCase.getPriority());
 	}
 
 	@Override
@@ -72,15 +81,6 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 		case R.id.menu_refresh:
 
 			fillCourtCaseObject(courtCase);
-//			courtCase.setCaseName("");
-//			courtCase.setCustomer(customerEdt.getText().toString().trim());
-//			courtCase.setCourtDate(fromCalendar);
-//			courtCase.setProposalDate(toCalendar);
-//			courtCase.setNotes(notesEdt.getText().toString().trim());
-//			courtCase.setCourtType((String) spinnersList.get(0).getSelectedItem());
-//			courtCase.setReminderSound(remindSound);
-//			courtCase.setReminderTimePosition(reminderSelectedPos);
-
 			// create task in DB
 			int cnt = getContentResolver().update(Uri.parse(DBConstants.TASKS_CONTENT_URI.toString()
 					+ "/"+courtCase.getId() ),
@@ -92,6 +92,14 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 
 		case R.id.menu_delete:
 			getContentResolver().delete(Uri.parse(DBConstants.TASKS_CONTENT_URI.toString() + "/"+courtCase.getId() ), null, null);
+
+			int ID =(int) courtCase.getId();
+			Log.d("TaskListActivity", "id = " + ID);
+			Intent statusUpdate = new Intent(this, AlarmReceiver.class);
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ID, statusUpdate, PendingIntent.FLAG_UPDATE_CURRENT);
+			AlarmManager alarms = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+			alarms.cancel(pendingIntent);
+
 			finish();
 			break;
 		case R.id.menu_preferences:

@@ -85,6 +85,7 @@ public class DBDataManager {
 
 		values.put(DBConstants.REMIND_SOUND, courtCase.getReminderSound());
 		values.put(DBConstants.REMIND_TIME, courtCase.getReminderTimePosition());
+		values.put(DBConstants.PRIOTIY, courtCase.getPriority());
 
 		return values;
 	}
@@ -104,6 +105,8 @@ public class DBDataManager {
 
 		courtCase.setReminderSound(getString(cursor,DBConstants.REMIND_SOUND));
 		courtCase.setReminderTimePosition(getInt(cursor,DBConstants.REMIND_TIME));
+
+		courtCase.setPriority(getInt(cursor,DBConstants.PRIOTIY));
 	}
 
 	public static ContentValues fillCourtObj2ContentValues(CourtObj dataObj){

@@ -23,6 +23,7 @@ public class CourtCase implements Serializable {
 	private long id;
 	private String reminderSound = "";
 	private int reminderTimePosition;
+	private int priority;
 
 	public String getCourtType() {
         return courtType;
@@ -113,5 +114,13 @@ public class CourtCase implements Serializable {
 
 	public int getReminderTimePosition() {
 		return reminderTimePosition;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 }

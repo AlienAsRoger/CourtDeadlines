@@ -2,6 +2,22 @@
     <color name="list_selected_1">#FF5286ef</color>
     <color name="list_selected_2">#FF185a99</color>
 
+    <color name="priority_0_1">#FF5286ef</color>
+    <color name="priority_0_2">#FF185a99</color>
+
+    <color name="priority_1_1">#FF759ceb</color>
+    <color name="priority_1_2">#FF6688cc</color>
+
+    <color name="priority_2_1">#FF52cc5a</color>
+    <color name="priority_2_2">#FF3f9e44</color>
+
+    <color name="priority_3_1">#FFb30b64</color>
+    <color name="priority_3_2">#FF66083a</color>
+
+    <color name="priority_4_1">#FFeb1717</color>
+    <color name="priority_4_2">#FFab0505</color>
+
+
     <color name="disabled">#FF7a7a7a</color>
     
 </resources>

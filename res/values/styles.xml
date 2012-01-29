@@ -1,60 +1,4 @@
 <resources>
- <!--   <style name="AppTheme" parent="android:style/Theme.Light">
-        <item name="android:windowTitleSize">@dimen/actionbar_compat_height</item>
-        <item name="android:windowTitleBackgroundStyle">@style/ActionBarCompat</item>
-        <item name="android:windowContentOverlay">@drawable/actionbar_shadow</item>
-
-        &lt;!&ndash; for programmatic instantiation &ndash;&gt;
-        <item name="actionbarCompatTitleStyle">@style/ActionBarCompatTitle</item>
-        <item name="actionbarCompatItemStyle">@style/ActionBarCompatItem</item>
-        <item name="actionbarCompatItemHomeStyle">@style/ActionBarCompatHomeItem</item>
-        <item name="actionbarCompatProgressIndicatorStyle">@style/ActionBarCompatProgressIndicator</item>
-        
-        <item name="android:textSize">17sp</item>
-        <item name="android:editTextStyle">@style/DateEdt</item>
-        </style>
-
-    <style name="TaskTextAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:textStyle">normal</item>
-	</style>
-    
-    
-    <style name="ActionBarCompat">
-        <item name="android:background">#eee</item>
-    </style>
-
-    <style name="ActionBarCompatItemBase">
-        &lt;!&ndash; layout_width/height must be set in code &ndash;&gt;
-        <item name="android:scaleType">center</item>
-        <item name="android:background">@drawable/actionbar_compat_item</item>
-    </style>
-
-    <style name="ActionBarCompatProgressIndicator" parent="android:style/Widget.ProgressBar.Large">
-        <item name="android:indeterminate">true</item>
-    </style>
-
-    <style name="ActionBarCompatTitleBase">
-        <item name="android:id">@id/actionbar_compat_title</item>
-        &lt;!&ndash; layout_width/height/weight must be set in code &ndash;&gt;
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:paddingLeft">6dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:ellipsize">marquee</item>
-    </style>
-
-    <style name="ActionBarCompatTitle" parent="style/ActionBarCompatTitleBase">
-        <item name="android:textColor">@color/actionbar_title_color</item>
-    </style>
-
-    <style name="ActionBarCompatItem" parent="style/ActionBarCompatItemBase">
-    </style>
-
-    <style name="ActionBarCompatHomeItem" parent="style/ActionBarCompatItemBase">
-    </style>-->
 
     <style name="spinnerStyle" parent="@android:style/Widget.Spinner.DropDown">
 		<item name="android:layout_margin">2dip</item>
@@ -66,12 +10,19 @@
 		<!-- <item name="android:spinnerSelector">@drawable/spinner_selector</item> -->
 		
     <style name="DateEdt" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/textfield_selector</item>
 		<item name="android:textSize">14sp</item>
 		<item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="CalendarTxt" parent="@android:style/Widget.TextView">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="PriorityStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_black_selector</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 <!--
     <item name="android:textColor">@android:color/black</item>

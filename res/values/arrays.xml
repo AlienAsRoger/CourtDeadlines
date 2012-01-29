@@ -19,6 +19,7 @@
         <item>@string/one_day</item>
         <item>@string/one_week</item>
     </string-array>
+
     <string-array name="reminder_update_time_entry_values">
         <item>five_minutes</item>
         <item>ten_minutes</item>
@@ -42,23 +43,6 @@
         <item>10080000</item>
     </integer-array>
 
-    <string-array name="location_update_time_entries">
-        <item>@string/ten_minutes</item>
-        <item>@string/fifteen_minutes</item>
-        <item>@string/firty_minutes</item>
-        <item>@string/forty_five_minutes</item>
-        <item>@string/one_hour</item>
-        <item>@string/two_hour</item>
-        <item>@string/three_hour</item>
-    </string-array>
-    <string-array name="location_update_time_entry_values">
-        <item>ten_minutes</item>
-        <item>fifteen_minutes</item>
-        <item>firty_minutes</item>
-        <item>forty_five_minutes</item>
-        <item>one_hour</item>
-        <item>two_hour</item>
-        <item>three_hour</item>
-    </string-array>
+
 
 </resources>

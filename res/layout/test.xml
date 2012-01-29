@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:paddingTop="4dip"
+        android:paddingBottom="4dip"
+        android:paddingRight="4dip"
+        >
+
+        <View
+            android:id="@+id/priorityView"
+            android:layout_width="10dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/priority_4"
+            android:layout_marginRight="4dip"
+            />
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PriorityStyle"
+            android:paddingLeft="10dip"
+            android:text="Very high"
+            android:layout_toRightOf="@id/priorityView"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:paddingTop="4dip"
+        android:paddingBottom="4dip"
+        android:paddingRight="4dip"
+        >
+
+        <View
+            android:id="@+id/priorityView"
+            android:layout_width="10dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/priority_3"
+            android:layout_marginRight="4dip"
+            />
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PriorityStyle"
+            android:paddingLeft="10dip"
+            android:text="Very high"
+            android:layout_toRightOf="@id/priorityView"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:paddingTop="4dip"
+        android:paddingBottom="4dip"
+        android:paddingRight="4dip"
+        >
+
+        <View
+            android:id="@+id/priorityView"
+            android:layout_width="10dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/priority_2"
+            android:layout_marginRight="4dip"
+            />
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PriorityStyle"
+            android:paddingLeft="10dip"
+            android:text="Very high"
+            android:layout_toRightOf="@id/priorityView"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:paddingTop="4dip"
+        android:paddingBottom="4dip"
+        android:paddingRight="4dip"
+        >
+
+        <View
+            android:id="@+id/priorityView"
+            android:layout_width="10dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/priority_1"
+            android:layout_marginRight="4dip"
+            />
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PriorityStyle"
+            android:paddingLeft="10dip"
+            android:text="Very high"
+            android:layout_toRightOf="@id/priorityView"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48dip"
+        android:paddingTop="4dip"
+        android:paddingBottom="4dip"
+        android:paddingRight="4dip"
+        >
+
+        <View
+            android:id="@+id/priorityView"
+            android:layout_width="10dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/priority_0"
+            android:layout_marginRight="4dip"
+            />
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PriorityStyle"
+            android:paddingLeft="10dip"
+            android:text="Very high"
+            android:layout_toRightOf="@id/priorityView"
+            />
+
+        <RadioButton
+            android:id="@+id/radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+</LinearLayout>

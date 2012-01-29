@@ -40,6 +40,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 		Intent openList = new Intent(context, TaskListActivity.class);
 		openList.putExtra(StaticData.CLEAR_ALARM, true);
 		openList.putExtra(StaticData.REQUEST_CODE, id);
+		openList.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+				|Intent.FLAG_ACTIVITY_NEW_TASK
+				|Intent.FLAG_ACTIVITY_SINGLE_TOP
+				|Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		PendingIntent contentIntent = PendingIntent.getActivity(context, id, openList, 0);
 
 		notification.setLatestEventInfo(context, taskTitle, context.getText(R.string.notification_screen_status_message), contentIntent);

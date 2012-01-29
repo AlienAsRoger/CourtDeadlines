@@ -5,7 +5,7 @@ import android.net.Uri;
 
 public class DBConstants {
 
-    static final int DATABASE_VERSION 	= 11;
+    static final int DATABASE_VERSION 	= 12;
 
 
 	public static final String PROVIDER_NAME = "com.alien_roger.android.courtdeadlines.case_provider";
@@ -43,6 +43,7 @@ public class DBConstants {
 	public static final String COURT_TYPE	    = "court_type";
 	public static final String REMIND_SOUND	    = "remind_sound";
 	public static final String REMIND_TIME	    = "remind_time";
+	public static final String PRIOTIY	    	= "priority";
 
 
     public static final String TRIAL_DEPTH_LEVEL	= "depth_level";
@@ -66,6 +67,7 @@ public class DBConstants {
 		+ PROPOSAL_DATE 	+ " LONG not null,"
 		+ REMIND_SOUND 		+ " TEXT not null,"
 		+ REMIND_TIME 		+ " INTEGER not null,"
+		+ PRIOTIY 			+ " INTEGER not null,"
         + NOTES 			+ " TEXT not null);";
 
     static final String TRIALS_TABLE_CREATE =

@@ -34,6 +34,7 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 		super.onResume();
 		courtCase = (CourtCase) getIntent().getExtras().getSerializable(StaticData.COURT_CASE);
 
+		setTitle(courtCase.getCustomer());
 		// useless
 //		courtCase.setCaseName("");
 //		courtCase.setCourtType("indictment");
@@ -75,7 +76,6 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			onBackPressed();
-//			Toast.makeText(this, "Tapped home", Toast.LENGTH_SHORT).show();
 			break;
 
 		case R.id.menu_refresh:

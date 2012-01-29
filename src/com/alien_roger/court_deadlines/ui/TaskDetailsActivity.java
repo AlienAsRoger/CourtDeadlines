@@ -4,6 +4,7 @@ import actionbarcompat.ActionBarActivity;
 import android.app.*;
 import android.content.*;
 import android.database.Cursor;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -486,7 +487,9 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		soundBtn.setOnClickListener(this);
 		Uri defaultSoundUri = SettingsActivity.getAlarmRingtone(context);
 		remindSound = defaultSoundUri.toString();
-		soundBtn.setText(RingtoneManager.getRingtone(context, defaultSoundUri).getTitle(context));
+		Ringtone ringtone = RingtoneManager.getRingtone(context, defaultSoundUri);
+		if(ringtone != null)
+			soundBtn.setText(ringtone.getTitle(context));
 
 
 		customerEdt = (EditText) findViewById(R.id.customerEdt);

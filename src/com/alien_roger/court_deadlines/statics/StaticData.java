@@ -41,8 +41,8 @@ public class StaticData {
 	public static final String CLEAR_ALARM = "clear_alarm";
 
 	public static final String REQUEST_CODE = "pending_intent_request_code";
-//	public static final int REMIND_ALARM_INTERVAL = 5*60*1000; // 5 minutes
-	public static final int REMIND_ALARM_INTERVAL = 20*1000; // 20 minutes
+	public static final int REMIND_ALARM_INTERVAL = 5*60*1000; // 5 minutes
+//	public static final int REMIND_ALARM_INTERVAL = 20*1000; // 20 minutes
 
 
 	public static final String NOTIFICATION_SOUND_DEFAULT = "notification_sound_default";

@@ -1,5 +1,7 @@
 package com.alien_roger.court_deadlines.ui;
 
+import java.util.List;
+
 import actionbarcompat.ActionBarActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -8,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
@@ -28,11 +30,10 @@ import com.alien_roger.court_deadlines.entities.CourtCase;
 import com.alien_roger.court_deadlines.interfaces.DataLoadInterface;
 import com.alien_roger.court_deadlines.services.AlarmReceiver;
 import com.alien_roger.court_deadlines.services.GetDataService;
+import com.alien_roger.court_deadlines.services.UpdatePriorityService;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.LoadTasks;
 import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
-
-import java.util.List;
 
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>, AdapterView.OnItemClickListener {
     private ListView listView;
@@ -70,7 +71,6 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
         	editor.putInt(StaticData.SHP_DB_VERSION, DBDataProvider2.getDbVersion());
         	editor.commit();
         }
-
     }
 
     @Override
@@ -89,6 +89,7 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
 			getIntent().removeExtra(StaticData.CLEAR_ALARM);
 		}
         new LoadTasks(this).execute();
+        startService(new Intent(this,UpdatePriorityService.class));
     }
 
     @Override
@@ -237,7 +238,7 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
     	Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
     	CourtCase courtCase = new CourtCase();
     	courtCase.setId(id);
-    	DBDataManager.fillCourtCase2Object(courtCase, cursor);
+    	DBDataManager.getCourtCaseFromCursor(courtCase, cursor);
     	Intent intent = new Intent(this, TaskDetailsViewActivity.class);
     	intent.putExtra(StaticData.COURT_CASE, courtCase);
     	startActivity(intent);

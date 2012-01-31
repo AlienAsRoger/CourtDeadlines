@@ -1,5 +1,7 @@
 package com.alien_roger.court_deadlines.ui;
 
+import java.util.Calendar;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
@@ -41,25 +44,35 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 
 		customerEdt.setText(courtCase.getCustomer());
 
-		fromCalendar = courtCase.getCourtDate();
-		toCalendar = courtCase.getProposalDate();
+		fromCalendar = courtCase.getProposalDate();
+		toCalendar = courtCase.getCourtDate();
 
 		notesEdt.setText(courtCase.getNotes());
 
-		proposalDateEdt.setText(df.format(toCalendar.getTime()));
-		courtDateEdt.setText(df.format(fromCalendar.getTime()));
+		courtDateEdt.setText(df.format(toCalendar.getTime()));
+		proposalDateEdt.setText(df.format(fromCalendar.getTime()));
 
-		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
-		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
+		toDatePickerDialog.updateDate(
+				toCalendar.get(Calendar.YEAR),
+				toCalendar.get(Calendar.MONTH),
+				toCalendar.get(Calendar.DAY_OF_MONTH));
+
+		fromDatePickerDialog.updateDate(
+				fromCalendar.get(Calendar.YEAR),
+				fromCalendar.get(Calendar.MONTH),
+				fromCalendar.get(Calendar.DAY_OF_MONTH));
+
+//		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
+//		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
 
 		soundBtn.setText(courtCase.getReminderSound());
 		remindSound = courtCase.getReminderSound();
-		
+
 		remindSpinner.setSelection(courtCase.getReminderTimePosition());
 		userChangedCalendar = true;
 
 		prioritiesList.get(courtCase.getPriority()).setChecked(true);
-		prioritiesSpinner.setSelection(courtCase.getPriority());
+//		prioritiesSpinner.setSelection(courtCase.getPriority());
 	}
 
 	@Override
@@ -84,7 +97,7 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 			// create task in DB
 			int cnt = getContentResolver().update(Uri.parse(DBConstants.TASKS_CONTENT_URI.toString()
 					+ "/"+courtCase.getId() ),
-					DBDataManager.fillCourtCase2ContentValues(courtCase), null, null);
+					DBDataManager.putCourtCase2Values(courtCase), null, null);
 			setReminderTime(toCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) courtCase.getId());
 
 			finish();

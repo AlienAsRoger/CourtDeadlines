@@ -2,18 +2,21 @@
     <color name="list_selected_1">#FF5286ef</color>
     <color name="list_selected_2">#FF185a99</color>
 
-    <color name="priority_4_2">#FF5286ef</color>
-    <color name="priority_4_1">#FF185a99</color>
 
     <color name="priority_3_2">#FF759ceb</color>
     <color name="priority_3_1">#FF6688cc</color>
 
+
+    <color name="priority_4_2">#FFad33db</color>
+    <color name="priority_4_1">#FF821da8</color>
+
     <color name="priority_2_2">#FF52cc5a</color>
     <color name="priority_2_1">#FF3f9e44</color>
 
-    <color name="priority_1_2">#FFad33db</color>
-    <color name="priority_1_1">#FF821da8</color>
-
+    <color name="priority_1_2">#FF5286ef</color>
+    <color name="priority_1_1">#FF185a99</color>
+    
+    
     <color name="priority_0_2">#FFeb1717</color>
     <color name="priority_0_1">#FFab0505</color>
 

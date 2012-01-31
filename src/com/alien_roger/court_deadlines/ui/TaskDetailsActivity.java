@@ -1,8 +1,25 @@
 package com.alien_roger.court_deadlines.ui;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
 import actionbarcompat.ActionBarActivity;
-import android.app.*;
-import android.content.*;
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -11,10 +28,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
+
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
@@ -26,16 +54,8 @@ import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.GetTrialsTask;
 import com.alien_roger.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.court_deadlines.ui.adapters.CaseSpinnerAdapter;
-import com.alien_roger.court_deadlines.ui.adapters.PrioritiesAdapter;
 import com.alien_roger.court_deadlines.ui.adapters.TrialsSpinnerAdapter;
 import com.alien_roger.court_deadlines.utils.CommonUtils;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
 
 
 /**
@@ -51,8 +71,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected static final int SET_FROM_TIME = 2;
 	protected static final int SET_TO_DATE = 3;
 	protected static final int SET_TO_TIME = 4;
-	protected TimePickerDialog fromTimePickerDialog;
-	protected TimePickerDialog toTimePickerDialog;
+//	protected TimePickerDialog fromTimePickerDialog;
+//	protected TimePickerDialog toTimePickerDialog;
 	protected SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	protected SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
 
@@ -66,8 +86,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 
 	protected EditText courtDateEdt;
 	protected EditText proposalDateEdt;
-	protected EditText courtTimeEdt;
-	protected EditText proposalTimeEdt;
+//	protected EditText courtTimeEdt;
+//	protected EditText proposalTimeEdt;
 	protected EditText notesEdt;
 
 	protected List<Spinner> spinnersList;
@@ -77,15 +97,17 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected boolean need2update;
 	protected Spinner remindSpinner;
 	private ReminderSelectedListenr reminderSelectedListener;
-	private PrioritySelectedListenr prioritySelectedListenr;
+//	private PrioritySelectedListenr prioritySelectedListenr;
 	protected int reminderSelectedPos;
 	protected int[] remindTimes;
 	protected String remindSound;
 	protected Button soundBtn;
 	protected boolean userChangedCalendar;
 	protected List<PriorityObject> prioritiesList;
-	protected Spinner prioritiesSpinner;
+//	protected Spinner prioritiesSpinner;
 	protected int priority;
+
+	protected View optionsView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -106,17 +128,24 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		toCalendar = Calendar.getInstance();
 		df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
 
-		courtDateEdt.setText(df.format(fromCalendar.getTime()));
-		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
+		proposalDateEdt.setText(df.format(fromCalendar.getTime()));
+//		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
 
-		fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener, fromCalendar.get(Calendar.YEAR),
-				fromCalendar.get(Calendar.MONTH), fromCalendar.get(Calendar.DAY_OF_MONTH));
-		toDatePickerDialog = new DatePickerDialog(this, toDateSetListener, toCalendar.get(Calendar.YEAR),
-				toCalendar.get(Calendar.MONTH), toCalendar.get(Calendar.DAY_OF_MONTH));
-		fromTimePickerDialog = new TimePickerDialog(this, fromTimeSetListener, fromCalendar.get(Calendar.HOUR_OF_DAY),
-				fromCalendar.get(Calendar.MINUTE), true);
-		toTimePickerDialog = new TimePickerDialog(this, toTimeSetListener, toCalendar.get(Calendar.HOUR_OF_DAY),
-				toCalendar.get(Calendar.MINUTE), true);
+		fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener,
+				fromCalendar.get(Calendar.YEAR),
+				fromCalendar.get(Calendar.MONTH),
+				fromCalendar.get(Calendar.DAY_OF_MONTH));
+		toDatePickerDialog = new DatePickerDialog(this,
+				toDateSetListener,
+				toCalendar.get(Calendar.YEAR),
+				toCalendar.get(Calendar.MONTH),
+				toCalendar.get(Calendar.DAY_OF_MONTH));
+//		fromTimePickerDialog = new TimePickerDialog(this, fromTimeSetListener,
+//				fromCalendar.get(Calendar.HOUR_OF_DAY),
+//				fromCalendar.get(Calendar.MINUTE), true);
+//		toTimePickerDialog = new TimePickerDialog(this, toTimeSetListener,
+//				toCalendar.get(Calendar.HOUR_OF_DAY),
+//				toCalendar.get(Calendar.MINUTE), true);
 
 		need2update = true;
 	}
@@ -142,7 +171,6 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			prioritiesList.add(priorityObject);
 		}
 
-		prioritiesSpinner.setAdapter(new PrioritiesAdapter(this,prioritiesList));
 	}
 
 	protected class SpinnerSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -161,7 +189,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				disableSpinners(depthLevel);
 			} else {
 				if (!userChangedCalendar)
-					setProposalDate(cursor);
+					setCourtDate(cursor);
 			}
 		}
 
@@ -174,17 +202,6 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		@Override
 		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 			reminderSelectedPos = i;
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> adapterView) {
-		}
-	}
-
-	protected class PrioritySelectedListenr implements AdapterView.OnItemSelectedListener {
-		@Override
-		public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-			priority = i;
 		}
 
 		@Override
@@ -222,11 +239,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		} else {
 			adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
 			if (!userChangedCalendar)
-				setProposalDate(cursor);
+				setCourtDate(cursor);
 		}
 	}
 
-	protected void setProposalDate(Cursor cursor) {
+	protected void setCourtDate(Cursor cursor) {
 		String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
 
 		if (string.indexOf(StaticData.CHILD_DELIMITER) < 0)
@@ -240,14 +257,16 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		try {
 			toCalendar = CommonUtils.getDateByCode(fromCalendar, code);
 		} catch (NumberFormatException e) {
-			Log.d("setProposalDate", e.toString());
+			Log.d("setCourtDate", e.toString());
 			new AlertDialog.Builder(context).setTitle(R.string.error).setMessage(R.string.number_format_msg).setPositiveButton(android.R.string.ok, this).setNegativeButton(android.R.string.cancel, this).show();
 
 		}
-		proposalDateEdt.setText(df.format(toCalendar.getTime()));
-		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
+		courtDateEdt.setText(df.format(toCalendar.getTime()));
+//		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
 
-		toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR), toCalendar.get(Calendar.MONTH), toCalendar.get(Calendar.DAY_OF_MONTH));
+		toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR),
+				toCalendar.get(Calendar.MONTH),
+				toCalendar.get(Calendar.DAY_OF_MONTH));
 	}
 
 	private void adjustSpinner(Spinner spinner, SpinnerAdapter adapter) {
@@ -258,12 +277,12 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
-			case SET_FROM_TIME:
-				return fromTimePickerDialog;
+//			case SET_FROM_TIME:
+//				return fromTimePickerDialog;
 			case SET_FROM_DATE:
 				return fromDatePickerDialog;
-			case SET_TO_TIME:
-				return toTimePickerDialog;
+//			case SET_TO_TIME:
+//				return toTimePickerDialog;
 			case SET_TO_DATE:
 				return toDatePickerDialog;
 			default:
@@ -280,11 +299,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			Calendar currentDay = Calendar.getInstance();
 
 			// drop down other values
-			fromCalendar.set(Calendar.HOUR_OF_DAY, 0);
+			fromCalendar.set(Calendar.HOUR_OF_DAY, StaticData.DEFAULT_HOUR);
 			fromCalendar.set(Calendar.MINUTE, 0);
 			fromCalendar.set(Calendar.SECOND, 0);
 			fromCalendar.set(Calendar.MILLISECOND, 0);
-			currentDay.set(Calendar.HOUR_OF_DAY, 0);
+			currentDay.set(Calendar.HOUR_OF_DAY, StaticData.DEFAULT_HOUR);
 			currentDay.set(Calendar.MINUTE, 0);
 			currentDay.set(Calendar.SECOND, 0);
 			currentDay.set(Calendar.MILLISECOND, 0);
@@ -293,8 +312,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				return;
 			}
 
-			courtDateEdt.setText(df.format(fromCalendar.getTime()));
-			toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR), toCalendar.get(Calendar.MONTH), toCalendar.get(Calendar.DAY_OF_MONTH));
+//			courtDateEdt.setText(df.format(fromCalendar.getTime()));
+			proposalDateEdt.setText(df.format(fromCalendar.getTime()));
+			fromDatePickerDialog.updateDate(fromCalendar.get(Calendar.YEAR),
+					fromCalendar.get(Calendar.MONTH),
+					fromCalendar.get(Calendar.DAY_OF_MONTH));
 		}
 	};
 
@@ -307,7 +329,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			Calendar currentDay = Calendar.getInstance();
 
 			// drop down other values
-			toCalendar.set(Calendar.HOUR_OF_DAY, 0);
+			toCalendar.set(Calendar.HOUR_OF_DAY, StaticData.DEFAULT_HOUR);
 			toCalendar.set(Calendar.MINUTE, 0);
 			toCalendar.set(Calendar.SECOND, 0);
 			toCalendar.set(Calendar.MILLISECOND, 0);
@@ -315,44 +337,49 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			currentDay.set(Calendar.MINUTE, 0);
 			currentDay.set(Calendar.SECOND, 0);
 			currentDay.set(Calendar.MILLISECOND, 0);
+
 			if (toCalendar.before(currentDay)) {
 				showToast(R.string.unable_to_set_past_date);
 				return;
 			}
 
-			proposalDateEdt.setText(df.format(toCalendar.getTime()));
+//			proposalDateEdt.setText(df.format(toCalendar.getTime()));
+			courtDateEdt.setText(df.format(toCalendar.getTime()));
+			toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR),
+					toCalendar.get(Calendar.MONTH),
+					toCalendar.get(Calendar.DAY_OF_MONTH));
 			userChangedCalendar = true;
 		}
 	};
 
-	private TimePickerDialog.OnTimeSetListener fromTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-		@Override
-		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-			fromCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-			fromCalendar.set(Calendar.MINUTE, minute);
-			fromCalendar.set(Calendar.SECOND, 0);
-			fromCalendar.set(Calendar.MILLISECOND, 0);
-			courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
-			// increase "to time" calendar
-			toCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-			toCalendar.set(Calendar.MINUTE, minute);
-			toCalendar.add(Calendar.HOUR_OF_DAY, 1);// TODO set default value of event length
-			toTimePickerDialog.updateTime(toCalendar.get(Calendar.HOUR_OF_DAY), minute);
-			proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
-		}
-	};
-
-	private TimePickerDialog.OnTimeSetListener toTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-		@Override
-		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-			toCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-			toCalendar.set(Calendar.MINUTE, minute);
-			toCalendar.set(Calendar.SECOND, 0);
-			toCalendar.set(Calendar.MILLISECOND, 0);
-			proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
-			userChangedCalendar = true;
-		}
-	};
+//	private TimePickerDialog.OnTimeSetListener fromTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+//		@Override
+//		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//			fromCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+//			fromCalendar.set(Calendar.MINUTE, minute);
+//			fromCalendar.set(Calendar.SECOND, 0);
+//			fromCalendar.set(Calendar.MILLISECOND, 0);
+////			courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
+//			// increase "to time" calendar
+//			toCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+//			toCalendar.set(Calendar.MINUTE, minute);
+//			toCalendar.add(Calendar.HOUR_OF_DAY, 1);// TODO set default value of event length
+//			toTimePickerDialog.updateTime(toCalendar.get(Calendar.HOUR_OF_DAY), minute);
+////			proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
+//		}
+//	};
+//
+//	private TimePickerDialog.OnTimeSetListener toTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+//		@Override
+//		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//			toCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+//			toCalendar.set(Calendar.MINUTE, minute);
+//			toCalendar.set(Calendar.SECOND, 0);
+//			toCalendar.set(Calendar.MILLISECOND, 0);
+////			proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
+//			userChangedCalendar = true;
+//		}
+//	};
 
 	@Override
 	public void onClick(DialogInterface arg0, int which) {
@@ -445,7 +472,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				fillCourtCaseObject(courtCase);
 
 				// create task in DB
-				Uri uri = getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.fillCourtCase2ContentValues(courtCase));
+				Uri uri = getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.putCourtCase2Values(courtCase));
 				long id = ContentUris.parseId(uri);
 				setReminderTime(toCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) id);
 
@@ -468,8 +495,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected void fillCourtCaseObject(CourtCase courtCase) {
 		courtCase.setCaseName("");
 		courtCase.setCustomer(customerEdt.getText().toString().trim());
-		courtCase.setCourtDate(fromCalendar);
-		courtCase.setProposalDate(toCalendar);
+		courtCase.setCourtDate(toCalendar);
+		courtCase.setProposalDate(fromCalendar);
 		courtCase.setNotes(notesEdt.getText().toString().trim());
 		Cursor cursor = (Cursor) spinnersList.get(0).getSelectedItem();
 
@@ -477,9 +504,10 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		courtCase.setCourtType(cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE)));
 		courtCase.setReminderSound(remindSound);
 		courtCase.setReminderTimePosition(reminderSelectedPos);
-		int pPos = prioritiesSpinner.getSelectedItemPosition();
-		Log.d("TEST", "Priority set = " + pPos);
-		courtCase.setPriority(pPos);
+//		int pPos = prioritiesSpinner.getSelectedItemPosition();
+//		Log.d("TEST", "Priority set = " + pPos);
+
+		courtCase.updatePriority(toCalendar);
 	}
 
 	private void widgetsInit() {
@@ -495,8 +523,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		customerEdt = (EditText) findViewById(R.id.customerEdt);
 		notesEdt = (EditText) findViewById(R.id.notesEdt);
 
-		courtTimeEdt = (EditText) findViewById(R.id.courtTimeEdt);
-		courtTimeEdt.setOnTouchListener(this);
+//		courtTimeEdt = (EditText) findViewById(R.id.courtTimeEdt);
+//		courtTimeEdt.setOnTouchListener(this);
 
 		courtDateEdt = (EditText) findViewById(R.id.courtDateEdt);
 		courtDateEdt.setOnTouchListener(this);
@@ -504,8 +532,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		proposalDateEdt = (EditText) findViewById(R.id.proposalDateEdt);
 		proposalDateEdt.setOnTouchListener(this);
 
-		proposalTimeEdt = (EditText) findViewById(R.id.proposalTimeEdt);
-		proposalTimeEdt.setOnTouchListener(this);
+//		proposalTimeEdt = (EditText) findViewById(R.id.proposalTimeEdt);
+//		proposalTimeEdt.setOnTouchListener(this);
 
 		spinnersList = new ArrayList<Spinner>();
 
@@ -520,23 +548,27 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		remindSpinner = (Spinner) findViewById(R.id.remindSpinner);
 		remindSpinner.setOnItemSelectedListener(reminderSelectedListener);
 
-		prioritiesSpinner = (Spinner) findViewById(R.id.prioritySpinner);
-		prioritiesSpinner.setOnItemSelectedListener(prioritySelectedListenr);
+//		prioritiesSpinner = (Spinner) findViewById(R.id.prioritySpinner);
+//		prioritiesSpinner.setOnItemSelectedListener(prioritySelectedListenr);
+
+		findViewById(R.id.optionsButton).setOnClickListener(this);
+		optionsView = findViewById(R.id.optionsLayout);
+//		optionsView.setAnimation(animation)
 	}
 
 	@Override
 	public boolean onTouch(View view, MotionEvent motionEvent) {
-		if (view.getId() == R.id.courtTimeEdt) {
+		/*if (view.getId() == R.id.courtTimeEdt) {
 			showDialog(SET_FROM_TIME);
 			return true;
-		} else if (view.getId() == R.id.courtDateEdt) {
-			showDialog(SET_FROM_DATE);
+		} else */if (view.getId() == R.id.courtDateEdt) {
+			showDialog(SET_TO_DATE);
 			return true;
-		} else if (view.getId() == R.id.proposalTimeEdt) {
+		} /*else if (view.getId() == R.id.proposalTimeEdt) {
 			showDialog(SET_TO_TIME);
 			return true;
-		} else if (view.getId() == R.id.proposalDateEdt) {
-			showDialog(SET_TO_DATE);
+		}*/ else if (view.getId() == R.id.proposalDateEdt) {
+			showDialog(SET_FROM_DATE);
 			return true;
 		}
 		return false;
@@ -560,6 +592,11 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, Settings.System.DEFAULT_RINGTONE_URI);
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Settings.System.DEFAULT_RINGTONE_URI);
 			startActivityForResult(intent, StaticData.PICK_SOUND);
+		}else if(view.getId() == R.id.optionsButton) {
+			if(optionsView.getVisibility() == View.VISIBLE)
+				optionsView.setVisibility(View.GONE);
+			else
+				optionsView.setVisibility(View.VISIBLE);
 		}
 	}
 

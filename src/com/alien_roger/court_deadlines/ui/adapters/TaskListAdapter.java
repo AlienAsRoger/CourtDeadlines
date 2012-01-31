@@ -1,5 +1,8 @@
 package com.alien_roger.court_deadlines.ui.adapters;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -9,11 +12,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class TaskListAdapter extends CursorAdapter{
 
@@ -26,7 +27,7 @@ public class TaskListAdapter extends CursorAdapter{
 	private int idColIndex = 0;
 	private int[] drawables;
 	private int[] drawablesBack;
-	
+
 	public TaskListAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
 		init(context,c);
@@ -46,15 +47,15 @@ public class TaskListAdapter extends CursorAdapter{
 		drawables = new int[]{
 				R.drawable.priority_0_selector,
 				R.drawable.priority_1_selector,
-				R.drawable.priority_2_selector,
+				R.drawable.priority_2_selector/*,
 				R.drawable.priority_3_selector,
-				R.drawable.priority_4_selector};
+				R.drawable.priority_4_selector*/};
 		drawablesBack = new int[]{
 				R.drawable.priority_0,
 				R.drawable.priority_1,
-				R.drawable.priority_2,
+				R.drawable.priority_2/*,
 				R.drawable.priority_3,
-				R.drawable.priority_4
+				R.drawable.priority_4*/
 		};
 
 	}
@@ -64,7 +65,7 @@ public class TaskListAdapter extends CursorAdapter{
         calendar.setTimeInMillis(calendarTime);
         return dateTimeFormat.format(calendar.getTime());
     }
-	
+
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		ViewHolder	holder = (ViewHolder) view.getTag();
@@ -73,7 +74,7 @@ public class TaskListAdapter extends CursorAdapter{
 //		setBackground(view, cursor);
 
         holder.customer.setText(cursor.getString(cursor.getColumnIndex(DBConstants.CUSTOMER)));
-        
+
         holder.courtDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.COURT_DATE))));
         holder.proposalDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.PROPOSAL_DATE))));
         holder.courtType.setText(cursor.getString(cursor.getColumnIndex(DBConstants.COURT_TYPE)));
@@ -81,18 +82,18 @@ public class TaskListAdapter extends CursorAdapter{
 //		view.setOnClickListener(itemClickListener);
 		view.setTag(holder);
 	}
-	
+
 	private void setBackground(View view, Cursor cursor){
 		int priorValue = cursor.getInt(cursor.getColumnIndex(DBConstants.PRIOTIY));
 		view.setBackgroundResource(drawables[priorValue]);
 	}
-	
+
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		View convertView = createView(parent,cursor /*,cursor.getPosition()*/); 
+		View convertView = createView(parent,cursor /*,cursor.getPosition()*/);
 		return convertView;
 	}
-	
+
 	private View createView(ViewGroup parent,Cursor cursor/*int position*/){
 		ViewHolder holder = new ViewHolder();
 		View view = inflater.inflate(R.layout.task_list_item, parent, false);
@@ -104,15 +105,15 @@ public class TaskListAdapter extends CursorAdapter{
 		view.setTag(holder);
 		return view;
 	}
-	
+
 	@Override
 	public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
-        if (getFilterQueryProvider() != null) { 
-        	return getFilterQueryProvider().runQuery(constraint); 
+        if (getFilterQueryProvider() != null) {
+        	return getFilterQueryProvider().runQuery(constraint);
     	}
         return getCursor();
     }
-	
+
 //	private View.OnClickListener itemClickListener = new View.OnClickListener() {
 //		@Override
 //		public void onClick(View v) {
@@ -123,7 +124,7 @@ public class TaskListAdapter extends CursorAdapter{
 ////			context.startActivity(intent);
 //		}
 //	};
-	
+
 	private OnItemClickListener listItemClickListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> adapter, View parent, int position, long id) {
@@ -134,7 +135,7 @@ public class TaskListAdapter extends CursorAdapter{
 //			context.startActivity(intent);
 		}
 	};
-	
+
 	private static class ViewHolder{
 		public View priorityView;
 		public TextView customer;
@@ -143,5 +144,5 @@ public class TaskListAdapter extends CursorAdapter{
 		public TextView proposalDate;
 		public TextView courtType;
 	}
-	
+
 }

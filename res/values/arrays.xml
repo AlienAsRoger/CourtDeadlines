@@ -1,11 +1,17 @@
 <resources>
 
-    <string-array name="priorities">
+    <string-array name="priorities_orig">
         <item>@string/very_high</item>
         <item>@string/high</item>
         <item>@string/medium</item>
         <item>@string/low</item>
         <item>@string/very_low</item>
+    </string-array>
+    
+    <string-array name="priorities">
+        <item>@string/high</item>
+        <item>@string/medium</item>
+        <item>@string/low</item>
     </string-array>
     
     <string-array name="reminder_update_time_entries">

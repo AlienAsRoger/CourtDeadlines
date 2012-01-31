@@ -1,6 +1,10 @@
 package com.alien_roger.court_deadlines.db;
 
-import android.content.*;
+import android.content.ContentProvider;
+import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -32,9 +36,9 @@ public class DBDataProvider2 extends ContentProvider{
 	public boolean onCreate() {
  		Context context = getContext();
 		dbHelper = new DatabaseHelper(context);
-		CourtDeadlinesDB = dbHelper.getWritableDatabase();
+		appDataBase = dbHelper.getWritableDatabase();
 
-	    return (CourtDeadlinesDB == null)? false:true;
+	    return (appDataBase == null)? false:true;
 	}
 
 
@@ -47,11 +51,6 @@ public class DBDataProvider2 extends ContentProvider{
     		DBConstants.COURT_CASES,
     		DBConstants.COURT_TRIALS
     };
-
-//    private static int[] pathsIdsArray = new int[]{
-//    		DBConstants.COURT_CASE_ID,
-//    		DBConstants.COURT_TRIAL_ID
-//    };
 
     private static String[] tablesArray = new String[]{
     		DBConstants.COURT_CASE_TABLE,
@@ -73,17 +72,6 @@ public class DBDataProvider2 extends ContentProvider{
 			}
 		}
 		throw new IllegalArgumentException("Unsupported URI: " + uri);
-
-//		switch (uriMatcher.match(uri)){
-//		case DBConstants.COURT_CASES:
-//		case DBConstants.COURT_TRIALS:
-//			return "vnd.android.cursor.dir/vnd.alien_roger.courtdeadlines";
-//        case DBConstants.COURT_CASE_ID:
-//        case DBConstants.COURT_TRIAL_ID:
-//           return "vnd.android.cursor.item/vnd.alien_roger.courtdeadlines";
-//		default:
-//		    throw new IllegalArgumentException("Unsupported URI: " + uri);
-//		}
 	}
 
 
@@ -103,7 +91,7 @@ public class DBDataProvider2 extends ContentProvider{
 			}
 
 			if(found){
-				Cursor c = sqlBuilder.query(CourtDeadlinesDB, projection, selection, selectionArgs, null, null, sortOrder);
+				Cursor c = sqlBuilder.query(appDataBase, projection, selection, selectionArgs, null, null, sortOrder);
 		        c.setNotificationUri(getContext().getContentResolver(), uri);
 		        return c;
 			}
@@ -118,10 +106,10 @@ public class DBDataProvider2 extends ContentProvider{
 		boolean found = false;
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i]){
-			    count = CourtDeadlinesDB.update(tablesArray[i],values,selection,selectionArgs);
+			    count = appDataBase.update(tablesArray[i],values,selection,selectionArgs);
 			    found = true;
 			}else if(uriMatcherIds.match(uri) == pathsArray[i]){
-		         count = CourtDeadlinesDB.update(tablesArray[i], values,
+		         count = appDataBase.update(tablesArray[i], values,
 		        		 DBConstants._ID + " = " + uri.getPathSegments().get(1) +
 		        		 (!TextUtils.isEmpty(selection) ? " AND (" + selection + ')' : ""),
 		        		 selectionArgs);
@@ -141,7 +129,7 @@ public class DBDataProvider2 extends ContentProvider{
 
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i] || uriMatcherIds.match(uri) == pathsArray[i]){
-				long rowID = CourtDeadlinesDB.insert(tablesArray[i], "", values);
+				long rowID = appDataBase.insert(tablesArray[i], "", values);
 			    //---if added successfully---
 			    if (rowID > 0){
 			         Uri _uri = ContentUris.withAppendedId(uriArray[i], rowID);
@@ -152,19 +140,6 @@ public class DBDataProvider2 extends ContentProvider{
 		}
 		throw new IllegalArgumentException("Unsupported URI: " + uri);
 
-//		switch (uriMatcher.match(uri)){
-//		case DBConstants.COURT_CASES:
-//		case DBConstants.COURT_CASE_ID:
-//			long rowID = CourtDeadlines_DB.insert(DBConstants.COURT_CASE_TABLE, "", values);
-//		    //---if added successfully---
-//		    if (rowID > 0){
-//		         Uri _uri = ContentUris.withAppendedId(DBConstants.TASKS_CONTENT_URI, rowID);
-//		         getContext().getContentResolver().notifyChange(_uri, null);
-//		         return _uri;
-//		    }
-//		break;
-//		default:throw new IllegalArgumentException("Unsupported URI: " + uri);
-//		}
 //	    throw new SQLException("Failed to insert row into " + uri);
 	}
 
@@ -175,11 +150,11 @@ public class DBDataProvider2 extends ContentProvider{
 		boolean found = false;
 		for(int i=0; i < pathsArray.length;  i++){
 			if(uriMatcher.match(uri) == pathsArray[i]){
-      		 	count = CourtDeadlinesDB.delete(tablesArray[i],arg1,arg2);
+      		 	count = appDataBase.delete(tablesArray[i],arg1,arg2);
 			    found = true;
 			}else if(uriMatcherIds.match(uri) == pathsArray[i]){
 				String id = uri.getPathSegments().get(1);
-				count = CourtDeadlinesDB.delete(
+				count = appDataBase.delete(
 						tablesArray[i],
 						DBConstants._ID + " = " + id +(!TextUtils.isEmpty(arg1) ? " AND (" +arg1 + ')' : ""),
 						arg2);
@@ -192,25 +167,6 @@ public class DBDataProvider2 extends ContentProvider{
 			}
 		}
 		throw new IllegalArgumentException("Unknown URI " + uri);
-
-
-
-
-//	      switch (uriMatcher.match(uri)){
-//	      	 case DBConstants.COURT_CASES:{
-//      		 	count = CourtDeadlines_DB.delete(DBConstants.COURT_CASE_TABLE,arg1,arg2);
-//	      	 }break;
-//	      	 case DBConstants.COURT_CASE_ID:
-//				String id = uri.getPathSegments().get(1);
-//				count = CourtDeadlines_DB.delete(
-//						DBConstants.COURT_CASE_TABLE,
-//						DBConstants._ID + " = " + id +(!TextUtils.isEmpty(arg1) ? " AND (" +arg1 + ')' : ""),
-//						arg2);
-//				break;
-//	         default: throw new IllegalArgumentException("Unknown URI " + uri);
-//	      }
-//	      getContext().getContentResolver().notifyChange(uri, null);
-//	      return count;
 	}
 
 	/**
@@ -222,7 +178,7 @@ public class DBDataProvider2 extends ContentProvider{
 	}
 
 
-	private SQLiteDatabase CourtDeadlinesDB;
+	private SQLiteDatabase appDataBase;
 
 
     private static class DatabaseHelper extends SQLiteOpenHelper{
@@ -235,7 +191,6 @@ public class DBDataProvider2 extends ContentProvider{
 			for (String createTableCall :createTablesArray) {
 				db.execSQL(createTableCall);
 			}
-//		    db.execSQL(DBConstants.TASKS_TABLE_CREATE);
 		}
 
 		@Override
@@ -247,8 +202,6 @@ public class DBDataProvider2 extends ContentProvider{
 			for (String createTableCall :tablesArray) {
 				db.execSQL("DROP TABLE IF EXISTS " + createTableCall);
 			}
-//		   db.execSQL("DROP TABLE IF EXISTS " + DBConstants.COURT_CASE_TABLE);
-
 		   onCreate(db);
 		}
    }

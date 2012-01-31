@@ -19,7 +19,8 @@
     <!--Details-->
     <string name="remind_before">Reminders</string>
     <string name="sound">Sound</string>
-
+    <string name="options">Options</string>
+    
     
     <!-- Reminder -->
     <string name="five_minutes">5 minutes</string>

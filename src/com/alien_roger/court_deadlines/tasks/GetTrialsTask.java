@@ -58,7 +58,7 @@ public class GetTrialsTask extends AsyncTask<String, Void, Boolean>{
 
         // save
         for (CourtObj courtObj : courtObjs) {
-        	context.getContentResolver().insert(DBConstants.TRIALS_CONTENT_URI, DBDataManager.fillCourtObj2ContentValues(courtObj));
+        	context.getContentResolver().insert(DBConstants.TRIALS_CONTENT_URI, DBDataManager.putCourtObj2Values(courtObj));
 		}
 
         return true;

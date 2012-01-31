@@ -3,6 +3,8 @@ package com.alien_roger.court_deadlines.entities;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import com.alien_roger.court_deadlines.statics.StaticData;
+
 /**
  * CourtCase class
  *
@@ -123,4 +125,17 @@ public class CourtCase implements Serializable {
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
+
+	public void updatePriority(Calendar toCalendar) {
+		for (int i = 0; i < StaticData.REMIND_ZONES.length; i++) {
+			Calendar setCalendar = Calendar.getInstance();
+			setCalendar.add(Calendar.DAY_OF_MONTH, StaticData.REMIND_ZONES[i]);
+			if(!setCalendar.before(toCalendar)) {
+				setPriority(i);
+				break;
+			}
+		}
+	}
+
+
 }

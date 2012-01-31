@@ -36,7 +36,7 @@
                 android:id="@+id/proposalTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="32"
+                android:layout_weight="51"
                 android:text="@string/proposal"
                 style="@style/CalendarTxt"/>
 
@@ -44,16 +44,17 @@
                 android:id="@+id/proposalDateEdt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="30"/>
+                android:layout_weight="49"/>
 
-            <EditText
+<!--             <EditText
                 android:id="@+id/proposalTimeEdt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="38"
                 android:layout_gravity="right"
                 />
-        </LinearLayout>
+ -->
+         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -65,7 +66,7 @@
                 android:id="@+id/courtDateTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="32"
+                android:layout_weight="51"
                 android:text="@string/court_date"
                 style="@style/CalendarTxt"
                 android:layout_gravity="center_vertical"
@@ -78,15 +79,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:layout_weight="30"/>
+                android:layout_weight="49"/>
 
-            <EditText
+<!--             <EditText
                 android:id="@+id/courtTimeEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
-                android:layout_weight="38"/>
+                android:layout_weight="38"/> -->
         </LinearLayout>
 
 
@@ -157,7 +158,7 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
-        <LinearLayout
+<!--         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:weightSum="3">
@@ -177,54 +178,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 />
-            <!--android:entries="@array/priorities"-->
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="3"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/sound"
-                android:layout_gravity="center_vertical"
-                />
-            <Button
-                android:id="@+id/soundBtn"
-                style="@style/spinnerStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/sound"
-                android:layout_gravity="center_vertical"
-                />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="3"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/remind_before"
-                android:layout_gravity="center_vertical"
-                />
-            <Spinner
-                android:id="@+id/remindSpinner"
-                style="@style/spinnerStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/reminder_update_time_entries"
-                />
-        </LinearLayout>
+            android:entries="@array/priorities"
+        </LinearLayout> 
+        
+        -->
 
         <TextView
             android:id="@+id/notesTxt"
@@ -236,8 +193,73 @@
             android:id="@+id/notesEdt"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            
             android:hint="@string/notes_hint"/>
 
+        <Button
+            android:id="@+id/optionsButton"
+            style="@style/spinnerStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/options" />
+
+        <LinearLayout
+            android:id="@+id/optionsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="3" 
+            android:visibility="gone"
+            >
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:weightSum="3"
+	            >
+	            <TextView
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="2"
+	                android:text="@string/sound"
+	                android:layout_gravity="center_vertical"
+	                />
+	            <Button
+	                android:id="@+id/soundBtn"
+	                style="@style/spinnerStyle"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:text="@string/sound"
+	                android:layout_gravity="center_vertical"
+	                />
+	
+	        </LinearLayout>
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:weightSum="3"
+	            >
+	
+	            <TextView
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="2"
+	                android:text="@string/remind_before"
+	                android:layout_gravity="center_vertical"
+	                />
+	            <Spinner
+	                android:id="@+id/remindSpinner"
+	                style="@style/spinnerStyle"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_weight="1"
+	                android:entries="@array/reminder_update_time_entries"
+	                />
+	        </LinearLayout>            
+            
+		</LinearLayout>        
+        
     </LinearLayout>
 
 </ScrollView>

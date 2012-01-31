@@ -24,6 +24,7 @@
         <activity android:name=".ui.SettingsActivity" android:configChanges="keyboard|keyboardHidden|orientation"/>
         
         <service android:name=".services.GetDataService"/>
+        <service android:name=".services.UpdatePriorityService"/>
         <provider android:name=".db.DBDataProvider2" android:authorities="com.alien_roger.android.courtdeadlines.case_provider"/>
 		<receiver android:name=".services.AlarmReceiver"/>
     </application>

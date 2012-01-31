@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.ui.SettingsActivity;
@@ -44,7 +45,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 				|Intent.FLAG_ACTIVITY_NEW_TASK
 				|Intent.FLAG_ACTIVITY_SINGLE_TOP
 				|Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		PendingIntent contentIntent = PendingIntent.getActivity(context, id, openList, 0);
+		PendingIntent contentIntent = PendingIntent.getActivity(context, id, openList, PendingIntent.FLAG_ONE_SHOT); // TODO use flags
 
 		notification.setLatestEventInfo(context, taskTitle, context.getText(R.string.notification_screen_status_message), contentIntent);
 

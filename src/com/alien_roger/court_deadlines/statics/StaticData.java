@@ -49,5 +49,13 @@ public class StaticData {
 	public static final String NOTIFICATION_VIBRO_DEFAULT = "notification_vibrate_default";
 	public static final String COURT_CASE = "court_case";
 
+
 	public static final int PICK_SOUND = 55;
+	public static final int RED_COMPARE_ZONE = 7;
+	public static final int BLUE_COMPARE_ZONE = 14;
+	public static final int GREEN_COMPARE_ZONE = 365;
+	public static final int[] REMIND_ZONES = new int[] {RED_COMPARE_ZONE,BLUE_COMPARE_ZONE,GREEN_COMPARE_ZONE};
+	public static final int DEFAULT_HOUR = 8;
+
+
 }

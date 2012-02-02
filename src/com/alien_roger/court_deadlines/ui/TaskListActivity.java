@@ -1,9 +1,5 @@
 package com.alien_roger.court_deadlines.ui;
 
-import java.util.List;
-
-import quickaction.ActionItem;
-import quickaction.QuickAction;
 import actionbarcompat.ActionBarActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -20,10 +16,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.alien_roger.court_deadlines.AppConstants;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
@@ -37,6 +31,10 @@ import com.alien_roger.court_deadlines.services.UpdatePriorityService;
 import com.alien_roger.court_deadlines.statics.StaticData;
 import com.alien_roger.court_deadlines.tasks.LoadTasks;
 import com.alien_roger.court_deadlines.ui.adapters.TaskListAdapter;
+import quickaction.ActionItem;
+import quickaction.QuickAction;
+
+import java.util.List;
 
 public class TaskListActivity extends ActionBarActivity implements DataLoadInterface<CourtCase>,
 		AdapterView.OnItemClickListener {
@@ -78,37 +76,37 @@ public class TaskListActivity extends ActionBarActivity implements DataLoadInter
 //		mQuickAction.addActionItem(upAction);
 
 		// setup the action Item click listener
-		mQuickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
-			@Override
-			public void onItemClick(View anchor, int pos) {
+//		mQuickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
+//			@Override
+//			public void onItemClick(View anchor, int pos) {
+//
+//				if (pos == 0) { // Add Item selected
+//					Toast.makeText(getApplicationContext(), "Add Item selected on row " + mSelectedRow,
+//							Toast.LENGTH_SHORT).show();
+//				}/*
+//				 * else if (pos == 1) { // Accept Item selected
+//				 * Toast.makeText(Example2Activity.this,
+//				 * "Accept Item selected on row " + mSelectedRow,
+//				 * Toast.LENGTH_SHORT).show(); } else if (pos == 2) { // Upload
+//				 * Item selected Toast.makeText(Example2Activity.this,
+//				 * "Upload items selected on row " + mSelectedRow,
+//				 * Toast.LENGTH_SHORT).show(); }
+//				 */
+//			}
+//		});
 
-				if (pos == 0) { // Add Item selected
-					Toast.makeText(getApplicationContext(), "Add Item selected on row " + mSelectedRow,
-							Toast.LENGTH_SHORT).show();
-				}/*
-				 * else if (pos == 1) { // Accept Item selected
-				 * Toast.makeText(Example2Activity.this,
-				 * "Accept Item selected on row " + mSelectedRow,
-				 * Toast.LENGTH_SHORT).show(); } else if (pos == 2) { // Upload
-				 * Item selected Toast.makeText(Example2Activity.this,
-				 * "Upload items selected on row " + mSelectedRow,
-				 * Toast.LENGTH_SHORT).show(); }
-				 */
-			}
-		});
-
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				mSelectedRow = position; // set the selected row
-
-				mQuickAction.show(view);
-
-				// change the right arrow icon to selected state
-//                mMoreIv = (ImageView) view.findViewById(R.id.i_more);
-//                mMoreIv.setImageResource(R.drawable.ic_list_more_selected);
-			}
-		});
+//		listView.setOnItemClickListener(new OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//				mSelectedRow = position; // set the selected row
+//
+//				mQuickAction.show(view);
+//
+//				// change the right arrow icon to selected state
+////                mMoreIv = (ImageView) view.findViewById(R.id.i_more);
+////                mMoreIv.setImageResource(R.drawable.ic_list_more_selected);
+//			}
+//		});
 
 	}
 

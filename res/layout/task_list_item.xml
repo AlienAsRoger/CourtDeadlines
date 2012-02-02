@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="@dimen/task_item_height"
     android:paddingTop="4dip" 
     android:paddingBottom="4dip" 
     android:paddingRight="4dip" 
     >
-
+    <!--android:layout_height="@dimen/task_item_height"-->
+    
     <View
         android:id="@+id/priorityView"
         android:layout_width="10dip"
@@ -21,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/priorityView"
-        android:text="5th october" 
         />
 
     <TextView
@@ -29,7 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="20th october" 
         />
 
     <TextView
@@ -38,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/proposalDateTxt"
         android:layout_toRightOf="@id/priorityView"
-        android:text="John Smith" 
         />
 
     <TextView
@@ -47,7 +45,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/proposalDateTxt"
-        android:text="Indictment" 
+        />
+
+    <TextView
+        android:id="@+id/notesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/priorityView"
+        android:layout_below="@id/customerTxt"
+        android:textSize="13sp"
+        android:maxLines="3"
+        android:singleLine="false"
+
         />
 
 </RelativeLayout>

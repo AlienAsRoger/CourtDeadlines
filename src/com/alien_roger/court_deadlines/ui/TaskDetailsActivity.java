@@ -1,25 +1,8 @@
 package com.alien_roger.court_deadlines.ui;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-
 import actionbarcompat.ActionBarActivity;
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.ContentUris;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.app.*;
+import android.content.*;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -28,21 +11,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
-import android.widget.Toast;
-
+import android.widget.*;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
@@ -56,6 +28,13 @@ import com.alien_roger.court_deadlines.tasks.LoadTrials;
 import com.alien_roger.court_deadlines.ui.adapters.CaseSpinnerAdapter;
 import com.alien_roger.court_deadlines.ui.adapters.TrialsSpinnerAdapter;
 import com.alien_roger.court_deadlines.utils.CommonUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -507,7 +486,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 //		int pPos = prioritiesSpinner.getSelectedItemPosition();
 //		Log.d("TEST", "Priority set = " + pPos);
 
-		courtCase.updatePriority(toCalendar);
+		courtCase.updatePriority(fromCalendar);
 	}
 
 	private void widgetsInit() {

@@ -38,7 +38,7 @@ public class UpdatePriorityService extends Service {
 				do {
 					CourtCase courtCase = new CourtCase();
 					DBDataManager.getCourtCaseFromCursor(courtCase, cursor);
-					courtCase.updatePriority(courtCase.getCourtDate());
+					courtCase.updatePriority(courtCase.getProposalDate());
 					getContentResolver().update(Uri.parse(DBConstants.TASKS_CONTENT_URI.toString()
 							+ "/"+courtCase.getId() ),
 							DBDataManager.putCourtCase2Values(courtCase), null, null);

@@ -1,8 +1,5 @@
 package com.alien_roger.court_deadlines.ui.adapters;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -12,14 +9,16 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class TaskListAdapter extends CursorAdapter{
 
 	private LayoutInflater inflater;
-	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd' 'MMMM");
+	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd' 'MMMM' 'yyyy");
 	private Calendar fromCalendar;
 	private Calendar toCalendar;
 //	private Cursor cursor;

@@ -12,13 +12,16 @@ import android.widget.TextView;
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class TaskListAdapter extends CursorAdapter{
 
 	private LayoutInflater inflater;
-	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd' 'MMMM' 'yyyy");
+	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd' 'MM' 'yyyy");
+	private DateFormat df;
 	private Calendar fromCalendar;
 	private Calendar toCalendar;
 //	private Cursor cursor;
@@ -38,6 +41,7 @@ public class TaskListAdapter extends CursorAdapter{
 	}
 
 	private void init(Context context,Cursor c){
+		df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
 		inflater = LayoutInflater.from(context);
 		fromCalendar = Calendar.getInstance();
 		toCalendar = Calendar.getInstance();
@@ -62,7 +66,8 @@ public class TaskListAdapter extends CursorAdapter{
     private String getDate(long calendarTime){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(calendarTime);
-        return dateTimeFormat.format(calendar.getTime());
+		return df.format(calendar.getTime());
+//        return dateTimeFormat.format(calendar.getTime());
     }
 
 	@Override
@@ -73,7 +78,7 @@ public class TaskListAdapter extends CursorAdapter{
 //		setBackground(view, cursor);
 
         holder.customer.setText(cursor.getString(cursor.getColumnIndex(DBConstants.CUSTOMER)));
-
+		holder.note.setText(cursor.getString(cursor.getColumnIndex(DBConstants.NOTES)));
         holder.courtDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.COURT_DATE))));
         holder.proposalDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.PROPOSAL_DATE))));
         holder.courtType.setText(cursor.getString(cursor.getColumnIndex(DBConstants.COURT_TYPE)));
@@ -101,6 +106,7 @@ public class TaskListAdapter extends CursorAdapter{
         holder.proposalDate = (TextView) view.findViewById(R.id.proposalDateTxt);
         holder.courtType = (TextView) view.findViewById(R.id.courtTypeTxt);
 		holder.priorityView = view.findViewById(R.id.priorityView);
+		holder.note = (TextView) view.findViewById(R.id.notesTxt);
 		view.setTag(holder);
 		return view;
 	}
@@ -138,7 +144,8 @@ public class TaskListAdapter extends CursorAdapter{
 	private static class ViewHolder{
 		public View priorityView;
 		public TextView customer;
-//        public TextView caseName;
+//		public TextView caseName;
+		public TextView note;
         public TextView courtDate;
 		public TextView proposalDate;
 		public TextView courtType;

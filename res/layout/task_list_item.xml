@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/task_item_height"
+    android:layout_height="wrap_content"
     android:paddingTop="4dip" 
     android:paddingBottom="4dip" 
-    android:paddingRight="4dip" 
+    android:paddingRight="8dip"
     >
     <!--android:layout_height="@dimen/task_item_height"-->
     
     <View
         android:id="@+id/priorityView"
         android:layout_width="10dip"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-
+        android:minHeight="48dip"
+        android:background="@drawable/priority_0"
         android:layout_marginRight="4dip"
+        android:layout_alignBottom="@+id/notesTxt"
         />
     <!--android:background="@drawable/priority_0"-->
     <TextView
@@ -22,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/priorityView"
+        android:textStyle="bold"
         />
 
     <TextView
@@ -29,6 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:textStyle="bold"
+        android:text="Jannnnn"
+
         />
 
     <TextView
@@ -45,10 +51,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/proposalDateTxt"
+        android:text="indic"
+        android:textColor="@color/disabled"
+        android:textSize="16sp"
         />
 
     <TextView
-        android:id="@+id/notesTxt"
+        android:id="@id/notesTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/priorityView"
@@ -58,5 +67,6 @@
         android:singleLine="false"
 
         />
+
 
 </RelativeLayout>

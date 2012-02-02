@@ -6,7 +6,7 @@
         android:endColor="@color/priority_0_1"
         android:startColor="@color/priority_0_2" />
 
-    <size 
+    <size
         android:width="10dip"
         />
 

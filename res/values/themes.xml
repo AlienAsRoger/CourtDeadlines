@@ -1,6 +1,6 @@
 <resources>
     <style name="MyAppTheme" parent="AppTheme">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textAppearanceSmall">@style/UsualText</item>
         <item name="android:editTextStyle">@style/DateEdt</item>
     </style>
 </resources>

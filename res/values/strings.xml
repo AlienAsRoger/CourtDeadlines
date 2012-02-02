@@ -80,7 +80,7 @@
     <string name="case_title">Case</string>
     <string name="case_hint">New Case</string>
     <string name="notes">Notes</string>
-    <string name="notes_hint">New Notes</string>
+    <string name="notes_hint">Empty Note</string>
     <string name="court_date">Court Date</string>
     <string name="deadline_hint">1 Jan 2012</string>
     <string name="deadline">Proposal deadline</string>
@@ -90,7 +90,7 @@
     <string name="duty_share_msg">Click on item to share</string>
     <string name="share_subj">I want to share this with you</string>
     <string name="share_msg_title">Share via</string>
+    <string name="select_notification_sound">Select Notification Sound</string>
 
-   
 
 </resources>

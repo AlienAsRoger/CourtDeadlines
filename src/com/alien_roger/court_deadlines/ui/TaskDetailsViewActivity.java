@@ -1,7 +1,5 @@
 package com.alien_roger.court_deadlines.ui;
 
-import java.util.Calendar;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -11,13 +9,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import com.alien_roger.court_deadlines.R;
 import com.alien_roger.court_deadlines.db.DBConstants;
 import com.alien_roger.court_deadlines.db.DBDataManager;
 import com.alien_roger.court_deadlines.entities.CourtCase;
 import com.alien_roger.court_deadlines.services.AlarmReceiver;
 import com.alien_roger.court_deadlines.statics.StaticData;
+
+import java.util.Calendar;
 
 
 
@@ -79,8 +78,9 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater menuInflater = getMenuInflater();
 		menuInflater.inflate(R.menu.edit_details, menu);
-
-		return true;
+		boolean retValue = false;
+		retValue |= getActionBarHelper().onCreateOptionsMenu(menu);
+		return retValue;
 	}
 
 
@@ -98,7 +98,7 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 			int cnt = getContentResolver().update(Uri.parse(DBConstants.TASKS_CONTENT_URI.toString()
 					+ "/"+courtCase.getId() ),
 					DBDataManager.putCourtCase2Values(courtCase), null, null);
-			setReminderTime(toCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) courtCase.getId());
+			setReminderTime(fromCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) courtCase.getId());
 
 			finish();
 			break;

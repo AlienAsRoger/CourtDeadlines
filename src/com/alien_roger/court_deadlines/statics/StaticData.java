@@ -55,7 +55,7 @@ public class StaticData {
 	public static final int BLUE_COMPARE_ZONE = 14;
 	public static final int GREEN_COMPARE_ZONE = 365;
 	public static final int[] REMIND_ZONES = new int[] {RED_COMPARE_ZONE,BLUE_COMPARE_ZONE,GREEN_COMPARE_ZONE};
-	public static final int DEFAULT_HOUR = 8;
+	public static final int DEFAULT_HOUR = 12;
 
 
 }

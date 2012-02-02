@@ -87,6 +87,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected int priority;
 
 	protected View optionsView;
+	private ScrollView mainScrollView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -312,7 +313,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			toCalendar.set(Calendar.MINUTE, 0);
 			toCalendar.set(Calendar.SECOND, 0);
 			toCalendar.set(Calendar.MILLISECOND, 0);
-			currentDay.set(Calendar.HOUR_OF_DAY, 0);
+			currentDay.set(Calendar.HOUR_OF_DAY, StaticData.DEFAULT_HOUR);
 			currentDay.set(Calendar.MINUTE, 0);
 			currentDay.set(Calendar.SECOND, 0);
 			currentDay.set(Calendar.MILLISECOND, 0);
@@ -453,7 +454,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				// create task in DB
 				Uri uri = getContentResolver().insert(DBConstants.TASKS_CONTENT_URI, DBDataManager.putCourtCase2Values(courtCase));
 				long id = ContentUris.parseId(uri);
-				setReminderTime(toCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) id);
+				setReminderTime(fromCalendar.getTimeInMillis(), courtCase.getCustomer(), (int) id);
 
 				finish();
 				break;
@@ -490,6 +491,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	}
 
 	private void widgetsInit() {
+		mainScrollView = (ScrollView) findViewById(R.id.mainView);
+		
 		soundBtn = (Button) findViewById(R.id.soundBtn);
 		soundBtn.setOnClickListener(this);
 		Uri defaultSoundUri = SettingsActivity.getAlarmRingtone(context);
@@ -533,6 +536,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		findViewById(R.id.optionsButton).setOnClickListener(this);
 		optionsView = findViewById(R.id.optionsLayout);
 //		optionsView.setAnimation(animation)
+		
 	}
 
 	@Override
@@ -567,15 +571,23 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		if (view.getId() == R.id.soundBtn) {
 			Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
-			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Notification Sound");
+			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.select_notification_sound));
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, Settings.System.DEFAULT_RINGTONE_URI);
 			intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Settings.System.DEFAULT_RINGTONE_URI);
 			startActivityForResult(intent, StaticData.PICK_SOUND);
 		}else if(view.getId() == R.id.optionsButton) {
 			if(optionsView.getVisibility() == View.VISIBLE)
 				optionsView.setVisibility(View.GONE);
-			else
+			else{
 				optionsView.setVisibility(View.VISIBLE);
+				mainScrollView.post(new Runnable() {
+					@Override
+					public void run() {
+						mainScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+					}
+				});
+			}
+
 		}
 	}
 

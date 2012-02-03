@@ -85,7 +85,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected List<PriorityObject> prioritiesList;
 //	protected Spinner prioritiesSpinner;
 	protected int priority;
-
+//
 	protected View optionsView;
 	private ScrollView mainScrollView;
 

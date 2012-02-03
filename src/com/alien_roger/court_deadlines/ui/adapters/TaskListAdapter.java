@@ -66,7 +66,7 @@ public class TaskListAdapter extends CursorAdapter{
 				R.drawable.priority_3,
 				R.drawable.priority_4*/
 		};
-
+//
 	}
 
     private String getDate(long calendarTime){

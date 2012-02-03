@@ -81,13 +81,15 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 	protected int[] remindTimes;
 	protected String remindSound;
 	protected Button soundBtn;
-	protected boolean userChangedCalendar;
+	protected boolean userChangedProposalCalendar;
 	protected List<PriorityObject> prioritiesList;
 //	protected Spinner prioritiesSpinner;
 	protected int priority;
 
 	protected View optionsView;
 	private ScrollView mainScrollView;
+
+	private String trialValue = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -108,7 +110,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 		toCalendar = Calendar.getInstance();
 		df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
 
-		proposalDateEdt.setText(df.format(fromCalendar.getTime()));
+		courtDateEdt.setText(df.format(fromCalendar.getTime()));
 //		courtTimeEdt.setText(timeFormat.format(fromCalendar.getTime()));
 
 		fromDatePickerDialog = new DatePickerDialog(this, fromDateSetListener,
@@ -168,8 +170,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 				new LoadTrials(TaskDetailsActivity.this).execute(currLevel);
 				disableSpinners(depthLevel);
 			} else {
-				if (!userChangedCalendar)
-					setCourtDate(cursor);
+				setProposalDate(cursor);
 			}
 		}
 
@@ -218,35 +219,44 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			adjustSpinner(spinnersList.get(depthLevel), new TrialsSpinnerAdapter(context, cursor));
 		} else {
 			adjustSpinner(spinnersList.get(depthLevel), new CaseSpinnerAdapter(context, cursor));
-			if (!userChangedCalendar)
-				setCourtDate(cursor);
+			setProposalDate(cursor);
 		}
 	}
 
-	protected void setCourtDate(Cursor cursor) {
-		String string = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
+	protected void setProposalDate(Cursor cursor) {
+		trialValue = cursor.getString(cursor.getColumnIndex(DBConstants.TRIAL_VALUE));
+		if (!userChangedProposalCalendar)
+			updateProposalDate();
+	}
 
-		if (string.indexOf(StaticData.CHILD_DELIMITER) < 0)
+	private void updateProposalDate(){
+		if (trialValue.length() == 0 || trialValue.indexOf(StaticData.CHILD_DELIMITER) < 0)
 			return;
 
-		String code = string.substring(string.indexOf(StaticData.CHILD_DELIMITER)
+		String code = trialValue.substring(trialValue.indexOf(StaticData.CHILD_DELIMITER)
 				+ StaticData.CHILD_DELIMITER.length());
 
 		Log.d("setProposalDate", " code = " + code + " length = " + code.length());
 
 		try {
-			toCalendar = CommonUtils.getDateByCode(fromCalendar, code);
+			fromCalendar = CommonUtils.getDateByCode(toCalendar, code);
 		} catch (NumberFormatException e) {
-			Log.d("setCourtDate", e.toString());
-			new AlertDialog.Builder(context).setTitle(R.string.error).setMessage(R.string.number_format_msg).setPositiveButton(android.R.string.ok, this).setNegativeButton(android.R.string.cancel, this).show();
+			Log.d("setProposalDate", e.toString());
+			new AlertDialog
+					.Builder(context)
+					.setTitle(R.string.error)
+					.setMessage(R.string.number_format_msg)
+					.setPositiveButton(android.R.string.ok, this)
+					.setNegativeButton(android.R.string.cancel, this)
+					.show();
 
 		}
-		courtDateEdt.setText(df.format(toCalendar.getTime()));
+		proposalDateEdt.setText(df.format(fromCalendar.getTime()));
 //		proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
 
-		toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR),
-				toCalendar.get(Calendar.MONTH),
-				toCalendar.get(Calendar.DAY_OF_MONTH));
+		fromDatePickerDialog.updateDate(fromCalendar.get(Calendar.YEAR),
+				fromCalendar.get(Calendar.MONTH),
+				fromCalendar.get(Calendar.DAY_OF_MONTH));
 	}
 
 	private void adjustSpinner(Spinner spinner, SpinnerAdapter adapter) {
@@ -297,6 +307,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			fromDatePickerDialog.updateDate(fromCalendar.get(Calendar.YEAR),
 					fromCalendar.get(Calendar.MONTH),
 					fromCalendar.get(Calendar.DAY_OF_MONTH));
+			userChangedProposalCalendar = true;
+
 		}
 	};
 
@@ -328,7 +340,8 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 			toDatePickerDialog.updateDate(toCalendar.get(Calendar.YEAR),
 					toCalendar.get(Calendar.MONTH),
 					toCalendar.get(Calendar.DAY_OF_MONTH));
-			userChangedCalendar = true;
+			userChangedProposalCalendar = false;
+			updateProposalDate();
 		}
 	};
 
@@ -357,7 +370,7 @@ public class TaskDetailsActivity extends ActionBarActivity implements DataLoadIn
 //			toCalendar.set(Calendar.SECOND, 0);
 //			toCalendar.set(Calendar.MILLISECOND, 0);
 ////			proposalTimeEdt.setText(timeFormat.format(toCalendar.getTime()));
-//			userChangedCalendar = true;
+//			userChangedProposalCalendar = true;
 //		}
 //	};
 

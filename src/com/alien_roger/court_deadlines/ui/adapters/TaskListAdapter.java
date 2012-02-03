@@ -29,6 +29,7 @@ public class TaskListAdapter extends CursorAdapter{
 	private int idColIndex = 0;
 	private int[] drawables;
 	private int[] drawablesBack;
+	private int[] colors;
 
 	public TaskListAdapter(Context context, Cursor c, boolean autoRequery) {
 		super(context, c, autoRequery);
@@ -47,6 +48,11 @@ public class TaskListAdapter extends CursorAdapter{
 		toCalendar = Calendar.getInstance();
 //		cursor = c;
 		idColIndex = c.getColumnIndex(DBConstants._ID);
+		colors = new int[]{
+				context.getResources().getColor(R.color.priority_0_2),
+				context.getResources().getColor(R.color.priority_1_2),
+				context.getResources().getColor(R.color.priority_2_2)
+		};
 		drawables = new int[]{
 				R.drawable.priority_0_selector,
 				R.drawable.priority_1_selector,
@@ -77,6 +83,7 @@ public class TaskListAdapter extends CursorAdapter{
 		view.setBackgroundResource(drawables[priorValue]);
 //		setBackground(view, cursor);
 
+		holder.proposalDate.setTextColor(colors[priorValue]);
         holder.customer.setText(cursor.getString(cursor.getColumnIndex(DBConstants.CUSTOMER)));
 		holder.note.setText(cursor.getString(cursor.getColumnIndex(DBConstants.NOTES)));
         holder.courtDate.setText(getDate(cursor.getLong(cursor.getColumnIndex(DBConstants.COURT_DATE))));
@@ -94,11 +101,11 @@ public class TaskListAdapter extends CursorAdapter{
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		View convertView = createView(parent,cursor /*,cursor.getPosition()*/);
+		View convertView = createView(parent );
 		return convertView;
 	}
 
-	private View createView(ViewGroup parent,Cursor cursor/*int position*/){
+	private View createView(ViewGroup parent){
 		ViewHolder holder = new ViewHolder();
 		View view = inflater.inflate(R.layout.task_list_item, parent, false);
         holder.customer = (TextView) view.findViewById(R.id.customerTxt);

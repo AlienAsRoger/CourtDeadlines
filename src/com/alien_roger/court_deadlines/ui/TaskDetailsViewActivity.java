@@ -66,7 +66,7 @@ public class TaskDetailsViewActivity extends TaskDetailsActivity {
 
 		soundBtn.setText(courtCase.getReminderSound());
 		remindSound = courtCase.getReminderSound();
-
+//		         s
 		remindSpinner.setSelection(courtCase.getReminderTimePosition());
 		userChangedProposalCalendar = true;
 
